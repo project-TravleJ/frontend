@@ -1,9 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import PostLayout from './layouts/PostLayout';
 
 function App() {
   return (
-    <></>
+    <PostLayout/>
   );
 }
 
