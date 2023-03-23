@@ -3,7 +3,7 @@ import postheaderstyle from './postcomponents.module.css';
 function PostHeader() {
     return(
         <div className={postheaderstyle.postheaderstyle}>
-            headerclose입니다.
+            <button>X</button>&nbsp;&nbsp;
         </div>
     );
 }

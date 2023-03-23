@@ -2,8 +2,8 @@ import style from './postcomponents.module.css';
 
 function PostBody() {
     return(
-        <div className={style.postbodyheadstyle}>
-            수정 삭제
+        <div className={style.postbodysurvstyle}>
+            수정&nbsp;&nbsp; 삭제 &nbsp;&nbsp;&nbsp;
         </div>
     );
 }

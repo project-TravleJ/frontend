@@ -4,48 +4,7 @@
 
 .postheaderstyle {
     width: 100%;
-    height: 50px;
-    background: white;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: center;
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 25px;
-
-}
-
-.postbodystyle {
-    width: 100%;
-    background: white;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: center;
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-
-.poststyle {
-    width: 80%;
-    background: white;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: center;
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-
-.postbodyheadstyle {
-    width: 100%;
-    height: 50px;
+    height: 30px;
     background: white;
     border: 1px solid black;
     display: flex;
@@ -53,7 +12,232 @@
     align-items: center;
     flex-direction: center;
     margin: auto;
-    margin-top: 25px;
+}
+
+.postmarginbodystyle {
+    width: 100%;
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+.postbodystyle {
+    width: 80%;
+    background: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
     margin-bottom: 25px;
 
+}
+
+.postbodysurvstyle {
+    width: 100%;
+    height: 50px;
+    background: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: center;
+    font-size: 15px;
+}
+
+.postContent {
+    width: 100%;
+    height: 120px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    
+}
+
+.postmaintitlestyle {
+    width: 100%;
+    height: 80px;
+    background: #FFE5E5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+    font-size: 45px;
+    
+
+}
+.postContent1{
+    width: 100%;
+    display: flex;
+    
+}
+
+.postrecommend {
+    width: 50%;
+    height: 40px;
+    background: #FFE5E5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: center;
+}
+
+.postwriter {
+    width: 50%;
+    height: 40px;
+    background: #FFE5E5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: center;
+}
+
+.postmainContent{
+    width: 100%;
+    height: 320px;
+    flex-direction: row;
+    display: flex;
+}
+
+.postmainContent1 {
+    width: 50%;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.postmainContent2 {
+    width: 50%;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 35px;
+}
+
+
+.postcalender {
+    width: 100%;
+    height: 50px;
+    background: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.postmap {
+    width: 90%;
+    height: 250px;
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+    margin-bottom: 10px;
+}
+
+.postintrocontent {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    background: #FFE5E5;
+    font-size: 30px;
+    margin-top: 20px;
+}
+.postintrocontent1 {
+    width: 100%;
+    height: 250px;
+    background: #FFE5E5;
+    display: flex;
+    flex-direction: row;
+}
+
+.postintroimage{
+    width: 35%;
+    height: 250px;
+    background: #FFE5E5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+}
+
+.postintroduce{
+    width: 65%;
+    height: 230px;
+    background: #FFE5E5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+}
+.postcoment {
+    width: 100%;
+    height: 350px;
+    background: #FFE5E5;
+    display: flex;
+    margin-top: 70px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.postbutton {
+    width: 100%;
+    height: 200px;
+    background: #FFE5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.postbutton1 {
+    display: flex;
+    background: #C3C3C3;
+    color: white;
+    border: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.postbutton2 {
+    display: flex;
+    background: #FF0303;
+    color: white;
+    border: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.comentBox {
+    width: 95%;
+    height: 200px;
+}
+
+.datestyle {
+    width: 40%;
+    height: 30px;
+    font-size: 18px;
 }
