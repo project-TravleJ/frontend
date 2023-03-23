@@ -1,6 +1,6 @@
 import style from '../components/postcomponents/postcomponents.module.css';
 import PostHeader from '../components/postcomponents/PostHeader';
-import PostBody from '../components/postcomponents/PostBody';
+import PostBodyHead from '../components/postcomponents/PostBodyHead';
 
 function  PostLayout() {
 
@@ -8,7 +8,7 @@ function  PostLayout() {
         <div className={ style.container}>
             <PostHeader/>
             <div className={ style.postbodystyle }>
-                <PostBody/>
+                <PostBodyHead/>
             </div>
         </div>
     )
