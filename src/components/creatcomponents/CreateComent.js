@@ -1,6 +1,6 @@
-import style from './postcomponents.module.css';
+import style from './createcomponents.module.css';
 
-function PostMainContent() {
+function CreateMainContent() {
     return(
         <div className={style.postcoment}>
             &nbsp;&nbsp;  
@@ -17,4 +17,4 @@ function PostMainContent() {
         </div>
     );
 }
-export default PostMainContent;
+export default CreateMainContent;

@@ -1,6 +1,6 @@
-import style from './postcomponents.module.css';
+import style from './createcomponents.module.css';
 
-function PostIntroduce() {
+function CreateIntroduce() {
     return(
         <div className={style.postintrocontent}>
             &nbsp; #1 교토 후시미나리신사
@@ -17,4 +17,4 @@ function PostIntroduce() {
         
     );
 }
-export default PostIntroduce;
+export default CreateIntroduce;

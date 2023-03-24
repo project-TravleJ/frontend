@@ -5,7 +5,6 @@ import PostMainTitle from '../components/postcomponents/PostMainTitle';
 import PostMainContent from '../components/postcomponents/PostMainContent';
 import PostIntroduce from '../components/postcomponents/PostIntroduce';
 import PostComent from '../components/postcomponents/PostComent';
-
 function  PostLayout() {
 
     return(
