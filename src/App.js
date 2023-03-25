@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CreatLayout from './layouts/CreatLayout';
+import Postdelete from './components/modalcomponents/Postdelete';
+// import Layout from './layouts/PostLayout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route index element={ <CreatLayout/> }/>
+          <Route index element={ <Postdelete/> }/>
       </Routes>
     </BrowserRouter>
   );
