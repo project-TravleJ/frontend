@@ -1,16 +1,13 @@
 import style from './modalcomponents.module.css';
 
-function Postdelete() {
+function PostReviceFinsh() {
     return(
        
         <div className= { style.smallmodalbox }>
             <div className={ style.contents }>
-                <p>이 게시글을 삭제하시겠습니까?</p>
+                <p>수정 요청이 완료되었습니다.</p>
             </div>
             <div className={ style.btnline }>
-               <p> 
-                <button className={ style.btnset }>취소</button>
-                </p>
                 <p>
                 <button className={ style.btnset }>확인</button> 
                 </p>
@@ -20,4 +17,4 @@ function Postdelete() {
     );
 
 }
-export default Postdelete;
+export default PostReviceFinsh;

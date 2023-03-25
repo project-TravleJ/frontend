@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Postdelete from './components/modalcomponents/Postdelete';
+import PostdeleteFinsh from './components/modalcomponents/PostdeleteFinsh';
 // import Layout from './layouts/PostLayout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route index element={ <Postdelete/> }/>
+          <Route index element={ <PostdeleteFinsh/> }/>
       </Routes>
     </BrowserRouter>
   );
