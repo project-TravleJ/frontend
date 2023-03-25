@@ -1,7 +1,7 @@
 
 .smallmodalbox {
-    width: 400px;
-    height: 220px;
+    width: 350px;
+    height: 200px;
     background-color: white;
     border: solid 1px black;
     display: flex;
@@ -11,7 +11,7 @@
 }
 
 .contents {
-    width: 400px;
+    width: 350px;
     height: 60%;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@
 }
 
 .btnline {
-    width: 400px;
+    width: 350px;
     height: 30%;
     display: flex;
     justify-content : space-around;
@@ -28,14 +28,60 @@
     align-items: flex-end;
 }
 
+.buttonBox {
+    display: flex;
+    justify-content: space-around;
+}
+
 .btnset { 
-    width: 110px;
-    height: 35px;
+    width: 100px;
+    height: 30px;
     font-size: 15px;
     background-color: white;
     border: solid 1px black;
     
 }
 
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+.controlModal {
+    width: 350px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    font-family: 'NanumBarunGothic';
+}
+
+.container {
+    width: 85%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.reporttitle {
+    width: 100%;
+    
+}
+
+.reportcontent {
+    width: 100%;
+    height: 120px;
+
+}
+
+.smallTitle {
+    display: flex;
+    justify-content : center;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
 
 
