@@ -1,0 +1,46 @@
+.bar {
+    width: 200px;
+    height: 500px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content1 {
+    line-height: 50px;
+}
+
+.content2 {
+    line-height: 25px;
+}
+
+hr {
+    width: 160px;
+    border: 1px solid black;
+    margin-top: -1px;
+
+}
+
+.input1 {
+    width: 30px;
+}
+
+.input2 {
+    width: 115px;
+}
+
+.input3 {
+    width: 135px;
+}
+
+.selectbox {
+    width: 142px;
+}
+
+.button {
+    width: 142px;
+    height: 30px;
+    background: white;
+    font-size: 15px;
+}
