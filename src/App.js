@@ -1,8 +1,9 @@
-import PostLayout from './layouts/PostLayout';
+
+import Modal from './Modal/Modal';
 
 function App() {
   return (
-    <PostLayout/>
+    <Modal/>
   );
 }
 
