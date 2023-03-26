@@ -21,9 +21,11 @@ function  MainLayout() {
             <Menuber/>
             <MainImageContents/>
             <MainContents/>
+
             <Footer/>
             <ModalJoin/>
             <ModalLogin/>
+
         </div>
     )
 }
