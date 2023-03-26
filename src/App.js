@@ -1,13 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CreatLayout from './layouts/CreatLayout';
+import MainLayout from "./layouts/MainLayout";
+import MyPageLayout from "./layouts/MyPageLayout";
+import PostBoardLayout from "./layouts/PostBoardLayout";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-          <Route index element={ <CreatLayout/> }/>
-      </Routes>
-    </BrowserRouter>
+    // <MainLayout/>
+    // <MyPageLayout/>
+    <PostBoardLayout/>
   );
 }
 
