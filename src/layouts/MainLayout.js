@@ -17,8 +17,9 @@ function  MainLayout() {
             <Menuber/>
             <MainImageContents/>
             <MainContents/>
-            <Footer/>
-            
+            <div className={ style.footerstyle }>
+                <Footer/>
+            </div>
         </div>
     )
 }

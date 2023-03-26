@@ -1,0 +1,16 @@
+.dashmember{
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 533px;
+    height: 183px;
+    background: lightgray
+}
+
+.circle1{
+    border-radius: 50% ;
+    background-color: purple;
+    width: 180px;
+    height: 170px;
+    margin-left: 20px;
+    margin-top: 1px;
+}

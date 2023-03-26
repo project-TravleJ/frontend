@@ -1,8 +1,8 @@
-import style from './usecomponents.module.css';
+import footertextstyle from './usecomponents.module.css';
 
 function Footer() {
     return(
-        <div className={ style.footerstyle }>
+        <div className={footertextstyle.footertextstyle}>
             푸터입니다.
         </div>
     );
