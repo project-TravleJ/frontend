@@ -1,0 +1,205 @@
+.maginhead{
+    width:100%;
+    height:200px;
+    background: #FFE5E5;
+}
+.maginfooter{
+    width:100%;
+    background: #FFE5E5;
+}
+
+.container {
+    width: 1080px;
+    margin: auto;
+}
+
+.postbodystyle {
+    width: 80%;
+    background: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 25px;
+
+}
+
+.createmaintitlestyle {
+    width: 100%;
+    height: 120px;
+    background: #EBEBEB;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+    font-size: 40px;
+    
+
+}
+
+
+.postmainContent{
+    width: 100%;
+    height: 300px;
+    flex-direction: row;
+    display: flex;
+}
+
+.postmainContent1 {
+    width: 50%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.postmainContent2 {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.postmainContent3 {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.postmainContent4 {
+    width: 50%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+
+
+.postcalender {
+    width: 100%;
+    height: 50px;
+    background: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+    margin-bottom: 5px;
+}
+
+.postmap {
+    width: 90%;
+    height: 200px;
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: center;
+}
+
+.postintrocontent {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    background: #EBEBEB;
+    font-size: 25px;
+}
+.postintrocontent1 {
+    width: 100%;
+    height: 220px;
+    background: #EBEBEB;
+    display: flex;
+    flex-direction: row;
+}
+
+.postintroimage{
+    width: 35%;
+    height: 180px;
+    background: #EBEBEB;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: center;
+    margin-top: 15px;
+    margin-left : 10px;
+    margin-bottom: 20px;
+}
+
+.postintroduce{
+    width: 60%;
+    height: 180px;
+    background: #EBEBEB;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: center;
+    margin-top: 15px;
+    margin-left : 10px;
+}
+.postcoment {
+    width: 100%;
+    height: 300px;
+    background: #EBEBEB;
+    display: flex;
+    margin-top: 70px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.postbutton {
+    width: 100%;
+    height: 110px;
+    background: #EBEBEB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.postbutton1 {
+    display: flex;
+    background: #C3C3C3;
+    color: white;
+    border: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.postbutton2 {
+    display: flex;
+    background: #FF0303;
+    color: white;
+    border: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.comentBox {
+    width: 95%;
+    height: 180px;
+}
+
+.datestyle {
+    width: 40%;
+    height: 30px;
+    font-size: 14px;
+}

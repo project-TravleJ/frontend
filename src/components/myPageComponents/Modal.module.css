@@ -1,0 +1,47 @@
+.modal {
+    width: 333px;
+    height: 512px;
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header {
+    margin: -10px;
+}
+
+.image {
+    width: 230px;
+    height: 230px;
+    margin-top: -30px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    width: 127px;
+    height: 35px;
+    background: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.passwords {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 30px;
+    margin-top: -30px;
+}
+
+.password {
+    width: 280px;
+    height: 18px;
+}

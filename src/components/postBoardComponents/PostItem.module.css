@@ -1,0 +1,35 @@
+.item {
+    width: 800px;
+    height: 150px;
+    border: 1px solid black;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.image {
+    width: 140px;
+    height: 140px;
+    margin-left: 20px;
+    margin-right: 25px;
+}
+
+.postcontent {
+    width: 595px;
+    height: 150px;
+}
+
+.postname {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -15px;
+}
+
+.course {
+    text-align: center;
+    margin-top: 13px;
+    margin-bottom: 40px;
+}
