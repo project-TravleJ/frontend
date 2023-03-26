@@ -1,0 +1,64 @@
+.searchBox p {
+    font-size: 16px;
+}
+
+.searchBox {
+    width: 850px;
+    height: 100px;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content : center;
+    flex-direction: column;
+}
+
+.box{
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+.rank {
+    display: flex;
+    margin-right: 20px;
+}
+
+.rank label {
+    margin-right: 10px;
+}
+
+.user {
+    display: flex;
+}
+
+.user label {
+    margin-right: 10px;
+}
+
+.searchBox_C {
+    width: 850px;
+    height: 100px;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content : space-around;
+    flex-direction: row;
+    align-content: center;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px solid red; */
+    margin:0;
+    padding:0;
+    align-content: center;
+    flex-direction: row;
+}
+
+.items input {
+    margin-left: 15px;
+    height: 20px;
+}

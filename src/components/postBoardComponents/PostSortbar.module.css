@@ -1,0 +1,20 @@
+.bar {
+    width: 800px;
+    height: 40px;
+    border: 1px solid black;
+    background: #EBEBEB;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sort1 {
+    margin-left: 30px;
+}
+
+.sort2 {
+    display: flex;
+    margin-right: 20px;
+
+}

@@ -1,14 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CreatePlaceInsert from './components/modalcomponents/CreatePlaceInsert';
-// import CreatLayout from './layouts/CreatLayout';
+import Modal from './Modal/Modal';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-          <Route index element={ <CreatePlaceInsert/> }/>
-      </Routes>
-    </BrowserRouter>
+    <Modal/>
+
+
+
   );
 }
 

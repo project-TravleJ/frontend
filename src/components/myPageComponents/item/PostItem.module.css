@@ -1,0 +1,14 @@
+.post {
+    width: 80%;
+    height: 50px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.text {
+    margin: 20px;
+}
