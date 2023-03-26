@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PostInsert from './components/modalcomponents/PostInsert';
-// import Layout from './layouts/PostLayout';
+// import PostreportRequest from './components/modalcomponents/PostreportRequest';
+import CreatLayout from './layouts/CreatLayout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route index element={ <PostInsert/> }/>
+          <Route index element={ <CreatLayout/> }/>
       </Routes>
     </BrowserRouter>
   );
