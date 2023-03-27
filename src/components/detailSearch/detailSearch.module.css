@@ -48,6 +48,10 @@
     align-content: center;
 }
 
+.searchBox_C p, div {
+    font-size: 16px;;
+}
+
 .items {
     display: flex;
     flex-wrap: wrap;

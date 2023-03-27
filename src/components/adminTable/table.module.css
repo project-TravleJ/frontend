@@ -25,8 +25,13 @@
     height: 35px;
 }
 
+.header p {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
 .tableHr{
-    visibility: hidden;
+    visibility: none;
 }
 
 .table {
@@ -34,7 +39,14 @@
     border-spacing: 0;
 }
 
-.table th, td{
+.table th{
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 5px;
+    padding-bottom: 20px;
+}
+
+.table td{
     border-bottom: 1px solid black;
     text-align: center;
     padding: 5px;
