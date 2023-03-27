@@ -6,8 +6,17 @@ import CreatPost from './pages/CreatPost';
 import MainPage from './pages/MainPage';
 import MyPage from './pages/MyPage';
 import PostBoard from './pages/PostBoard';
+import { useSelector } from 'react-redux';
+import Modal from './components/modalmodal/Modal';
+
 function App() {
+ 
+  const { isOpen } = useSelector((store) => store.modal);
+
+
+  if (isOpen) {
   return (
+    
     <BrowserRouter>
       <ScrollToTop/>
       <Routes>
@@ -21,7 +30,14 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    
   );
+}
+return (
+  <main>
+    {isOpen && <Modal/>}
+  </main>
+);
 }
 
 export default App;
