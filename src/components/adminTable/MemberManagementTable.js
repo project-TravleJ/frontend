@@ -52,11 +52,11 @@ function MemberManagementTable() {
                             <th>최근 로그인</th>
                         </tr>
                     </thead>
-                    <hr className={Tstyle.tableHr}/>
+                    {/* <hr className={Tstyle.tableHr}/> */}
                     <tbody>
                         {data.map(member => {return(
                             <tr>
-                                <td> <input type="checkbox"/> </td>
+                                <td><input type="checkbox"/></td>
                                 <td> {member.memberId} </td>
                                 <td> {member.name} </td>
                                 <td> {member.rank} </td>
