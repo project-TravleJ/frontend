@@ -3,7 +3,7 @@ function MainImageContents() {
 
     return(
         <div className={MainImage.mainImagesstyle}> 
-            <img src="../../image/MainImage.png" width="100%" height="800px"></img>
+            <img src="../../image/MainImage.png" width="1105px" height="400px"></img>
         </div>
     );
 }

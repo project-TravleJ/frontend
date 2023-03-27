@@ -1,5 +1,5 @@
 .bar {
-    width: 800px;
+    width: 670px;
     height: 40px;
     border: 1px solid black;
     background: #EBEBEB;
@@ -7,6 +7,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .sort1 {
