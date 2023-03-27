@@ -7,12 +7,12 @@ function DashMember() {
             <div className={ dashStyle1.circle1 }>
                 <br/>
                 <h1>714</h1>
-                <h4>Member</h4>
+                <h3>Member</h3>
             </div>
             <div className={ dashStyle1.circle2 }>
                 <br/>
                 <h1>70</h1>
-                <h4>New Member</h4>
+                <h3>New Member</h3>
             </div>
         </div>
     )
