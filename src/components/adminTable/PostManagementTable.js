@@ -52,7 +52,6 @@ function PostManagementTable() {
                             <th>url</th>
                         </tr>
                     </thead>
-                    <hr className={Tstyle.tableHr}/>
                     <tbody>
                         {data.map(post => {return(
                             <tr>

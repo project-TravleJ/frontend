@@ -73,7 +73,6 @@ function LocationReportTable() {
                             <th>상세이유</th>
                         </tr>
                     </thead>
-                    <hr className={Tstyle.tableHr}/>
                     <tbody>
                         {data.map(locaReport => {return(
                             <tr>

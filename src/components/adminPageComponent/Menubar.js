@@ -8,8 +8,10 @@ function Menubar() {
 
     return(
         <div className={menubar.menubarStyle}>
-            <p>{admin.name} 님</p>
-            <p>logout</p>
+            <div className={menubar.container}>
+                <p>{admin.name} 님</p>
+                <p>logout</p>
+            </div>
         </div>
     );
 }
