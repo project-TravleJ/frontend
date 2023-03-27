@@ -1,8 +1,10 @@
+import { NavLink } from 'react-router-dom';
 import Item from './PostItem.module.css';
 
 function PostItem() {
 
     return(
+        <NavLink to="/post">
         <div className={ Item.item }>
             <img className={ Item.image } src="../../images/profileImage.png"/>
             <div className={ Item.postcontent }>
@@ -14,6 +16,7 @@ function PostItem() {
                 <h4>작성자 여행제이</h4>
             </div>
         </div>
+        </NavLink>
     );
 }
 

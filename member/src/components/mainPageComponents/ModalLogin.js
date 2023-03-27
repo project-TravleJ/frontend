@@ -1,3 +1,4 @@
+import GoogleButton from './GoogleButton';
 import Modal from './Modal.module.css';
 
 function ModalLogin() {
@@ -24,7 +25,7 @@ function ModalLogin() {
             </div>
             <div className={Modal.buttons}>
                 <button className={Modal.button2}>카카오로 로그인하기</button>
-                <button className={Modal.button2}>구글로 로그인하기</button>
+                {/* <GoogleButton className={Modal.button2}/> */}
             </div>
         </div>
     );
