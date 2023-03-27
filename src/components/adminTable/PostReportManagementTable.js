@@ -70,7 +70,6 @@ function PostReportManagementTable() {
                             <th>상세이유</th>
                         </tr>
                     </thead>
-                    <hr className={Tstyle.tableHr}/>
                     <tbody>
                         {data.map(postReport => {return(
                             <tr>

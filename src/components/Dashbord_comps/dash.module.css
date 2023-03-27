@@ -1,16 +1,65 @@
 .dashmember{
-    border: 1px solid black;
+    border: 1px solid none;
     border-radius: 30px;
     width: 533px;
     height: 183px;
-    background: lightgray
+    background: lightgray;
+    display: flex;
+    justify-content: center;
 }
 
 .circle1{
     border-radius: 50% ;
-    background-color: purple;
+    background-color: lightskyblue;
     width: 180px;
     height: 170px;
-    margin-left: 20px;
-    margin-top: 1px;
+    color: white;
+    text-shadow: 5px 5px black;
+    margin: auto;
+    text-align: center;;
+}
+
+.circle2{
+    border-radius: 50% ;
+    background-color: lightgreen;
+    width: 180px;
+    height: 170px;
+    color: white;
+    text-shadow: 3px 3px black;
+    margin: auto;
+    text-align: center;;
+}
+
+.visitmem {
+    border: 1px solid none;
+    border-radius: 40px;
+    width: 411px;
+    height: 183px;
+    background-color: lightgray;
+    text-align: left;
+}
+
+.inline {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+.bullet1 {
+    width: 533px;
+    height: 85px;
+    background: lightgray;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 20px;
+}
+
+.table1 {
+    border: 1px solid black;
+    width: 533px;
+    background-color: lightgray;
+}
+
+.tablehead {
+    border: 1px solid black;
 }
