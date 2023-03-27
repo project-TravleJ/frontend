@@ -1,0 +1,13 @@
+.contents {
+    height: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    margin-left: -100px;
+}

@@ -5,7 +5,8 @@ function Header() {
         <div className={headstyle.headstyle}>
             <img src="../../image/travelJLogo.png"/>
             <input type="text" placeholder="Search" className={headstyle.searchBox}/>
-            <div>
+            {/* &nbsp; */}
+            <div className={ headstyle.write }>
                 글쓰기
             </div>
         </div>

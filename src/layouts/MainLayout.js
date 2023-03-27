@@ -1,4 +1,4 @@
-import style from '../components/usecomponents.module.css';
+import style from '../components/mainPageComponents/usecomponents.module.css';
 import Header from "../components/mainPageComponents/Header";
 import Survebar from '../components/mainPageComponents/Survebar';
 import Menuber from '../components/mainPageComponents/Menubar';

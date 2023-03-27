@@ -16,6 +16,10 @@
     padding-right: 25px;
 }
 
+.write {
+    margin-left: -50px;
+}
+
 
 
 .filtercontentsstyle {
@@ -40,7 +44,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    flex-direction: center;
     margin-left: -10px;
     margin-bottom: -10px;
     padding-right: 25px;
@@ -48,10 +51,10 @@
 
 .footertextstyle {
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
     flex-direction: column;
-    margin-right: 100px;
+    margin-right: 73px;
 }
 
 .srvbarstyle{
@@ -74,12 +77,12 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: center;
-    margin-right: 90px;
+    margin-right: 73px;
 }
 
 .menubarstyle {
     width: 100%;
-    height: 50px;
+    height: 35px;
     background: #EBEBEB;
     display: flex;
     justify-content: space-around;
@@ -91,12 +94,13 @@
 
 .menubartextstyle {
     width: 100%;
-    height: 50px;
+    height: 35px;
     background: #EBEBEB;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: center;
+    margin-left: 10px;
     font-size: 20px;
 }
 
@@ -165,23 +169,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: center;
-    margin:auto;
     border: 1px solid black;
+    margin: auto;
 
 }
 
 .mainImagesstyle{
-    width: 100%;
-    height: 800px;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: center;
-    margin:auto;
-    /* margin-left: -10px; */
-    /* margin-right: -10px; */
-    
+    margin-left: 5px;
 }
 
 
