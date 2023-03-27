@@ -3,11 +3,9 @@ import CreatMainTitle from '../components/creatcomponents/CreateMainTitle';
 import CreatMainContent from '../components/creatcomponents/CreateMainContent';
 import CreatIntroduce from '../components/creatcomponents/CreateIntroduce';
 import CreatComent from '../components/creatcomponents/CreateComent';
-import Header from "../components/Header";
-import Survebar from "../components/Survebar";
 import Footer from "../components/Footer";
 
-function  CreatLayout() {
+function  CreatPost() {
 
     return(
             // <div className={style.maginhead }>
@@ -27,4 +25,4 @@ function  CreatLayout() {
     )
 }
 
-export default CreatLayout;
+export default CreatPost;

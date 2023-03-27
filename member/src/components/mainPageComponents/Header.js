@@ -1,13 +1,17 @@
+import { NavLink } from 'react-router-dom';
 import headstyle from './usecomponents.module.css';
 
 function Header() {
     return (
         <div className={headstyle.headstyle}>
-            <img src="../../image/travelJLogo.png"/>
-            <input type="text" placeholder="Search" className={headstyle.searchBox}/>
+            {/* {window.location.replace("/")} */}
+            <NavLink to="/"><img src="../../image/travelJLogo.png" /></NavLink>
+            <input type="text" placeholder="Search" className={headstyle.searchBox} />
             {/* &nbsp; */}
-            <div className={ headstyle.write }>
-                글쓰기
+            <div className={headstyle.write}>
+                <NavLink to="/post">
+                    글쓰기
+                </NavLink>
             </div>
         </div>
     );
