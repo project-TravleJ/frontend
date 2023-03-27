@@ -1,11 +1,11 @@
-import Layout from "../../layouts/admin/Layout";
-import PostManagementTable from "../../components/adminTable/PostManagementTable";
+import Dashboard from "../../components/Dashbord_comps/Dashboard";
 import Sidemenu from "../../components/sidepopup/Sidemenu";
 import PageStyle from "./adminPage.module.css";
-import PostManagementDS from "../../components/detailSearch/PostMamagementDS";
 
-function PostManagementPage() {
 
+function MainDashBoard() {
+
+    
     return(
         <>
             {/* <Layout/> */}
@@ -14,13 +14,11 @@ function PostManagementPage() {
                     <Sidemenu/>
                 </div>
                 <div className={PageStyle.main}>
-                    <PostManagementDS/>
-                    <br/>
-                    <PostManagementTable className={PageStyle.table}/>
+                    <Dashboard/>
                 </div>
             </div>
         </>
     );
 }
 
-export default PostManagementPage;
+export default MainDashBoard;

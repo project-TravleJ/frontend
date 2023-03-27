@@ -8,7 +8,7 @@ function LocationReportManagementPage() {
 
     return(
         <>
-            <Layout/>
+            {/* <Layout/> */}
             <div className={PageStyle.container}>
                 <div className={PageStyle.side}>
                     <Sidemenu/>

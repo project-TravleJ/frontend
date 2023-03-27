@@ -8,7 +8,7 @@ function PostReportManagementPage() {
 
     return(
         <>
-            <Layout/>
+            {/* <Layout/> */}
             <div className={PageStyle.container}>
                 <div className={PageStyle.side}>
                     <Sidemenu/>

@@ -1,3 +1,4 @@
+
 import BulletinManage from "./BulletinManage";
 import DashMember from "./DashMember";
 import ReportSubmit from "./ReportSubmit";
@@ -33,3 +34,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
