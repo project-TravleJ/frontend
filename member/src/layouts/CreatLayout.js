@@ -10,10 +10,8 @@ import Footer from "../components/Footer";
 function  CreatLayout() {
 
     return(
-            <div className={style.maginhead }>
+            // <div className={style.maginhead }>
             <div className={ style.container}>
-            <Survebar/>
-            <Header/>
                 <div className={ style.postbodystyle }>
                     <br/>
                     <CreatMainTitle/>
@@ -21,10 +19,10 @@ function  CreatLayout() {
                     <CreatIntroduce/>
                     <CreatComent/>
                 </div>
-            </div>
-            <div className={style.maginhead }>
+            {/* </div> */}
+            {/* <div className={style.maginhead }> */}
             <Footer/>
-            </div>
+            {/* </div> */}
             </div>
     )
 }
