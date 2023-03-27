@@ -1,35 +1,43 @@
+import CourseStyle from "./coursecomponents.module.css";
+import GoogleMap from "google-map-react";
 
 function Course() {
 
     return (
 
-        <div>
+        <div className={ CourseStyle.Container }>
             <div>
-                <h2>등록된 장소 정보 관리</h2>
+                <h2 className={ CourseStyle.header } align="center">등록된 장소 정보 관리</h2>
             </div>
-            <div>
-                <div></div>
-                <div>
-                    <div>
-                        <p>여행지 이름</p>
-                        <input type="text"></input>
+            <div className={CourseStyle.contents}>
+                <div className={ CourseStyle.Map}>
+                    <GoogleMap
+                            bootstrapURLKeys = {{key: 'AIzaSyDdncR3Xm9D6mhrC-gMPVottSjcG2PZa4c'}}>
+                            defaultZoom={15}
+                            defaultCenter={{ lat: 37.5, lng: 127 }}
+                    </GoogleMap>
+                </div>
+                <div className={ CourseStyle.Sidebar}>
+                    <div align="center">
+                        <p align="center">여행지 이름</p>
+                        <input type="text" className={CourseStyle.text1}/>
                     </div>
-                    <div>
+                    <div className= {CourseStyle.Box1}>
                         <p>여행지 사진</p>
-                        <div></div>
+                        <div className={CourseStyle.ImgArea}></div>
                     </div>
-                    <div>
-                        <p>여행지 설명</p>
+                    <div className={CourseStyle.bottomBox}>
+                        <p align="center">여행지 설명</p>
                         <input type="text"></input>
                     </div>
                 </div>
             </div>
-            <div className="Buttons.buttons">
-                <button>전체 조회</button>
-                <button>등록지 추가</button>
-                <button>등록지 변경</button>
-                <button>등록지 삭제</button>
-                <button>등록지 검색</button>
+            <div className={ CourseStyle.Buttons }>
+                <button className={ CourseStyle.Button}>전체 조회</button>
+                <button className={ CourseStyle.Button}>등록지 추가</button>
+                <button className={ CourseStyle.Button}>등록지 변경</button>
+                <button className={ CourseStyle.Button}>등록지 삭제</button>
+                <button className={ CourseStyle.Button}>등록지 검색</button>
             </div>
         </div>
     );
