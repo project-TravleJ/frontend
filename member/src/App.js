@@ -7,37 +7,28 @@ import MainPage from './pages/MainPage';
 import MyPage from './pages/MyPage';
 import PostBoard from './pages/PostBoard';
 import { useSelector } from 'react-redux';
-import Modal from './components/modalmodal/Modal';
+import CreatePlaceInsert from './components/modalcomponents/CreatePlaceInsert';
 
 function App() {
- 
   const { isOpen } = useSelector((store) => store.modal);
-
-
-  if (isOpen) {
   return (
-    
-    <BrowserRouter>
-      <ScrollToTop/>
-      <Routes>
-        <Route path="/" element={ <MainLayout/> }>
-          <Route index element={ <MainPage/>}/>
-          <Route path="myPage" element={ <MyPage/> }/>
-          <Route path="postBoard" element={ <PostBoard/> }/>
+    <main>
+      {isOpen && <CreatePlaceInsert />}
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<MainPage />} />
+            <Route path="myPage" element={<MyPage />} />
+            <Route path="postBoard" element={<PostBoard />} />
             {/* <Route index element={ <PostBoard/> }/> */}
-            <Route path="post" element={ <CreatPost/> }/>
-          <Route path="login" element={ <ModalLogin/> }/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    
+            <Route path="post" element={<CreatPost />} />
+            <Route path="login" element={<ModalLogin />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </main>
   );
-}
-return (
-  <main>
-    {isOpen && <Modal/>}
-  </main>
-);
 }
 
 export default App;
