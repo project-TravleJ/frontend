@@ -6,7 +6,7 @@ function Survebar() {
         <div className={srvbarstyle.srvbarstyle}>
             <div className={srvbarstyle.srvbartextstyle}>
                 <h4><Link to="/login">로그인</Link></h4>
-                <h4><a href="https://www.naver.com">회원가입</a></h4>
+                <h4><Link to="/join">회원가입</Link></h4>
                 <h4><NavLink to="/myPage">마이페이지</NavLink></h4>
             </div>
         </div>

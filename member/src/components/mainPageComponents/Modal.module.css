@@ -27,18 +27,12 @@
     margin-left: 23.5px;
 }
 
-.button1 {
+.button {
     width: 286px;
     height: 40px;
     font-size: 16px;
     margin-left: 23.5px;
-}
-
-.button2 {
-    width: 286px;
-    height: 40px;
-    font-size: 16px;
-    margin-left: 23.5px;
+    justify-content: center;
 }
 
 .buttons {

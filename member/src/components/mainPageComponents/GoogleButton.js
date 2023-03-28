@@ -1,36 +1,50 @@
-import { useEffect } from "react";
+import React, { useEffect } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { gapi } from 'gapi-script';
+import Google from './Modal.module.css';
 
-function GoogleButton(props) {
+function GoogleButton() {
 
-    const clientId =
-        "30823325928-s78h21h30dql6640ufj13jt5lhmov706.apps.googleusercontent.com";
+    useEffect(() => {
+        async function start() {
+            await gapi.client.init({
+                clientId: "30823325928-s78h21h30dql6640ufj13jt5lhmov706.apps.googleusercontent.com",
+                scope: 'email',
+            });
 
-    async function onSuccess(res) {
-        const profile = res.getBasicProfile();
-        const userdata = {
-            email: profile.getEmail(),
-            image: profile.getImageUrl(),
-            name: profile.getName(),
-        };
-        // 로그인 성공 후 실행하기 원하는 코드 작성.
+        }
 
-    }
+        gapi.load('client:auth2', start);
+    }, []);
 
-    const onFailure = (res) => {
-        alert("구글 로그인에 실패하였습니다");
-        console.log("err", res);
+
+    const onSuccess = response => {
+        const accessToken = gapi.auth.getToken().access_token;
+        console.log('SUCCESS', response, accessToken);
+        alert('로그인 되었습니다.');
+    };
+    const onFailure = response => {
+        console.log('FAILED', response);
+    };
+    const onLogoutSuccess = () => {
+        console.log('SUCCESS LOG OUT');
+        alert('로그아웃 되었습니다.')
     };
 
     return (
-        <GoogleLogin
-            className="google-button"
-            clientId={clientId}
-            buttonText="Login with Google" // 버튼에 뜨는 텍스트
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={"single_host_origin"}
-        />
+        <div>
+            <GoogleLogin
+                className={Google.button}
+                clientId="30823325928-s78h21h30dql6640ufj13jt5lhmov706.apps.googleusercontent.com"
+                buttonText="구글아이디로 로그인하기"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+            />
+            {/* <GoogleLogout
+                clientId="30823325928-s78h21h30dql6640ufj13jt5lhmov706.apps.googleusercontent.com"
+                onLogoutSuccess={onLogoutSuccess}
+            /> */}
+        </div>
     );
 }
 

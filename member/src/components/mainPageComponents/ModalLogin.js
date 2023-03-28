@@ -6,14 +6,14 @@ function ModalLogin() {
     return (
         <div className={Modal.modaljoin}>
             <div className={Modal.logo}>
-                <img src="../../images/travelJLogo.png" width="236px" height="65px" />
+            <img src="../../image/travelJLogo.png" height="73px" />
                 <h3>로그인</h3>
             </div>
             <div className={Modal.inputs}>
                 <input className={Modal.input} type="text" name="email" placeholder="이메일"></input>
                 <input className={Modal.input} type="paaword" name="password" placeholder="비밀번호"></input>
             </div>
-            <button className={Modal.button1}>로그인</button>
+            <button className={Modal.button}>로그인</button>
             <div className={Modal.ifjoinorlogin}>
                 <h4 className={ Modal.pwd }>비밀번호를 잃어버리셨나요?</h4>
                 <label>계정이 없으신가요?</label>
@@ -24,8 +24,7 @@ function ModalLogin() {
                 OR
             </div>
             <div className={Modal.buttons}>
-                <button className={Modal.button2}>카카오로 로그인하기</button>
-                {/* <GoogleButton className={Modal.button2}/> */}
+                <GoogleButton/>
             </div>
         </div>
     );
