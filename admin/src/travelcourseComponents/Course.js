@@ -1,5 +1,5 @@
 import CourseStyle from "./coursecomponents.module.css";
-import GoogleMap from "google-map-react";
+import Maps from "../components/googlemap/Maps";
 
 function Course() {
 
@@ -11,11 +11,7 @@ function Course() {
             </div>
             <div className={CourseStyle.contents}>
                 <div className={ CourseStyle.Map}>
-                    <GoogleMap
-                            bootstrapURLKeys = {{key: 'AIzaSyDdncR3Xm9D6mhrC-gMPVottSjcG2PZa4c'}}>
-                            defaultZoom={15}
-                            defaultCenter={{ lat: 37.5, lng: 127 }}
-                    </GoogleMap>
+                    <Maps/>
                 </div>
                 <div className={ CourseStyle.Sidebar}>
                     <div align="center">
