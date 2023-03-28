@@ -26,3 +26,5 @@ function App() {
 }
 
 export default App;
+
+// src/components/googlemap/Maps.js에 API_KEY를 입력하면 출력 됨
