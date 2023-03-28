@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ModalJoin from './components/mainPageComponents/ModalJoin';
 import ModalLogin from './components/mainPageComponents/ModalLogin';
 import ScrollToTop from './components/mainPageComponents/ScrollToTop';
 import MainLayout from './layouts/MainLayout';
@@ -22,11 +23,12 @@ function App() {
             <Route path="myPage" element={<MyPage />} />
             <Route path="postBoard" element={<PostBoard />} />
             {/* <Route index element={ <PostBoard/> }/> */}
-            <Route path="post" element={<CreatPost />} />
-            <Route path="login" element={<ModalLogin />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route path="post" element={ <CreatPost/> }/>
+          <Route path="login" element={ <ModalLogin/> }/>
+          <Route path="join" element={ <ModalJoin/> }/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </main>
   );
 }
