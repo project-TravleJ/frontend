@@ -2,13 +2,13 @@ import style from './modalcomponents.module.css';
 
 function Postdelete() {
     return(
-       
+
         <div className= { style.smallmodalbox }>
             <div className={ style.contents }>
                 <p>이 게시글을 삭제하시겠습니까?</p>
             </div>
             <div className={ style.btnline }>
-               <p> 
+                <p> 
                 <button className={ style.btnset }>취소</button>
                 </p>
                 <p>

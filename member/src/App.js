@@ -9,12 +9,17 @@ import MyPage from './pages/MyPage';
 import PostBoard from './pages/PostBoard';
 import { useSelector } from 'react-redux';
 import CreatePlaceInsert from './components/modalcomponents/CreatePlaceInsert';
+import PostInsert from './components/modalcomponents/PostInsert';
+
 
 function App() {
-  const { isOpen } = useSelector((store) => store.modal);
+  const { isOpen , isOpen1} = useSelector((store) => store.modal);
+ 
+  
   return (
     <main>
       {isOpen && <CreatePlaceInsert />}
+      {isOpen1 && <PostInsert />}
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
