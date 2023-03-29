@@ -27,8 +27,18 @@
     justify-content: space-between;
 }
 
+.name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 300px;
+}
+
 .course {
     text-align: center;
     margin-top: 0px;
     margin-bottom: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
