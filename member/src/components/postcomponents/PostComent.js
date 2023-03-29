@@ -1,6 +1,9 @@
 import style from './postcomponents.module.css';
+import { useDispatch} from 'react-redux';
+import { openModal2 } from '../../features/modal/modalSlice2';
 
 function PostMainContent() {
+    const dispatch = useDispatch();
     return(
         <div className={style.postcoment}>
             &nbsp;&nbsp;  
@@ -11,7 +14,9 @@ function PostMainContent() {
                 </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                 <div>
-                    <button className={style.postbutton2}>신고</button>
+                    <button className={style.postbutton2} onClick={() => 
+                    dispatch(openModal2())}>
+                        신고</button>
                 </div>
             </div>
         </div>

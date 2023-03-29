@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isOpen: false,
+  isOpen1: false,
 };
 
 const modalSlice1 = createSlice({
   name: 'modal1',
   initialState,
-  reducers1: {
-    openModal: (state, action) => {
-      state.isOpen = true;
+  reducers: {
+    openModal1: (state, action) => {
+      state.isOpen1 = true;
     },
-    closeModal: (state, action) => {
-      state.isOpen = false;
+    closeModal1: (state, action) => {
+      state.isOpen1 = false;
     },
     
   },
@@ -20,6 +20,6 @@ const modalSlice1 = createSlice({
 
 
 
-export const { openModal, closeModal } = modalSlice1.actions;
+export const { openModal1, closeModal1 } = modalSlice1.actions;
 
 export default modalSlice1.reducer;

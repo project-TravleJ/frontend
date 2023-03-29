@@ -1,5 +1,5 @@
 import style from './modalcomponents.module.css';
-import { closeModal } from '../../features/modal/modalSlice1';
+import { closeModal1 } from '../../features/modal/modalSlice1';
 import { useDispatch } from 'react-redux';
 
 const PostInsert = () => {
@@ -13,12 +13,12 @@ const PostInsert = () => {
             <div className={ style.btnline }>
                 <p> 
                 <button className={ style.btnset } onClick={() => {
-                        dispatch(closeModal());
+                        dispatch(closeModal1());
                     }}>취소</button>
                 </p>
                 <p>
                 <button className={ style.btnset } onClick={() => {
-                        dispatch(closeModal());
+                        dispatch(closeModal1());
                     }}>확인</button> 
                 </p>
             </div>

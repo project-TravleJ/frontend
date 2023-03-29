@@ -1,6 +1,6 @@
 import style from './createcomponents.module.css';
 import { useDispatch} from 'react-redux';
-import { openModal } from '../../features/modal/modalSlice1';
+import { openModal1 } from '../../features/modal/modalSlice1';
 
 function CreateMainTitle() {
     const dispatch = useDispatch();
@@ -9,7 +9,7 @@ function CreateMainTitle() {
             <div className={style.createmaintitlestyle}>
             &nbsp;&nbsp;교토식 한옥마을 일정
             <button className={ style.btnset }onClick={
-                () => dispatch(openModal())}>
+                () => dispatch(openModal1())}>
                     완료</button>
         </div>
     );

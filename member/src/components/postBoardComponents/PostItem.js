@@ -1,10 +1,14 @@
-import { NavLink } from 'react-router-dom';
 import Item from './PostItem.module.css';
+import { useDispatch } from 'react-redux';
+import { openModal3 } from '../../features/modal/modalSlice3';
 
 function PostItem({ post }) {
+    const dispatch = useDispatch();
 
     return(
-        <NavLink to="/post">
+    <div onClick={() => {
+    dispatch(openModal3());
+        }}>
         <div className={ Item.item }>
             <img className={ Item.image } src="../../images/profileImage.png"/>
             <div className={ Item.postcontent }>
@@ -16,7 +20,7 @@ function PostItem({ post }) {
                 {/* <h4>{ post.writer }</h4> */}
             </div>
         </div>
-        </NavLink>
+    </div>
     );
 }
 
