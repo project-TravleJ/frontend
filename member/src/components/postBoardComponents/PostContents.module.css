@@ -1,9 +1,10 @@
 .contents {
-    height: 1000px;
+    /* height: 1000px; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .posts {
