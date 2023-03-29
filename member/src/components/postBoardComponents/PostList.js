@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PostItem from "./PostItem";
-// import { callGetPostsAPI } 
+import { callGetPostsAPI } from "../../apis/PostAPI";
 
 function PostList() {
 
-    const result = useSelector(state => state.postReducer);
+    const result = useSelector(store => store.post);
     console.log('postReducer result : ', result);
 
-    const posts = result.results;
+    const posts = result;
     console.log('posts : ', posts);
 
     const dispatch = useDispatch();

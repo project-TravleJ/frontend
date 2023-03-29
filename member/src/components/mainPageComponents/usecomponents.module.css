@@ -161,6 +161,17 @@
     height: 20%;
 }
 
+.bestpostinfo {
+    width: 200px;
+    height: 250px;
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .bestpoststyle {
     width: 200px;
     height: 250px;
