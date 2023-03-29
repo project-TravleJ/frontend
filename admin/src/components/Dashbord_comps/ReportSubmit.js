@@ -5,7 +5,7 @@ function ReportSubmit() {
     return (
       <>
         <h3>신고 접수 건수</h3>
-        <span>
+        <span className={ dashStyle5.spanCon }>
         <div className={ dashStyle5.report1 }>
             <h4>Today</h4>
             <h1 className={ dashStyle5.report2 }>{5}</h1>
@@ -16,7 +16,7 @@ function ReportSubmit() {
         </div>
         </span>
         <br/><br/>
-        <h3>신고관리></h3>
+        <h3>신고관리{'>'}</h3>
       </>    
     )
 }

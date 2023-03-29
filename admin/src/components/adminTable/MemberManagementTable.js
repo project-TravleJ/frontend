@@ -1,33 +1,27 @@
-import Tstyle from "./table.module.css"
+import Tstyle from "./table.module.css";
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import { callMemberList } from "../../modules/MemberModule";
+
+
 
 function MemberManagementTable() {
 
-    const data = [
-            {
-                memberId: "m0001",
-                name : "user01",
-                rank : "뉴비",
-                state : 0,
-                invDate : "20220303",
-                recentLogin : "20230310"
-            }, 
-            {
-                memberId: "m0002",
-                name : "user02",
-                rank : "프로",
-                state : 0,
-                invDate : "20220404",
-                recentLogin : "20230312"
-            },
-            {
-                memberId: "m0003",
-                name : "user03",
-                rank : "해커",
-                state : 0,
-                invDate : "20220202",
-                recentLogin : "20230120"
-            }
-        ];
+    const dispatch = useDispatch();
+
+    const {members} = useSelector(state => state.memberReducer);
+
+    const setMembers = () => {
+        dispatch(callMemberList());
+    };
+
+    useEffect(
+        () => {
+            setMembers();
+            console.log("이펙트")
+        },
+        [members]
+    );
 
     return (
         <div className={Tstyle.container}>
@@ -54,7 +48,7 @@ function MemberManagementTable() {
                     </thead>
                     {/* <hr className={Tstyle.tableHr}/> */}
                     <tbody>
-                        {data.map(member => {return(
+                        {members.map((member) => {return(
                             <tr>
                                 <td><input type="checkbox"/></td>
                                 <td> {member.memberId} </td>

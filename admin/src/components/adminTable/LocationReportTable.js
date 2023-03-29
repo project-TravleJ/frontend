@@ -10,12 +10,12 @@ function LocationReportTable() {
                     id:"kyoto0022",
                     name:"금각사",
                     loc:{
-                        위도:0,
-                        경도:0
+                        lat:35.04150479588236, 
+                        lng: 135.72919640791784
                     }
                 },
                 reason: 0,
-                description:"은각사와 위치가 바뀜",
+                description:"후시미이나리신사와 위치가 바뀜",
                 state: 0
             }, 
             {
@@ -23,10 +23,10 @@ function LocationReportTable() {
                 reporter:"geotachu923",
                 location: {
                     id:"kyoto0023",
-                    name:"은각사",
+                    name:"후시미이나리신사",
                     loc:{
-                        위도:0,
-                        경도:0
+                        lat:34.96728964552052, 
+                        lng:135.7726395113168
                     }
                 },
                 reason: 0,
@@ -40,8 +40,8 @@ function LocationReportTable() {
                     id:"kyoto0022",
                     name:"기요미즈데라",
                     loc:{
-                        위도:0,
-                        경도:0
+                        lat:34.994964536674246, 
+                        lng: 135.7851235435887
                     }
                 },
                 reason: 1,

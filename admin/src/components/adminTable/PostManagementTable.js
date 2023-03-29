@@ -1,33 +1,16 @@
 import Tstyle from "./table.module.css"
+import {useState, useEffect} from "react";
+import { getPostList } from "../../apis/PostAPI";
 
 function PostManagementTable() {
 
-    const data = [
-            {
-                postId:"p0001",
-                writer:"user01",
-                postName:"오늘은교토뭐시기에대해서알아보자",
-                date:"20230101",
-                gyechu: 1,
-                url: "http://travleJ/post/1"
-            }, 
-            {
-                postId:"p0002",
-                writer:"user11",
-                postName:"꿀팁 알려준다",
-                date:"20230115",
-                gyechu: 4,
-                url: "http://travleJ/post/2"
-            }, 
-            {
-                postId:"p0003",
-                writer:"1lll1l1lll1l",
-                postName:"안녕하세요 저는...",
-                date:"20230101",
-                gyechu: 9,
-                url: "http://travleJ/post/3"
-            } 
-        ];
+    const [posts, setPosts] = useState([]);
+
+    useEffect(
+        () => {
+            setPosts(getPostList());
+        }
+    );
 
     return (
         <div className={Tstyle.container}>
@@ -53,7 +36,7 @@ function PostManagementTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(post => {return(
+                        {posts.map(post => {return(
                             <tr>
                                 <td> <input type="checkbox"/> </td>
                                 <td> {post.postId} </td>
