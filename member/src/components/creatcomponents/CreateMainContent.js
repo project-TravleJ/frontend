@@ -18,7 +18,9 @@ function CreateMainContent() {
             <div className={style.postmainContent4}>
                 <div className={style.postmainContent2}>
                 #코스 리스트   
-                <button onClick={() => dispatch(openModal())}>추가</button>
+                <button onClick={() => 
+                    dispatch(openModal())}>
+                        추가</button>
                 </div>
                 <div className={style.postmainContent3}>
                 <input type="text" className={style.comentBox}/>

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 const CreatePlaceInsert = () => {
     const dispatch = useDispatch();
     return (
-            <aside className={style.modelbackdrop}>
+            <aside className={style.modalbackdrop}>
                 <div className={style.placecontrolModal}>
                 <div>
                     <h1 align="center">장소 등록</h1>
@@ -24,7 +24,7 @@ const CreatePlaceInsert = () => {
                                 <button className={style.btnset}>선택</button>
                                 &nbsp; 등록된 장소에서 선택합니다.
                                 <br/><br/>
-                                <hr />
+                                
                                 <button className={style.btnset}>새 등록</button>
                                 &nbsp; 새로운 장소를 등록합니다.
                             </div>
@@ -51,6 +51,7 @@ const CreatePlaceInsert = () => {
                     <button className={style.btnset} onClick={() => {
                         dispatch(closeModal());
                     }}>취소</button>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                     <button className={style.btnset} onClick={() => {
                         dispatch(closeModal());
                     }}>완료</button>
