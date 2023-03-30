@@ -1,20 +1,15 @@
-import rootReducer from './modules';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import { legacy_createStore as createStore, applyMiddleware, compose} from 'redux';
-import logger from 'redux-logger';
-
-const enhancer =
-    process.env.NODE_ENV === "production"
-        ? compose(applyMiddleware())
-        : composeWithDevTools(applyMiddleware(logger));
+import {configureStore} from '@reduxjs/toolkit';
+import member from './modules/MemberModule';
+import modal from './modules/ModalModule';
 
 
-
-const store = createStore(
-    rootReducer
-    , enhancer
-);
+const store = configureStore({
+    reducer: {
+        member: member,
+        modal: modal,
+    },
+    
+    
+});
 
 export default store;
-
-

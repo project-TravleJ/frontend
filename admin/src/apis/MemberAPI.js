@@ -1,29 +1,16 @@
-
+import GET_MEMBERS from '../modules/MemberModule';
 import member from '../data/member-data.json';
 
 
-export function getMemberList() {
-    // const url = "";
-    
-    // return async function getMembers(dispatch, getState){
-    //     const result = member;
-    //     console.log('member : ', member);
-    //     console.log('result : ', result);
-    
-    //     // dispatch({type: GET_MEMBERS, payload: result});
-    // };
+export function callMemberAPI() {
+
     return member;
+    // return async function getMembers(dispatch, getState) {
+        
+    //     const result = member;
+    //     console.log("result: ", result);
+
+    //         return result;
+    // }
 }
     
-// export function SetMembers() {
-//     const dispatch = useDispatch();
-        
-//     const result = () => {
-//         dispatch({
-//             type : GET_MEMBERS,
-//             payload: { memberList: member }
-//         })
-//     }
-
-//     returnresult();
-// }

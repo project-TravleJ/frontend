@@ -1,27 +1,51 @@
 import Tstyle from "./table.module.css";
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { callMemberList } from "../../modules/MemberModule";
-
+import { callMemberAPI } from "../../apis/MemberAPI";
+import { getMembers } from "../../modules/MemberModule";
+import MemberControlModal from "../adminControlModal/MemberControlModal";
+import { all_reset, member_close, member_open } from "../../modules/ModalModule";
 
 
 function MemberManagementTable() {
 
+    /* redux 활용, table 데이터 가져오기 */
     const dispatch = useDispatch();
 
-    const {members} = useSelector(state => state.memberReducer);
+    const result = useSelector(store => store.member);
+    console.log("reducer result ", result);
 
-    const setMembers = () => {
-        dispatch(callMemberList());
-    };
+    const members = result;
+    console.log("members : ", members);
+
+
+    /* modal을 위한 state redux */
+    const modalState = useSelector(store => store.modal.member);
+    console.log(modalState);
+    // restriction : 제재, 제약
+    // const [rankUpOpen, setRankUpOpen] = useState(false);
+    
+    const dialog = document.getElementById("MemberControlModal");
+
+    const handleOpenRestriction = () => {
+        console.log("modal True", modalState);
+        dispatch(member_open());
+    }
+
+    // MemberControlModal에 선언되어 거기에만 사용됨
+    // const handleCloseRestriction = () => {
+    //     dispatch(member_close());
+    //     console.log("modal false", modalState)
+    // }
 
     useEffect(
         () => {
-            setMembers();
-            console.log("이펙트")
-        },
-        [members]
+            console.log(callMemberAPI())
+            dispatch(getMembers(callMemberAPI()));
+            
+        }
     );
+
 
     return (
         <div className={Tstyle.container}>
@@ -30,8 +54,11 @@ function MemberManagementTable() {
                 <hr/>
                 <p>
                     <button>등급 변경</button>
-                    <button>회원 제재</button>
+                    <button onClick={handleOpenRestriction}>회원 제재</button>
                 </p>
+                <dialog id="MemberControlModal" open={modalState} onClose>
+                    <MemberControlModal/>
+                </dialog>
             </div>
             <div>
                 <table className={Tstyle.table}>

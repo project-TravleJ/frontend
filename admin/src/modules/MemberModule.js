@@ -1,11 +1,8 @@
 import {createActions, handleActions} from "redux-actions";
 import { getMemberList } from "../apis/MemberAPI";
+import { createSlice } from "@reduxjs/toolkit";
 
-export const GET_MEMBER = "MEMBER/ALL";
-
-export const callMemberList = () => ({type: GET_MEMBER});
-
-const initState = [
+const initState  = [
     {
         memberId: "",
         name : "",
@@ -16,13 +13,24 @@ const initState = [
     }
 ];
 
-const memberReducer = (state = initState, {type, payload}) => {
-    switch(type) {
-        case GET_MEMBER:
-            return getMemberList();
-        default:
-            return state;
-    }
-};
+export const GET_MEMBERS = "member/GET_MEMBERS";
 
-export default memberReducer;
+console.log('action : ');
+
+const member = createSlice({
+    name: 'member',
+    initialState: initState,
+    reducers: {
+        getMembers: (state, action) => {
+            return state = action.payload;
+        },
+        // searchName: (state, action) => {
+            
+        // }
+    },
+});
+
+export const { getMembers } = member.actions;
+
+
+export default member.reducer;
