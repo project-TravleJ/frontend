@@ -1,54 +1,22 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { CallLocaRepoAPI } from "../../apis/LocationReportAPI";
+import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
 
 function LocationReportTable() {
 
-    const data = [
-            {
-                reportId: "pl0002",
-                reporter:"geotachu923",
-                location: {
-                    id:"kyoto0022",
-                    name:"금각사",
-                    loc:{
-                        lat:35.04150479588236, 
-                        lng: 135.72919640791784
-                    }
-                },
-                reason: 0,
-                description:"후시미이나리신사와 위치가 바뀜",
-                state: 0
-            }, 
-            {
-                reportId: "pl0003",
-                reporter:"geotachu923",
-                location: {
-                    id:"kyoto0023",
-                    name:"후시미이나리신사",
-                    loc:{
-                        lat:34.96728964552052, 
-                        lng:135.7726395113168
-                    }
-                },
-                reason: 0,
-                description:"금각사와 위치 바뀜",
-                state: 0
-            }, 
-            {
-                reportId: "pl0004",
-                reporter:"geotachu923",
-                location: {
-                    id:"kyoto0022",
-                    name:"기요미즈데라",
-                    loc:{
-                        lat:34.994964536674246, 
-                        lng: 135.7851235435887
-                    }
-                },
-                reason: 1,
-                description:"XX에 대한 내용이 잘못되어있음",
-                state: 1
-            }, 
-        ];
+    const dispatch = useDispatch();
+
+    const data = useSelector(store => store.locaRepo);
+    console.log(data);
+
+    useEffect(
+        () => {
+            dispatch(getLocaRepos(CallLocaRepoAPI()));
+        }
+    );
+    
 
     return (
         <div className={Tstyle.container}>

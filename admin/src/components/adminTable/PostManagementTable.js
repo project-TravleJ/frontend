@@ -1,14 +1,20 @@
 import Tstyle from "./table.module.css"
 import {useState, useEffect} from "react";
-import { getPostList } from "../../apis/PostAPI";
+import { callPostAPI, getPostList } from "../../apis/PostAPI";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../../modules/PostModule";
 
 function PostManagementTable() {
 
-    const [posts, setPosts] = useState([]);
+    const dispatch = useDispatch();
+
+    const results = useSelector(store => store.post);
+    console.log(results);
 
     useEffect(
         () => {
-            setPosts(getPostList());
+            console.log(callPostAPI());
+            dispatch(getPosts(callPostAPI()));
         }
     );
 
@@ -36,7 +42,7 @@ function PostManagementTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {posts.map(post => {return(
+                        {results.map(post => {return(
                             <tr>
                                 <td> <input type="checkbox"/> </td>
                                 <td> {post.postId} </td>

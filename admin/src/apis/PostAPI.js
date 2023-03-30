@@ -1,6 +1,6 @@
 import post from '../data/post-data.json';
 
-export function getPostList() {
+export function callPostAPI() {
 
     return post;
 }
