@@ -1,57 +1,83 @@
-import React from 'react';
-import {GoogleMap, useJsApiLoader, Marker} from '@react-google-maps/api';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const containerStyle = {
-    width: '100%',
-    height: '100%'
-};
+function App() {
+  const mapElement = useRef(null);
+  const markers = useRef([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const callmarker = useSelector(state => state);
 
-const center = {
-    lat: 34.98,
-    lng: 135.75
+  const loadScript = useCallback((url) => {
+    const firstScript = window.document.getElementsByTagName('script')[0];
+    const newScript = window.document.createElement('script');
+    newScript.src = url;
+    newScript.async = true;
+    newScript.defer = true;
+    firstScript?.parentNode?.insertBefore(newScript, firstScript);
+  }, []);
+
+  const initMap = useCallback(() => {
+    const { google } = window;
+    if (!mapElement.current || !google) return;
+
+    const location = { lat: 34.96728964552052, lng: 135.7726395113168 };
+
+    const map = new google.maps.Map(mapElement.current, {
+      zoom: 12,
+      center: location,
+    });
+
+    map.addListener("click", (event) => {
+      const marker = new google.maps.Marker({
+        position: event.latLng,
+        map,
+      });
+
+      markers.current.push(marker);
+    });
+
+    // 마커 검색 기능
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+    searchButton.addEventListener('click', () => {
+      const query = searchInput.value.toLowerCase();
+      markers.current.forEach((marker) => {
+        if (marker.title.toLowerCase() === query) {
+          marker.setVisible(true);
+        } else {
+          marker.setVisible(false);
+        }
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    const script = window.document.getElementsByTagName('script')[0];
+    const includeCheck = script.src.startsWith(
+      'https://maps.googleapis.com/maps/api'
+    );
+
+    if (includeCheck) return initMap();
+    window.initMap = initMap;
+    loadScript(
+      `https://maps.googleapis.com/maps/api/js?key=AIzaSyDdncR3Xm9D6mhrC-gMPVottSjcG2PZa4c&callback=initMap&language=k`
+    );
+  }, [initMap, loadScript]);
+
+  return (
+    <div>
+      <div>
+        <input
+          id="search-input"
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button id="search-button">Search</button>
+      </div>
+      <div ref={mapElement} style={{ minHeight: '395px', minWidth: '710px'}} />
+    </div>
+  );
 }
 
-
-
-function Map() {
-
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-scrpit',
-        googleMapsApiKey: "============API_KEY==============="
-    })
-
-    const [map, setMap] = React.useState(null)
-
-    const onLoad = React.useCallback(function callback(map){
-        const bounds = new window.google.maps.LatLngBounds(center);
-        map.fitBounds(bounds);
-        setMap(map)
-    }, [])
-
-
-    // const infowindow = new InfoWindow({
-    //     content: contentString,
-    //     ariaLabel: "Kyoto Station"
-    // });
-
-    // const onUnmount = React.useCallback(function callback(map) {
-    //     setMap(null)
-    // }, [])
-
-    return isLoaded? (
-        <GoogleMap
-            mapContainerStyle = {containerStyle}
-            zoom = {10}
-            center = {center}
-            onLoad = {onLoad}
-            // onUnmount = {onUnmount}
-        >
-            <Marker position={{lat:34.96728964552052, lng:135.7726395113168}} title='후시미이나리신사' />
-            <Marker position={{lat:34.994964536674246, lng: 135.7851235435887}} title='기요미즈데라' />
-            <Marker position={{lat:35.04150479588236, lng: 135.72919640791784}} title='금각사' />
-
-        </GoogleMap>
-    ) : <div>Loading...</div>;
-} 
-
-export default React.memo(Map);
+export default App;
