@@ -1,8 +1,22 @@
 import ModalDesign from './modalComponent.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { member_close } from '../../modules/ModalModule';
+import { handleCloseRestriction } from '../adminTable/MemberManagementTable';
+
 
 function MemberControlModal() {
 
+    const dispatch = useDispatch();
+
+    const modalState = useSelector(store => store.modal);
+
+    const handleCloseRestriction = () => {
+        dispatch(member_close());
+        console.log("modal false", modalState)
+    }
+
     return(
+        
         <div className={ModalDesign.controlModal}>
             <div className={ModalDesign.container}>
                 <div>
@@ -52,12 +66,13 @@ function MemberControlModal() {
                 </div>
                 <br/>
                 <div className={ModalDesign.buttonBox}>
-                    <button className={ModalDesign.buttonStyle}>취소</button>
-                    <button className={ModalDesign.buttonStyle}>확인</button>
+                    <button className={ModalDesign.buttonStyle} onClick={handleCloseRestriction} >취소</button>
+                    <button className={ModalDesign.buttonStyle} onClick={handleCloseRestriction}>확인</button>
                 </div>
                 <br/>
             </div>
         </div>
+        
     );
 }
 

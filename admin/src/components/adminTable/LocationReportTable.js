@@ -1,54 +1,22 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { CallLocaRepoAPI } from "../../apis/LocationReportAPI";
+import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
 
 function LocationReportTable() {
 
-    const data = [
-            {
-                reportId: "pl0002",
-                reporter:"geotachu923",
-                location: {
-                    id:"kyoto0022",
-                    name:"금각사",
-                    loc:{
-                        위도:0,
-                        경도:0
-                    }
-                },
-                reason: 0,
-                description:"은각사와 위치가 바뀜",
-                state: 0
-            }, 
-            {
-                reportId: "pl0003",
-                reporter:"geotachu923",
-                location: {
-                    id:"kyoto0023",
-                    name:"은각사",
-                    loc:{
-                        위도:0,
-                        경도:0
-                    }
-                },
-                reason: 0,
-                description:"금각사와 위치 바뀜",
-                state: 0
-            }, 
-            {
-                reportId: "pl0004",
-                reporter:"geotachu923",
-                location: {
-                    id:"kyoto0022",
-                    name:"기요미즈데라",
-                    loc:{
-                        위도:0,
-                        경도:0
-                    }
-                },
-                reason: 1,
-                description:"XX에 대한 내용이 잘못되어있음",
-                state: 1
-            }, 
-        ];
+    const dispatch = useDispatch();
+
+    const data = useSelector(store => store.locaRepo);
+    console.log(data);
+
+    useEffect(
+        () => {
+            dispatch(getLocaRepos(CallLocaRepoAPI()));
+        }
+    );
+    
 
     return (
         <div className={Tstyle.container}>

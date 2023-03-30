@@ -69,23 +69,15 @@
     line-height: 30px;
 }
 
-tr, th {
+.table1 tr, .table1 th {
     border-bottom: 1px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
 
-tr, td {
+.table tr, .table1 td {
     border-left: 1px solid black;
     border-right: 1px solid black;
-}
-
-h3 {
-    font-weight: bold;
-}
-
-h4 {
-    color: black;
 }
 
 .request1 {
@@ -121,6 +113,6 @@ h4 {
     text-decoration: underline red;
 }
 
-span {
+.spanCon {
     display: flex;
 }

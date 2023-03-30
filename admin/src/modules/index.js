@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import memberReducer from './MemberModule';
 import modalReducer from './ModalModule';
+
 import markersReducer from './MarkersModule';
 
 const rootReducer = combineReducers({

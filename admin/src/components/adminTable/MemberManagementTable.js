@@ -1,33 +1,51 @@
-import Tstyle from "./table.module.css"
+import Tstyle from "./table.module.css";
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import { callMemberAPI } from "../../apis/MemberAPI";
+import { getMembers } from "../../modules/MemberModule";
+import MemberControlModal from "../adminControlModal/MemberControlModal";
+import { all_reset, member_close, member_open } from "../../modules/ModalModule";
+
 
 function MemberManagementTable() {
 
-    const data = [
-            {
-                memberId: "m0001",
-                name : "user01",
-                rank : "뉴비",
-                state : 0,
-                invDate : "20220303",
-                recentLogin : "20230310"
-            }, 
-            {
-                memberId: "m0002",
-                name : "user02",
-                rank : "프로",
-                state : 0,
-                invDate : "20220404",
-                recentLogin : "20230312"
-            },
-            {
-                memberId: "m0003",
-                name : "user03",
-                rank : "해커",
-                state : 0,
-                invDate : "20220202",
-                recentLogin : "20230120"
-            }
-        ];
+    /* redux 활용, table 데이터 가져오기 */
+    const dispatch = useDispatch();
+
+    const result = useSelector(store => store.member);
+    console.log("reducer result ", result);
+
+    const members = result;
+    console.log("members : ", members);
+
+
+    /* modal을 위한 state redux */
+    const modalState = useSelector(store => store.modal.member);
+    console.log(modalState);
+    // restriction : 제재, 제약
+    // const [rankUpOpen, setRankUpOpen] = useState(false);
+    
+    const dialog = document.getElementById("MemberControlModal");
+
+    const handleOpenRestriction = () => {
+        console.log("modal True", modalState);
+        dispatch(member_open());
+    }
+
+    // MemberControlModal에 선언되어 거기에만 사용됨
+    // const handleCloseRestriction = () => {
+    //     dispatch(member_close());
+    //     console.log("modal false", modalState)
+    // }
+
+    useEffect(
+        () => {
+            console.log(callMemberAPI())
+            dispatch(getMembers(callMemberAPI()));
+            
+        }
+    );
+
 
     return (
         <div className={Tstyle.container}>
@@ -36,8 +54,11 @@ function MemberManagementTable() {
                 <hr/>
                 <p>
                     <button>등급 변경</button>
-                    <button>회원 제재</button>
+                    <button onClick={handleOpenRestriction}>회원 제재</button>
                 </p>
+                <dialog id="MemberControlModal" open={modalState} onClose>
+                    <MemberControlModal/>
+                </dialog>
             </div>
             <div>
                 <table className={Tstyle.table}>
@@ -54,7 +75,7 @@ function MemberManagementTable() {
                     </thead>
                     {/* <hr className={Tstyle.tableHr}/> */}
                     <tbody>
-                        {data.map(member => {return(
+                        {members.map((member) => {return(
                             <tr>
                                 <td><input type="checkbox"/></td>
                                 <td> {member.memberId} </td>
