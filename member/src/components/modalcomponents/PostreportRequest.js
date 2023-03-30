@@ -1,11 +1,12 @@
 import style from './modalcomponents.module.css';
 import { closeModal2 } from '../../features/modal/modalSlice2';
 import { useDispatch } from 'react-redux';
+import { openModal6 } from '../../features/modal/modalSlice6';
 
 const PostreportRequest = () => {
         const dispatch = useDispatch();
     return(
-    
+        <aside className={style.modalbackdrop}>
         <div className={style.controlModal}>
             <div className={style.container}>
                 <div>
@@ -26,12 +27,13 @@ const PostreportRequest = () => {
                         dispatch(closeModal2());
                     }}>취소</button>
                     <button className={style.btnset} onClick={() => {
-                        dispatch(closeModal2());
+                        dispatch(openModal6());
                     }}>신고</button>
                 </div>
                 <br/>
             </div>
         </div>
+        </aside>
 
     );
 }

@@ -1,9 +1,12 @@
 import Modal from './Modal.module.css';
+import { useDispatch } from 'react-redux';
+import { closeModal11 } from '../../features/modal/modalSlice11';
 
-function ModalPwd() {
-
+const ModalPwd = () => {
+    const dispatch = useDispatch();
     return (
-        <>
+
+            <aside className={Modal.modalbackdrop}>
             <div className={Modal.modal}>
                 <h2 className={ Modal.header }>비밀번호 변경</h2>
                 <div className={ Modal.passwords }>
@@ -17,11 +20,16 @@ function ModalPwd() {
                     <br/>
                 </div>
                 <div className={Modal.buttons}>
-                    <button className={ Modal.button }>변경</button>
-                    <button className={ Modal.button }>취소</button>
+                    <button className={ Modal.button } onClick={() => {
+                        dispatch(closeModal11());
+                    }}>변경</button>
+                    <button className={ Modal.button } onClick={() => {
+                        dispatch(closeModal11());
+                    }}>취소</button>
                 </div>
             </div>
-        </>
+            </aside>
+        
     );
 }
 

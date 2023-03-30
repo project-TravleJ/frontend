@@ -1,9 +1,15 @@
 import GoogleButton from './GoogleButton';
 import Modal from './Modal.module.css';
+import { useDispatch } from 'react-redux';
+import { closeModal10 } from '../../features/modal/modalSlice10';
+import { openModal9 } from '../../features/modal/modalSlice9';
 
-function ModalJoin() {
-
+const ModalJoin = () => {
+    const dispatch = useDispatch();
     return (
+        <aside className={ Modal.modalbackdrop} onDoubleClick={() => {
+            dispatch(closeModal10());
+        }}>
         <div className={Modal.modaljoin}>
             <div className={Modal.logo}>
                 <img src="../../image/travelJLogo.png" height="73px" />
@@ -18,7 +24,9 @@ function ModalJoin() {
             <div className={Modal.ifjoinorlogin}>
                 <label>이미 가입하셨나요?</label>
                 &nbsp;
-                <h4 className={ Modal.joinorlogin }>로그인</h4>
+                <h4 className={ Modal.joinorlogin } onClick={() => {
+                dispatch(openModal9()); dispatch(closeModal10());
+                }}>로그인</h4>
             </div>
             <div className={Modal.or}>
                 OR
@@ -27,6 +35,7 @@ function ModalJoin() {
                 <GoogleButton/>
             </div>
         </div>
+        </aside>
     );
 }
 
