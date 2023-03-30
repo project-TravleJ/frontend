@@ -1,9 +1,12 @@
 import style from './modalcomponents.module.css';
+import { closeModal7 } from '../../features/modal/modalSlice7';
+import { useDispatch } from 'react-redux';
+import { openModal8 } from '../../features/modal/modalSlice8';
 
 function DirectionreportRequest() {
-
+    const dispatch = useDispatch();
     return(
-    
+        <aside className={ style.modalbackdrop}>
         <div className={style.controlModal}>
             <div className={style.container}>
                 <div>
@@ -20,12 +23,17 @@ function DirectionreportRequest() {
                         <br/>재제당할 수 있습니다.</p>
                 </div>
                 <div className={style.buttonBox}>
-                    <button className={style.btnset}>취소</button>
-                    <button className={style.btnset}>신고</button>
+                    <button className={style.btnset} onClick={() => {
+                        dispatch(closeModal7());
+                    }}>취소</button>
+                    <button className={style.btnset} onClick={() => {
+                        dispatch(openModal8());
+                    }}>신고</button>
                 </div>
                 <br/>
             </div>
         </div>
+        </aside>
 
     );
 }

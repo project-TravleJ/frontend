@@ -1,7 +1,8 @@
 import PostDetatilSearch from "./PostDetailSearch";
-import PostItem from "./PostItem";
 import PostSortbar from "./PostSortbar";
 import Post from "./PostContents.module.css";
+// import PostList from "./PostList";
+import PostPagingList from "./PostPagingList";
 
 function PostContents() {
 
@@ -10,10 +11,7 @@ function PostContents() {
             <PostDetatilSearch/>
             <div className={ Post.posts }>
                 <PostSortbar/>
-                <PostItem/>
-                <PostItem/>
-                <PostItem/>
-                <PostItem/>
+                <PostPagingList/>
             </div>
         </div>
 

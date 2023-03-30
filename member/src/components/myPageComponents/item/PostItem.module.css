@@ -1,4 +1,4 @@
-.post {
+.item {
     width: 918px;
     height: 50px;
     border: 1px solid gray;
@@ -9,6 +9,26 @@
 
 }
 
+.headdate {
+    margin: 40px;
+}
+
+.headname {
+    margin-left: 40px;
+}
+
+.postname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 500px;
+    text-align: center;
+}
+
 .text {
     margin: 20px;
+}
+
+.postgoodcount {
+    margin: 30px;
 }

@@ -1,42 +1,42 @@
 [
     {
         "code": 1,
-        "name": "기요미즈데라",
+        "subject": "기요미즈데라",
         "date": "2023-03-21",
-        "course": "기요미즈데라",
-        "writer": "김용민",
+        "course": "기요미즈데라 -> 금각사 -> 후시미 이나리 신사 -> 지쇼지 -> 니조 성",
+        "nick": "dragon",
         "likeCount": 1
     },
     {
         "code": 2,
-        "name": "금각사",
+        "subject": "금각사",
         "date": "2023-03-22",
         "course": "금각사",
-        "writer": "김지수",
+        "nick": "lion",
         "likeCount": 2
     },
     {
         "code": 3,
-        "name": "후시미 이나리 신사",
+        "subject": "후시미 이나리 신사",
         "date": "2023-03-23",
         "course": "후시미 이나리 신사",
-        "writer": "신예찬",
+        "nick": "tiger",
         "likeCount": 3
     },
     {
         "code": 4,
-        "name": "지쇼지",
+        "subject": "지쇼지",
         "date": "2023-03-24",
         "course": "지쇼지",
-        "writer": "이범성",
+        "nick": "rabbit",
         "likeCount": 4
     },
     {
         "code": 5,
-        "name": "니조 성",
+        "subject": "니조 성",
         "date": "2023-03-25",
         "course": "니조 성",
-        "writer": "류재현",
+        "nick": "zzang",
         "likeCount": 5
     },
     {
@@ -44,7 +44,7 @@
         "name": "텐류지",
         "date": "2023-03-26",
         "course": "텐류지",
-        "writer": "홍길동",
+        "nick": "gildoing",
         "likeCount": 6
     },
     {
@@ -52,7 +52,7 @@
         "name": "니시키 시장",
         "date": "2023-03-27",
         "course": "니시키 시장",
-        "writer": "유관순",
+        "nick": "fighter",
         "likeCount": 7
     }
 ]

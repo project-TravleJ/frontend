@@ -1,5 +1,5 @@
 .contents {
-    height: 1000px;
+    /* height: 650px; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;

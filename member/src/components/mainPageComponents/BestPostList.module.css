@@ -1,0 +1,7 @@
+.list {
+    width: 755px;
+    display: flex;
+    flex-direction: row;
+    margin-right: -40px;
+    
+}

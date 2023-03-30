@@ -157,8 +157,27 @@
 }
 
 .searchBox {
-    width: 30%;
-    height: 20%;
+    width: 400px;
+    height: 35px;
+    margin-left: -100px;
+    margin-top: 5px;
+}
+
+.button {
+    width: 50px;
+    height: 40px;
+    margin-right: -40px;
+}
+
+.bestpostinfo {
+    width: 200px;
+    height: 250px;
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .bestpoststyle {

@@ -1,9 +1,12 @@
 import style from './modalcomponents.module.css';
+import { closeModal2 } from '../../features/modal/modalSlice2';
+import { useDispatch } from 'react-redux';
+import { openModal6 } from '../../features/modal/modalSlice6';
 
-function PostreportRequest() {
-
+const PostreportRequest = () => {
+        const dispatch = useDispatch();
     return(
-    
+        <aside className={style.modalbackdrop}>
         <div className={style.controlModal}>
             <div className={style.container}>
                 <div>
@@ -20,12 +23,17 @@ function PostreportRequest() {
                         <br/>재제당할 수 있습니다.</p>
                 </div>
                 <div className={style.buttonBox}>
-                    <button className={style.btnset}>취소</button>
-                    <button className={style.btnset}>신고</button>
+                    <button className={style.btnset} onClick={() => {
+                        dispatch(closeModal2());
+                    }}>취소</button>
+                    <button className={style.btnset} onClick={() => {
+                        dispatch(openModal6());
+                    }}>신고</button>
                 </div>
                 <br/>
             </div>
         </div>
+        </aside>
 
     );
 }

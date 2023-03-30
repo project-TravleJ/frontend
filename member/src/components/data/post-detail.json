@@ -1,0 +1,272 @@
+[
+    {
+        "postCode": 1,
+        "postName": "기요미즈데라, 유네스코 세계유산으로 지정된 고도 교토의 문화재",
+        "postDate": "2023-03-21",
+        "course": "기요미즈데라 -> 금각사 -> 후시미 이나리 신사 -> 지쇼지 -> 니조 성",
+        "writer": "김용민",
+        "likeCount": 1,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 2,
+        "postName": "금각사",
+        "postDate": "2023-03-22",
+        "course": "금각사",
+        "writer": "김지수",
+        "likeCount": 2,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 3,
+        "postName": "후시미 이나리 신사",
+        "postDate": "2023-03-23",
+        "course": "후시미 이나리 신사",
+        "writer": "신예찬",
+        "likeCount": 3,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 4,
+        "postName": "지쇼지",
+        "postDate": "2023-03-24",
+        "course": "지쇼지",
+        "writer": "이범성",
+        "likeCount": 4,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 5,
+        "postName": "니조 성",
+        "postDate": "2023-03-25",
+        "course": "니조 성",
+        "writer": "류재현",
+        "likeCount": 5,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 6,
+        "postName": "텐류지",
+        "postDate": "2023-03-26",
+        "course": "텐류지",
+        "writer": "홍길동",
+        "likeCount": 6,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 7,
+        "postName": "니시키 시장",
+        "postDate": "2023-03-27",
+        "course": "니시키 시장",
+        "writer": "유관순",
+        "likeCount": 7,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 8,
+        "postName": "3333333333333",
+        "postDate": "2023-03-21",
+        "course": "기요미즈데라 -> 금각사 -> 후시미 이나리 신사 -> 지쇼지 -> 니조 성",
+        "writer": "김용민",
+        "likeCount": 1,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 9,
+        "postName": "444444444444",
+        "postDate": "2023-03-22",
+        "course": "금각사",
+        "writer": "김지수",
+        "likeCount": 2,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 10,
+        "postName": "5555555555555555",
+        "postDate": "2023-03-23",
+        "course": "후시미 이나리 신사",
+        "writer": "신예찬",
+        "likeCount": 3,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 11,
+        "postName": "66666666666666",
+        "postDate": "2023-03-24",
+        "course": "지쇼지",
+        "writer": "이범성",
+        "likeCount": 4,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 12,
+        "postName": "7777777777777",
+        "postDate": "2023-03-25",
+        "course": "니조 성",
+        "writer": "류재현",
+        "likeCount": 5,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 13,
+        "postName": "8888888888888",
+        "postDate": "2023-03-26",
+        "course": "텐류지",
+        "writer": "홍길동",
+        "likeCount": 6,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 14,
+        "postName": "99999999999",
+        "postDate": "2023-03-27",
+        "course": "니시키 시장",
+        "writer": "유관순",
+        "likeCount": 7,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 15,
+        "postName": "00000000000000",
+        "postDate": "2023-03-21",
+        "course": "기요미즈데라 -> 금각사 -> 후시미 이나리 신사 -> 지쇼지 -> 니조 성",
+        "writer": "김용민",
+        "likeCount": 1,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 16,
+        "postName": "1212121221",
+        "postDate": "2023-03-22",
+        "course": "금각사",
+        "writer": "김지수",
+        "likeCount": 2,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 17,
+        "postName": "131313131313",
+        "postDate": "2023-03-23",
+        "course": "후시미 이나리 신사",
+        "writer": "신예찬",
+        "likeCount": 3,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 18,
+        "postName": "14141414414",
+        "postDate": "2023-03-24",
+        "course": "지쇼지",
+        "writer": "이범성",
+        "likeCount": 4,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 19,
+        "postName": "151515151515",
+        "postDate": "2023-03-25",
+        "course": "니조 성",
+        "writer": "류재현",
+        "likeCount": 5,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 20,
+        "postName": "텐류지",
+        "postDate": "2023-03-26",
+        "course": "텐류지",
+        "writer": "홍길동",
+        "likeCount": 6,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 21,
+        "postName": "니시키 시장",
+        "postDate": "2023-03-27",
+        "course": "니시키 시장",
+        "writer": "유관순",
+        "likeCount": 7,
+        "postImage": "/images/kyoto1.jpg"
+    },
+        {
+        "postCode": 22,
+        "postName": "기요미즈데라, 유네스코 세계유산으로 지정된 고도 교토의 문화재",
+        "postDate": "2023-03-21",
+        "course": "기요미즈데라 -> 금각사 -> 후시미 이나리 신사 -> 지쇼지 -> 니조 성",
+        "writer": "김용민",
+        "likeCount": 1,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 23,
+        "postName": "금각사",
+        "postDate": "2023-03-22",
+        "course": "금각사",
+        "writer": "김지수",
+        "likeCount": 2,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 24,
+        "postName": "후시미 이나리 신사",
+        "postDate": "2023-03-23",
+        "course": "후시미 이나리 신사",
+        "writer": "신예찬",
+        "likeCount": 3,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 25,
+        "postName": "지쇼지",
+        "postDate": "2023-03-24",
+        "course": "지쇼지",
+        "writer": "이범성",
+        "likeCount": 4,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 26,
+        "postName": "니조 성",
+        "postDate": "2023-03-25",
+        "course": "니조 성",
+        "writer": "류재현",
+        "likeCount": 5,
+        "postImage": "/images/kyoto2.jpg"
+    },
+    {
+        "postCode": 27,
+        "postName": "텐류지",
+        "postDate": "2023-03-26",
+        "course": "텐류지",
+        "writer": "홍길동",
+        "likeCount": 6,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 28,
+        "postName": "니시키 시장",
+        "postDate": "2023-03-27",
+        "course": "니시키 시장",
+        "writer": "유관순",
+        "likeCount": 7,
+        "postImage": "/images/kyoto1.jpg"
+    },
+    {
+        "postCode": 29,
+        "postName": "텐류지",
+        "postDate": "2023-03-26",
+        "course": "텐류지",
+        "writer": "홍길동",
+        "likeCount": 6,
+        "postImage": "/images/kyoto3.jpg"
+    },
+    {
+        "postCode": 30,
+        "postName": "니시키 시장",
+        "postDate": "2023-03-27",
+        "course": "니시키 시장",
+        "writer": "유관순",
+        "likeCount": 7,
+        "postImage": "/images/kyoto1.jpg"
+    }
+]
