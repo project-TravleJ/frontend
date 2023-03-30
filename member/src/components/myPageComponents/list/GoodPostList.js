@@ -27,7 +27,7 @@ function GoodPostList() {
             <div className={ Post.whole }>
                 <h3 className={ Post.text }># 개추한 글 목록(찜 목록)</h3>
                 <PostHeader/>
-                { posts.map(post => <GoodPostContent key={ post.code } post={ post }/>) }
+                { posts.map(post => <GoodPostContent key={ post.postCode } post={ post }/>) }
             </div>
 
         </>
