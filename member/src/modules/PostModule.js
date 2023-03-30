@@ -11,7 +11,8 @@ const initialState = [
         date: '',
         course: '',
         writer: '',
-        likeCount: 0
+        likeCount: 0,
+        image: ''
     }
 ];
 

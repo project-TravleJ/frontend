@@ -1,10 +1,12 @@
-import BestpostInfo from './BestpostInfo';
+import BestPostInfo from './BestPostInfo';
+import BestPostList from './BestPostList';
 import Maincontentsstyle from './usecomponents.module.css';
 function MainContents() {
 
     return(
         <div className={Maincontentsstyle.maincontentsstyle}>
-            <BestpostInfo/>
+            <BestPostInfo/>
+            <BestPostList/>
         </div>  
     );
 }

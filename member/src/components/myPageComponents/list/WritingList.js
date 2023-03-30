@@ -27,7 +27,7 @@ function WritingList() {
         <div className={ Post.whole }>
         <h3 className={ Post.text }># 작성글 목록</h3>
             <PostHeader/>
-            { posts.map(post => <WritePostContent key={ post.code } post={ post }/>) }
+            { posts.map(post => <WritePostContent key={ post.postCode } post={ post }/>) }
         </div>
         </>
     );

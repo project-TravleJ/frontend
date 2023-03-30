@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import bestpost from './usecomponents.module.css';
-import Best from './BestpostInfo.module.css';
-function BestpostInfo() {
+import Best from './BestPostInfo.module.css';
+function BestPostInfo() {
 
     return(
         <NavLink to="/postBoard">
@@ -14,4 +14,4 @@ function BestpostInfo() {
     );
 }
 
-export default BestpostInfo;
+export default BestPostInfo;
