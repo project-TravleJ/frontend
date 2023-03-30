@@ -1,31 +1,31 @@
 import style from './modalcomponents.module.css';
-import { closeModal4 } from '../../features/modal/modalSlice4';
+import { closeModal13 } from '../../features/modal/modalSlice13';
 import { useDispatch } from 'react-redux';
-import { openModal5 } from '../../features/modal/modalSlice5';
+import { openModal14 } from '../../features/modal/modalSlice14';
 
-const Postdelete = () => {
+const Memberdelete = () => {
     const dispatch = useDispatch();
     return(
-    <aside className={style.modalbackdrop}> 
+        <aside className={style.modalbackdrop}>
         <div className= { style.smallmodalbox }>
             <div className={ style.contents }>
-                <p>이 게시글을 삭제하시겠습니까?</p>
+                <p>회원 탈퇴하시겠습니까?</p>
             </div>
             <div className={ style.btnline }>
                 <p> 
                 <button className={ style.btnset } onClick={() => {
-                        dispatch(closeModal4());
+                        dispatch(closeModal13());
                     }}>취소</button>
                 </p>
                 <p>
                 <button className={ style.btnset } onClick={() => {
-                        dispatch(openModal5());
+                        dispatch(openModal14());
                     }}>확인</button> 
                 </p>
             </div>
         </div>
-    </aside>
+        </aside>
     );
 
 }
-export default Postdelete;
+export default Memberdelete;

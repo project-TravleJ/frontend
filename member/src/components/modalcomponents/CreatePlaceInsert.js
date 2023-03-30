@@ -1,6 +1,7 @@
 import style from './modalcomponents.module.css';
 import { closeModal } from '../../features/modal/modalSlice';
 import { useDispatch } from 'react-redux';
+import { openModal7 } from '../../features/modal/modalSlice7';
 
 const CreatePlaceInsert = () => {
     const dispatch = useDispatch();
@@ -19,17 +20,26 @@ const CreatePlaceInsert = () => {
                             <div>
                                 검색 &nbsp; <input type='text' />
                             </div>
-
-                            <div>
-                                <button className={style.btnset}>선택</button>
+                            <div className={style.placeCourse}>
+                            <div className= { style.placeInsertplz }>
+                               <div>
+                               &nbsp; &nbsp; <button className={style.btnset}>선택</button>
                                 &nbsp; 등록된 장소에서 선택합니다.
-                                <br/><br/>
-                                
+                                </div> 
+                                <br/>
+                                <div>
                                 <button className={style.btnset}>새 등록</button>
                                 &nbsp; 새로운 장소를 등록합니다.
+                                </div>
+                            </div>
+                            <div className= { style.placeReportplz }>
+                                <button className={style.reportbtn} onClick={() => {
+                                dispatch(openModal7());
+                                }}> 등록지<br/>신고</button>
+                            </div>
                             </div>
 
-                            <div className={style.placeplace}>
+                            <div className={ style.placeplace }>
                                 <div>
                                     &nbsp; 이름 : &nbsp;&nbsp; <input type='text' />
                                     <br/> <br/> <br/>
