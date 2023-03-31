@@ -17,9 +17,11 @@ const initialState = [
 ];
 
 export const GET_POSTS = 'posts/GET_POSTS';
+export const SEARCH_POSTS = "posts/SEARCH_POSTS";
 
 const actions = createActions({
-    [GET_POSTS]: () => {}
+    [GET_POSTS]: () => {},
+    [SEARCH_POSTS]: (results) => ({ results }),
 });
 
 console.log('postActions : ', actions);
@@ -33,9 +35,15 @@ const postReducer = handleActions(
             console.log('payload : ', payload);
 
             return payload;
-        }
+        },
+        [SEARCH_POSTS]: (state, { payload: { results } }) => {
+            console.log("search results : ", results);
+            return results;
+        },
     },
     initialState
 );
+
+
 
 export default postReducer;

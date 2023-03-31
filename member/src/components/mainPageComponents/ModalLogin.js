@@ -19,6 +19,9 @@ const ModalLogin = () => {
                 <input className={Modal.input} type="text" name="email" placeholder="이메일"></input>
                 <input className={Modal.input} type="paaword" name="password" placeholder="비밀번호"></input>
             </div>
+            <button className={Modal.button} onClick={() => {
+                dispatch(closeModal9());
+                }}>로그인</button>
             <button className={Modal.button}>로그인</button>
             {/* 로그인 시 모달창 종료 후 사이드바 변경 구현 예정 */}
             <div className={Modal.ifjoinorlogin}>
