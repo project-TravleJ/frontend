@@ -1,7 +1,18 @@
+import { useDispatch } from 'react-redux';
+import { report_close } from '../../modules/ModalModule';
 import ModalDesign from './modalComponent.module.css';
 
 
 function ReportModal() {
+
+    const dispatch = useDispatch();
+
+    // const modalStatus = useSelector(store => store.modal);
+
+    const handleCloseModal = () => {
+        dispatch(report_close());
+        console.log("report modal close");
+    }
 
     return(
     
@@ -45,8 +56,8 @@ function ReportModal() {
                     <p># 회원이 차단당한 경우 게시글 작성과 신고 접수가 불가능해집니다.</p>
                 </div>
                 <div className={ModalDesign.buttonBox}>
-                    <button className={ModalDesign.buttonStyle}>취소</button>
-                    <button className={ModalDesign.buttonStyle}>확인</button>
+                    <button className={ModalDesign.buttonStyle} onClick={handleCloseModal}>취소</button>
+                    <button className={ModalDesign.buttonStyle} onClick={handleCloseModal}>확인</button>
                 </div>
                 <br/>
             </div>

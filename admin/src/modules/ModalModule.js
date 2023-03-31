@@ -21,9 +21,17 @@ const modal = createSlice({
         member_close: (state) => {
             state.member = false;
         },
+        report_open: (state) => {
+            state.report = true;
+        },
+        report_close: (state) => {
+            state.report = false;
+        }
     },
 });
 
-export const {all_reset, member_open, member_close} = modal.actions;
+export const {
+        all_reset, member_open, member_close, report_open, report_close
+    } = modal.actions;
 
 export default modal.reducer;
