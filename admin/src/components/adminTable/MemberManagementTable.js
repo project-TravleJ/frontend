@@ -25,7 +25,7 @@ function MemberManagementTable() {
     // restriction : 제재, 제약
     // const [rankUpOpen, setRankUpOpen] = useState(false);
     
-    const dialog = document.getElementById("MemberControlModal");
+    // const dialog = document.getElementById("MemberControlModal");
 
     const handleOpenRestriction = () => {
         console.log("modal True", modalState);
@@ -48,48 +48,50 @@ function MemberManagementTable() {
 
 
     return (
-        <div className={Tstyle.container}>
-            <div className={Tstyle.header}>
-                <p>회원관리</p>
-                <hr/>
-                <p>
-                    <button>등급 변경</button>
-                    <button onClick={handleOpenRestriction}>회원 제재</button>
-                </p>
-                <dialog id="MemberControlModal" open={modalState} onClose>
-                    <MemberControlModal/>
-                </dialog>
-            </div>
-            <div>
-                <table className={Tstyle.table}>
-                    <thead>
-                        <tr>
-                            <th>선택</th>
-                            <th>회원번호</th>
-                            <th>닉네임</th>
-                            <th>등급</th>
-                            <th>계정상태</th>
-                            <th>가입일</th>
-                            <th>최근 로그인</th>
-                        </tr>
-                    </thead>
-                    {/* <hr className={Tstyle.tableHr}/> */}
-                    <tbody>
-                        {members.map((member) => {return(
+        <>
+            <dialog id="MemberControlModal" open={modalState} className={Tstyle.modalLocation}>
+                <MemberControlModal/>
+            </dialog>
+            <div className={Tstyle.container}>
+                <div className={Tstyle.header}>
+                    <p>회원관리</p>
+                    <hr/>
+                    <p>
+                        <button>등급 변경</button>
+                        <button onClick={handleOpenRestriction}>회원 제재</button>
+                    </p>
+                </div>
+                <div>
+                    <table className={Tstyle.table}>
+                        <thead>
                             <tr>
-                                <td><input type="checkbox"/></td>
-                                <td> {member.memberId} </td>
-                                <td> {member.name} </td>
-                                <td> {member.rank} </td>
-                                <td> {(member.state===0)?"정상":(member.state===1)?"정지":"탈퇴"} </td>
-                                <td> {member.invDate} </td>
-                                <td> {member.recentLogin} </td>
+                                <th>선택</th>
+                                <th>회원번호</th>
+                                <th>닉네임</th>
+                                <th>등급</th>
+                                <th>계정상태</th>
+                                <th>가입일</th>
+                                <th>최근 로그인</th>
                             </tr>
-                        )})}
-                    </tbody>
-                </table>
+                        </thead>
+                        {/* <hr className={Tstyle.tableHr}/> */}
+                        <tbody>
+                            {members.map((member) => {return(
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td> {member.memberId} </td>
+                                    <td> {member.name} </td>
+                                    <td> {member.rank} </td>
+                                    <td> {(member.state===0)?"정상":(member.state===1)?"정지":"탈퇴"} </td>
+                                    <td> {member.invDate} </td>
+                                    <td> {member.recentLogin} </td>
+                                </tr>
+                            )})}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        </>
     );
 
 }

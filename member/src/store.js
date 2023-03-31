@@ -17,6 +17,7 @@ import modalReducer14 from './features/modal/modalSlice14';
 import imageReducer from './features/modal/imageSlice';
 
 import postReducer from './modules/PostModule';
+import limitReducer from './modules/LimitModule';
 
 export const store = configureStore({
     reducer: {
@@ -37,7 +38,8 @@ export const store = configureStore({
         modal14: modalReducer14,
         image: imageReducer,
 
-        post: postReducer
+        post: postReducer,
+        limit: limitReducer
     },
 });
 

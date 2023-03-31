@@ -3,6 +3,8 @@ import member from './modules/MemberModule';
 import modal from './modules/ModalModule';
 import post from './modules/PostModule';
 import report from './modules/PostReportModule';
+import locaRepo from './modules/LocationReportModule';
+
 import markers from './modules/MarkersModule';
 
 const store = configureStore({
@@ -12,6 +14,7 @@ const store = configureStore({
         post: post,
         report: report,
         markers: markers,
+        locaRepo: locaRepo,
     },
     
     

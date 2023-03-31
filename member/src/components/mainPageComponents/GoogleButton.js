@@ -23,6 +23,7 @@ function GoogleButton() {
         const accessToken = gapi.auth.getToken().access_token;
         console.log('SUCCESS', response, accessToken);
         alert('로그인 되었습니다.');
+        //로그인 모달창 닫기 기능 추가 예정
     };
     const onFailure = response => {
         console.log('FAILED', response);
