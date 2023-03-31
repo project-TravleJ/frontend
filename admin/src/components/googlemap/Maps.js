@@ -1,11 +1,25 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMarkers } from '../../modules/MarkersModule';
+import { CallLocationAPI } from '../../apis/LocationAPI';
 
 function App() {
+
+  /* redux 마커 가져오기 */
+  const dispatch = useDispatch();
+
+  const callmarker = useSelector(store => store.markers);
+
+  useEffect(
+    () => {
+      dispatch(setMarkers(CallLocationAPI()));
+    }, []
+  );
+
+
   const mapElement = useRef(null);
   const markers = useRef([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const callmarker = useSelector(state => state);
 
   const loadScript = useCallback((url) => {
     const firstScript = window.document.getElementsByTagName('script')[0];
