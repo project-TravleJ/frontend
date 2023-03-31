@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import bestpost from './usecomponents.module.css';
-import Best from './BestPostInfo.module.css';
+import Best from './BestpostInfo.module.css';
 function BestPostInfo() {
 
     return(

@@ -20,7 +20,9 @@ const ModalJoin = () => {
                 <input className={Modal.input} type="text" name="email" placeholder="이메일"></input>
                 <input className={Modal.input} type="paaword" name="password" placeholder="비밀번호"></input>
             </div>
-            <button className={Modal.button}>회원가입</button>
+            <button className={Modal.button} onClick={() => {
+                dispatch(closeModal10());
+                }}>회원가입</button>
             <div className={Modal.ifjoinorlogin}>
                 <label>이미 가입하셨나요?</label>
                 &nbsp;

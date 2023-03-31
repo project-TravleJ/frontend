@@ -23,6 +23,11 @@ const imageSlice = createSlice({
       state.imageUrl = null;
       state.error = action.payload;
     },
+    invalidImage: (state) => {
+      state.loading = false;
+      state.imageUrl = null;
+      state.error = '이미지 파일만 업로드 가능합니다.';
+    },
   },
 });
 
@@ -30,19 +35,26 @@ export const {
   uploadImageStart,
   uploadImageSuccess,
   uploadImageFailure,
+  invalidImage,
 } = imageSlice.actions;
 
 export const uploadImage = (file) => async (dispatch) => {
   try {
     dispatch(uploadImageStart());
 
-    const formData = new FormData();
-    formData.append('file', file);
+    if (!file.type || !file.type.endsWith('.jpg') || !file.type.endsWith('.png')) {
+      dispatch(invalidImage());
+      return;
+    }
 
-    // 서버 API를 사용하지 않고 로컬 파일 시스템에서 이미지를 불러옵니다.
-    const imageUrl = URL.createObjectURL(file);
-
-    dispatch(uploadImageSuccess(imageUrl));
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const arrayBuffer = event.target.result;
+      const blob = new Blob([arrayBuffer], { type: file.type });
+      const imageUrl = URL.createObjectURL(blob);
+      dispatch(uploadImageSuccess(imageUrl));
+    };
+    reader.readAsArrayBuffer(file);
   } catch (error) {
     dispatch(uploadImageFailure(error.message));
   }

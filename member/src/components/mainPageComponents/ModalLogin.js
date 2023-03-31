@@ -19,7 +19,9 @@ const ModalLogin = () => {
                 <input className={Modal.input} type="text" name="email" placeholder="이메일"></input>
                 <input className={Modal.input} type="paaword" name="password" placeholder="비밀번호"></input>
             </div>
-            <button className={Modal.button}>로그인</button>
+            <button className={Modal.button} onClick={() => {
+                dispatch(closeModal9());
+                }}>로그인</button>
             <div className={Modal.ifjoinorlogin}>
                 <h4 className={ Modal.pwd }>비밀번호를 잃어버리셨나요?</h4>
                 <label>계정이 없으신가요?</label>
