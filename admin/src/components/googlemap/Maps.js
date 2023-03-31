@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMarkers } from '../../modules/MarkersModule';
 import { CallLocationAPI } from '../../apis/LocationAPI';
 
+import markerData from '../../data/marker-data.json';
+
+
 function App() {
 
   /* redux 마커 가져오기 */
@@ -41,10 +44,23 @@ function App() {
       center: location,
     });
 
+    callmarker.forEach((marker) => {
+      const position = new google.maps.LatLng(marker.loc.lat, marker.loc.lng);
+      const markerObj = new google.maps.Marker({
+        position,
+        map,
+        title: marker.name,
+      });
+      markers.current.push(markerObj);
+    });
+    
+    
+
     map.addListener("click", (event) => {
       const marker = new google.maps.Marker({
         position: event.latLng,
         map,
+        
       });
 
       markers.current.push(marker);
@@ -63,7 +79,7 @@ function App() {
         }
       });
     });
-  }, []);
+  }, [callmarker]);
 
   useEffect(() => {
     const script = window.document.getElementsByTagName('script')[0];

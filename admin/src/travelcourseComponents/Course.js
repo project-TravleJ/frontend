@@ -1,6 +1,13 @@
 import CourseStyle from "./coursecomponents.module.css";
 import Maps from "../components/googlemap/Maps";
 
+
+
+
+
+
+
+
 function Course() {
 
     return (
