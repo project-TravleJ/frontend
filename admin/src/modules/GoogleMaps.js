@@ -1,41 +1,28 @@
+import { createEntityAdapter } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    markers: [
-        {
-            id: 1,
-            name: 'Marker 1',
-            latitude: 37,
-            longitude: 126,
-        },
-        {
-            id: 2,
-            name : 'Marker 2',
-            latitude: 37,
-            longitude: 126,
-        },
-        {
-            id: 3,
-            name: 'Marker 3',
-            latitude: 37,
-            longitude: 126,
-        },
-    ],
-};
+const initialState = markerAdapter.getInitialState();
 
-
-const markersReducer = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_MARKERS':
-            return action.markers;
-        default:
-            return state;    
-    }
-};
-
-export const setMarkers = (markers) => ({
-    type: 'SET_MARKERS',
-    markers,
+const markerSlice = createSlice({
+  name: 'markers',
+  initialState,
+  reducers: {
+    addMarker: markerAdapter.addOne,
+    removeMarker: markerAdapter.removeOne,
+    updateMarker: markerAdapter.updateOne,
+    resetMarkers: markerAdapter.removeAll,
+  },
 });
 
-export default markersReducer;
+export const { addMarker, removeMarker, updateMarker, resetMarkers } = markerSlice.actions;
 
+export default markerSlice.reducer;
+
+const markerAdapter = createEntityAdapter();
+
+const marker = {
+    id: 'markerId',
+    title: 'Marker Title',
+    position: { lat: 37.12345, lng: 126.67890 },
+  };
+  
