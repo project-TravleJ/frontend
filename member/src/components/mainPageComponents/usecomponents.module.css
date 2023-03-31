@@ -194,11 +194,8 @@
 }
 
 .mainImagesstyle{
-    background: white;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: center;
     margin-left: 5px;
 }
 
