@@ -22,6 +22,8 @@ const ModalLogin = () => {
             <button className={Modal.button} onClick={() => {
                 dispatch(closeModal9());
                 }}>로그인</button>
+            <button className={Modal.button}>로그인</button>
+            {/* 로그인 시 모달창 종료 후 사이드바 변경 구현 예정 */}
             <div className={Modal.ifjoinorlogin}>
                 <h4 className={ Modal.pwd }>비밀번호를 잃어버리셨나요?</h4>
                 <label>계정이 없으신가요?</label>

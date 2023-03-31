@@ -1,19 +1,29 @@
+import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react";
-import { callGetJson } from "../../apis/PostAPI";
 import Pagination from "./Pagination";
-import Pagination2 from "./Pagination2";
 import PostItem from "./PostItem";
 import Paging from "./PostPagingList.module.css";
+import { callGetPostsAPI } from "../../apis/PostAPI";
 
 function PostPagingList() {
-    const [posts, setPosts] = useState([]);
+
+    const result = useSelector(store => store.post);
+    console.log('postReducer result : ', result);
+
+    const posts = result;
+    console.log('posts : ', posts);
+
+    const dispatch = useDispatch();
+
+    useEffect(
+        () => {
+            dispatch(callGetPostsAPI())
+        },
+        []
+    );
     const [limit, setLimit] = useState(7);
     const [page, setPage] = useState(1);
-    const offset = (page - 1) * limit;
-
-    useEffect(() => {
-        setPosts(callGetJson());
-    }, []);
+    const offset= (page - 1) * limit;
 
     return (
         <div className={ Paging.list }>
@@ -44,13 +54,8 @@ function PostPagingList() {
                     limit={limit}
                     page={page}
                     setPage={setPage}
+                    blockLimit={10}
                 />
-                {/* <Pagination2
-                    total={posts.length}
-                    limit={limit}
-                    page={page}
-                    setPage={setPage}
-                /> */}
             </footer>
 
         </div>
