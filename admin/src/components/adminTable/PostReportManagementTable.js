@@ -34,7 +34,7 @@ function PostReportManagementTable() {
     useEffect(
         () => {
             dispatch(getReports(CallPostReportAPI()));
-        }
+        },[]
     );
 
     return (

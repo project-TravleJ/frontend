@@ -1,5 +1,5 @@
 import CourseStyle from "./coursecomponents.module.css";
-import Maps from "../components/googlemap/Maps";
+import Map from "../components/googlemap/Map";
 
 
 
@@ -18,7 +18,7 @@ function Course() {
             </div>
             <div className={CourseStyle.contents}>
                 <div className={ CourseStyle.Map}>
-                    <Maps/>
+                    <Map/>
                 </div>
                 <div className={ CourseStyle.Sidebar}>
                     <div align="center">

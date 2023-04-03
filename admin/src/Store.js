@@ -6,6 +6,7 @@ import report from './modules/PostReportModule';
 import locaRepo from './modules/LocationReportModule';
 
 import markers from './modules/MarkersModule';
+import dsPostRepo from './modules/detailSearch/PostRepoDSModule';
 
 const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
         report: report,
         markers: markers,
         locaRepo: locaRepo,
+        dsPostRepo: dsPostRepo
     },
     
     
