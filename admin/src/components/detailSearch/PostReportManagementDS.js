@@ -1,24 +1,39 @@
 import { useState } from "react";
 import DSstyle from "./detailSearch.module.css";
 import { useEffect } from "react";
-import { SearchReport } from "./SearchMethod/PostReportSearch";
+import { search } from "./SearchMethod/PostReportSearch";
+import { dsPostRepo_all } from "../../modules/detailSearch/PostRepoDSModule";
+import { useDispatch, useSelector } from "react-redux";
+
 
 function PostReportManagementDS() {
+
+    const dispatch = useDispatch();
+
+    const find = useSelector(store => store.dsPostRepo);
 
     const [reporter, setReporter] = useState('');
     const [reportee, setReportee] = useState('');
     const [reportDate, setReportDate] = useState('');
-    const [reportStatue, setReportStatus] = useState('');
+    const [reportStatue_0, setReportStatus_0] = useState(false);
+    const [reportStatue_1, setReportStatus_1] = useState(false);
+    const [reportStatue_2, setReportStatus_2] = useState(false);
 
-    function search() {
-        console.log(reporter);
-        console.log(reportee);
-        console.log(reportDate);
-        console.log(reportStatue);
-    }
+    // function search(reporter, reportee, reportDate, reportStatue_0, reportStatue_1, reportStatue_2) {
+    //     const searchData = {
+    //         "reporter" : reporter,
+    //         "reportee" : reportee,
+    //         "reportDate" : reportDate,
+    //         "reportStatus" : [reportStatue_0, reportStatue_1, reportStatue_2]
+    //     }
+
+    //     console.log(searchData);
+    //     console.log(searchData.reportStatus);
+    //     return searchData;
+    // }
 
     useEffect(
-        () => {}, []
+        () => {}, [find]
     );
 
     return(
@@ -46,15 +61,15 @@ function PostReportManagementDS() {
                     </p>
                     <p>
                         <div>
-                            <input type="checkbox" id="accept" value={reportStatue} onChange={e => setReportStatus(!reportStatue)}/>
+                            <input type="checkbox" id="accept" value={reportStatue_0} onChange={e => setReportStatus_0(!reportStatue_0)}/>
                             <label for="accept">완료</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="reject"/>
+                            <input type="checkbox" id="reject" value={reportStatue_1} onChange={e => setReportStatus_1(!reportStatue_1)}/>
                             <label for="reject">반려</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="uncheck"/>
+                            <input type="checkbox" id="uncheck" value={reportStatue_2} onChange={e => setReportStatus_2(!reportStatue_2)}/>
                             <label for="uncheck">미처리</label>
                         </div>
                     </p>
@@ -62,7 +77,8 @@ function PostReportManagementDS() {
             </div>
             <div className={DSstyle.btnBox}>
                 <button>초기화</button>
-                <button onClick={SearchReport}>검색</button>
+                <button onClick={dispatch(dsPostRepo_all(search(reporter, reportee, reportDate, reportStatue_0, reportStatue_1, reportStatue_2)))}>검색</button>
+
             </div>
         </div>
     );

@@ -8,7 +8,8 @@ const initialState =
                 "loc":{
                     "lat":0.0, 
                     "lng": 0.0
-                }
+                },
+                "def":""
             }
         ];
 
