@@ -4,12 +4,6 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 
-
-
-
-
-
-
 function Course() {
 
     const selectAtt = useSelector(store => store.selectAttraction);
