@@ -16,7 +16,6 @@ function  PostLayout() {
         }}>
             <div className={ style.container}>
                 <div className={ style.postbodystyle }>
-                    <PostHeader/>
                     <PostBodySurv/>
                     <PostMainTitle/>
                     <PostMainContent/>

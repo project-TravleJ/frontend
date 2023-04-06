@@ -6,7 +6,7 @@ import { closeModal2 } from '../../features/modal/modalSlice2';
 const PostreportFinsh = () => {
     const dispatch = useDispatch();
     return(
-        <aside className={ style.modalbackdrp }>
+        <aside className={ style.modalbackdrop }>
         <div className= { style.smallmodalbox }>
             <div className={ style.contents }>
                 <p>신고가 완료되었습니다.</p>

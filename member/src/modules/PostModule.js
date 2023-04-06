@@ -26,8 +26,6 @@ const actions = createActions({
 
 console.log('postActions : ', actions);
 
-
-
 const postReducer = handleActions(
     {
         [GET_POSTS]: (state, { payload }) => {
@@ -36,14 +34,17 @@ const postReducer = handleActions(
 
             return payload;
         },
+        
         [SEARCH_POSTS]: (state, { payload: { results } }) => {
+        
             console.log("search results : ", results);
+            
             return results;
         },
     },
     initialState
 );
 
-
+export const { getPosts, searchPosts } = actions;
 
 export default postReducer;

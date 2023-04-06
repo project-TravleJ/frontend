@@ -25,7 +25,7 @@ const ModalJoin = () => {
                 dispatch(closeModal10());
                 }}>회원가입</button>
                 
-            <button className={Modal.button}>회원가입</button>
+          
             {/* 회원가입 시 가입 환영 모달창 실행 후 모든 모달창 종료 구현 예정 */}
             
             <div className={Modal.ifjoinorlogin}>
