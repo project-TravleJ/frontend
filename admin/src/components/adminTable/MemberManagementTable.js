@@ -6,7 +6,6 @@ import { getMembers } from "../../modules/MemberModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import { all_reset, member_close, member_open } from "../../modules/ModalModule";
 
-
 function MemberManagementTable() {
 
     /* redux 활용, table 데이터 가져오기 */
@@ -17,7 +16,6 @@ function MemberManagementTable() {
 
     const members = result;
     console.log("members : ", members);
-
 
     /* modal을 위한 state redux */
     const modalState = useSelector(store => store.modal.member);
