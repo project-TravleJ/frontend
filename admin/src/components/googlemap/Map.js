@@ -5,6 +5,8 @@ import { setMarkers } from '../../modules/MarkersModule';
 import { CallLocationAPI } from '../../apis/LocationAPI';
 import {GoogleMap, InfoWindow, InfoWindowF, Marker, MarkerF, useJsApiLoader} from '@react-google-maps/api';
 import Popup1 from '../sidepopup/Popup1';
+import { resetAtt, setAtt } from '../../modules/MapsSelectedMarker';
+
 
 const containerStyle = {
   width: '100%',
@@ -19,15 +21,27 @@ function Map() {
   /* redux 마커 가져오기 */
   const dispatch = useDispatch();
   const callmarkers = useSelector(store => store.markers);
-
+  const [map, setMap] = useState(null);
+  const [selectedLocation ,setSelectedLocation] = useState(null);
+  const selectedMarker = useSelector(store => store.selectAttraction);
+  // const [selectedMarker, setSelectedMarker] = useState(null);
+  
   
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "API-KEY"
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API
   })
   
-  const [map, setMap] = useState(null);
-  const [selectedLocation ,setSelectedLocation] = useState(null);
+
+  // 마커 선택 메소드(추후 리덕스로 수정하여 화면에서 출력해야 함)
+  const handleSelectMarker = async(marker) => {
+    if(marker.id === selectedMarker.id) {
+      return;
+    }
+    // setSelectedMarker(marker);
+    console.log("map:  marker setAtt :",marker,  selectedMarker)
+    dispatch(setAtt(marker));
+  };
   
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -60,25 +74,24 @@ function Map() {
       {callmarkers.map(marker => {console.log(marker); return( 
         <>
         <Marker position={marker.loc}
-          // icon={{
-          //   url: "icon.svg",
-          //   scaledSize: new window.google.maps.Size(25,25),
-          // }}
-          onClick = {(e) => {
-            setSelectedLocation(marker.loc);
-          }}
+          onClick = {() => 
+            handleSelectMarker(marker)
+          }
           value = {marker}
           id = {marker.id}
-        />
-        {selectedLocation && <InfoWindow    // 함수나 props로 하나만 띄우도록 고쳐야 함.
-          position={selectedLocation}
-          options={{pixelOffset: new window.google.maps.Size(0, -25)}}
-          onCloseClick={() => {
-            setSelectedLocation(null);
-          }}
         >
-            <div>{marker.name}</div>
-        </InfoWindow>}  
+          {selectedMarker.id === marker.id && <InfoWindow    // 함수나 props로 하나만 띄우도록 고쳐야 함.
+            position={marker.loc}
+            // options={{pixelOffset: new window.google.maps.Size(0, -25)}}
+            
+            onCloseClick={() => {
+              setSelectedLocation(null);
+              dispatch(resetAtt());
+            }}
+          >
+              <div>{marker.name}</div>
+          </InfoWindow>}  
+        </Marker>
         </>
       )})}
       
