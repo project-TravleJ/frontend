@@ -1,0 +1,232 @@
+
+.smallmodalbox {
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    border: solid 1px black;
+    display: flex;
+    justify-content : center;
+    flex-direction: column;
+    font-size: 22px;
+}
+
+.contents {
+    width: 350px;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content : center;
+    flex-direction: center;
+}
+
+.btnline {
+    width: 350px;
+    height: 30%;
+    display: flex;
+    justify-content : space-around;
+    flex-direction: center;
+    align-items: flex-end;
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnset { 
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    background-color: white;
+    border: solid 1px black;
+    cursor: pointer;
+    
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+.controlModal {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    font-family: 'NanumBarunGothic';
+}
+
+.container {
+    width: 85%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.reporttitle {
+    width: 100%;
+    
+}
+
+.reportcontent {
+    width: 100%;
+    height: 120px;
+
+}
+
+.smallTitle {
+    display: flex;
+    justify-content : center;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.placecontrolModal {
+    
+    width: 700px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    font-family: 'NanumBarunGothic';
+    flex-direction: column;
+}
+
+.placemap {
+    flex: 1;
+    width: 45%;
+    height: 420px;
+    display: flex;
+    flex-direction: center;
+    justify-content : center;
+    align-items: center;
+    
+}
+
+.placecontent {
+    flex: 2;
+    width: 55%;
+    height: 420px;
+}
+
+.bigcontainer {
+    width: 95%;
+    border: 1px solid black;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.placecontrolModal {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 850px;
+    height: 600px;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    justify-content : space-around;
+    align-items: center;
+}
+
+.createcontainer {
+    width: 100%;
+    height: 420px;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    justify-content : space-around;
+    align-items: center;
+}
+
+.placeplace {
+    width: 90%;
+    height: 230px;
+    display: flex;
+    background-color: #F2F2F2;
+    border: 1px solid black;
+    flex-direction: column;
+    justify-content : space-around;
+    align-items: flex-start;
+}
+
+.placexytext {
+    width: 100px;
+    height: 15px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1080; /* 모달창 위에 위치 */
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+  /* 모달 레이어 외부를 회색으로 변경 */
+.modalbackdrop {
+position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reportbtn{
+    display: flex;
+    background: #FF0303;
+    color: white;
+    border: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: center;
+    height: 50px;
+    width: 50px;
+    font-size: 12px;
+    border-radius: 50%;
+}
+
+.placeCourse{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+    justify-content : center;
+    align-items: center;
+}
+
+.placeReportplz{
+    display: flex;
+    width: 30%;
+    height: 100px;
+    flex-direction: column;
+    justify-content : center;
+    align-items: center;
+}
+.placeInsertplz{
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    justify-content : center;
+    align-items: center;
+    
+}
+
+
