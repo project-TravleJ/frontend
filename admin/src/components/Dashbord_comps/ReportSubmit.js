@@ -1,4 +1,5 @@
 import dashStyle5 from './dash.module.css';
+import bulletininfo from '../../data/bulletin-info.json';
 
 function ReportSubmit() {
 
@@ -12,7 +13,7 @@ function ReportSubmit() {
         </div>
         <div className={ dashStyle5.report1 }>
             <h4>미처리 신고</h4>
-            <h1 className={ dashStyle5.report2 }>{128}</h1>
+            <h1 className={ dashStyle5.report2 }>{bulletininfo.bulletin.length}</h1>
         </div>
         </span>
         <br/><br/>

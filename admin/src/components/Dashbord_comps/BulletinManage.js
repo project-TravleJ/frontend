@@ -1,38 +1,26 @@
 import dashStyle3 from './dash.module.css';
-import { useState } from 'react';
-import { useEffect } from 'react';
+// import { useDispatch, useSelector } from "react-redux";
+//  import { useState } from 'react';
+// import { useEffect } from 'react';
+import bulletininfo from '../../data/bulletin-info.json';
+// import { callReportAPI } from '../../apis/BulletinInfoAPI';
+// import { getReports } from '../../modules/PostReportModule';
 
-function BulletinManage (){
+function BulletinManage () {
 
-    // const [ members, setMembers ] = useState([]);
-    const [ member1, setMember1 ] = useState([]);
-    
+    // const dispatch = useDispatch();
+    // const result = useSelector(store => store.report);
+    // const reports = result;
 
     // useEffect(
     //     () => {
-    //         fetch(`https://jsonplaceholder.typicode.com/users`)
-    //         .then(res => res.json())
-    //         .then(data =>setMembers(data))
-    //         //console.log(members[0].name);
-    //     },
-    //     []
+    //         dispatch(getReports(callReportAPI()));
+    //     }
     // );
 
-    useEffect(
-        () => {
-            fetch(`https://jsonplaceholder.typicode.com/users/1`)
-            .then(res => res.json())
-            .then(data =>setMember1(data))
-            //console.log(members[0].name);
-        },
-        []
-    );
-
-    
-
-    return (
+     return (
     <>
-        <h3>회원관리</h3>
+        <h3>회원관리></h3>
         <div className={ dashStyle3.bullet1 }>
             <h3>게시글 관리</h3>
             <table className={ dashStyle3.table1 }>
@@ -44,31 +32,36 @@ function BulletinManage (){
                     </tr>
                 </thead>
             <tbody>
-                    <tr>
-                    <td>{ member1.username }</td>
-                    <td>{ member1.website }</td>
-                    <td>{ member1.email }</td>
-                    </tr>
-                    <tr>
-                    <td>{ member1.username }</td>
-                    <td>{ member1.website }</td>
-                    <td>{ member1.email }</td>
-                    </tr>
-                    <tr>
-                    <td>{ member1.username }</td>
-                    <td>{ member1.website }</td>
-                    <td>{ member1.email }</td>
-                    </tr>
-                    <tr>
-                    <td>`{}`</td>
-                    <td>`{}`</td>
-                    <td>`{}`</td>
-                    </tr>
+                {bulletininfo.bulletin.map((report) => {return(
+                <tr>
+                    <td>{ report.nick }</td>
+                    <td>{ report.issue }</td>
+                    <td>{ report.date }</td>
+                </tr>
+                )})};
+
+                {/* <tr>
+                    <td>{ bulletininfo.bulletin[1].nick }</td>
+                    <td>{ bulletininfo.bulletin[1].issue }</td>
+                    <td>{ bulletininfo.bulletin[1].date }</td>
+                </tr>
+                <tr>
+                    <td>{ bulletininfo.bulletin[2].nick }</td>
+                    <td>{ bulletininfo.bulletin[2].issue }</td>
+                    <td>{ bulletininfo.bulletin[2].date }</td>
+                </tr>
+                <tr>
+                    <td>{ bulletininfo.bulletin[3].nick }</td>
+                    <td>{ bulletininfo.bulletin[3].issue }</td>
+                    <td>{ bulletininfo.bulletin[3].date }</td>
+                </tr> */}
+
             </tbody>
             </table>
         </div>
     </>
     )
+
 }
 
 export default BulletinManage;
