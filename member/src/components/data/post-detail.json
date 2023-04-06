@@ -6,7 +6,9 @@
         "course": "기요미즈데라 -> 금각사 -> 후시미 이나리 신사 -> 지쇼지 -> 니조 성",
         "writer": "김용민",
         "likeCount": 1,
-        "postImage": "/images/kyoto1.jpg"
+        "postImage": "/images/kyoto1.jpg",
+        "season": "spring",
+        "grade": "normal"
     },
     {
         "postCode": 2,
@@ -15,7 +17,8 @@
         "course": "금각사",
         "writer": "김지수",
         "likeCount": 2,
-        "postImage": "/images/kyoto2.jpg"
+        "postImage": "/images/kyoto2.jpg",
+        "season": "spring"
     },
     {
         "postCode": 3,
@@ -24,7 +27,9 @@
         "course": "후시미 이나리 신사",
         "writer": "신예찬",
         "likeCount": 3,
-        "postImage": "/images/kyoto3.jpg"
+        "price":20000,
+        "postImage": "/images/kyoto3.jpg",
+        "season": "autumn"
     },
     {
         "postCode": 4,
@@ -33,7 +38,9 @@
         "course": "지쇼지",
         "writer": "이범성",
         "likeCount": 4,
-        "postImage": "/images/kyoto1.jpg"
+        "postImage": "/images/kyoto1.jpg",
+        "season": "autumn",
+        "grade": "normal"
     },
     {
         "postCode": 5,
@@ -43,6 +50,7 @@
         "writer": "류재현",
         "likeCount": 5,
         "postImage": "/images/kyoto2.jpg"
+
     },
     {
         "postCode": 6,
