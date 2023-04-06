@@ -5,17 +5,17 @@ function Pagination({ total, limit, page, setPage, blockLimit}) {
     const numPages = Math.ceil(total / limit);
     
     const createArr = (n) => {
-        const iArr = new Array(n);
+        const blockNumArr = new Array(n);
         for (var i = 0; i < n; i++)
-            iArr[i] = i + 1;
-        return iArr;
+        blockNumArr[i] = i + 1;
+        return blockNumArr;
     }
 
     const [blockNum, setBlockNum] = useState(0);
 
-    const v = Number(blockNum * blockLimit);
-    const iArr = createArr(Number(numPages));
-    let pArr = iArr.slice(v, Number(blockLimit) + v);
+    const blockOffset = Number((blockNum) * blockLimit);
+    const blockNumArr = createArr(Number(numPages));
+    let blockLimitArr = blockNumArr.slice(blockOffset, Number(blockLimit) + blockOffset);
 
     const firstPage = () => {
         setBlockNum(0);
@@ -56,7 +56,7 @@ function Pagination({ total, limit, page, setPage, blockLimit}) {
                 <button className={Paging.button} onClick={prevPage} disabled={page === 1}>
                     &lt;
                 </button>
-                {pArr
+                {blockLimitArr
                     .fill()
                         .map((_, i) => (
                             <button

@@ -4,10 +4,12 @@ import Pagination from "./Pagination";
 import PostItem from "./PostItem";
 import Paging from "./PostPagingList.module.css";
 import { callGetPostsAPI } from "../../apis/PostAPI";
+// import { limitFive, limitSix, limitSeven, limitEight, limitNine, limitTen } from "../../modules/LimitModule";
 
 function PostPagingList() {
 
     const result = useSelector(store => store.post);
+    // const limitNum = useSelector(store => store.limit);
     console.log('postReducer result : ', result);
 
     const posts = result;
@@ -22,6 +24,13 @@ function PostPagingList() {
         []
     );
     const [limit, setLimit] = useState(7);
+    // const limitValueFive = () => dispatch(limitFive());
+    // const limitValueSix = () => dispatch(limitSix());
+    // const limitValueSeven = () => dispatch(limitSeven());
+    // const limitValueEight = () => dispatch(limitEight());
+    // const limitValueNine = () => dispatch(limitNine());
+    // const limitValueTen = () => dispatch(limitTen());
+
     const [page, setPage] = useState(1);
     const offset= (page - 1) * limit;
 
@@ -32,7 +41,7 @@ function PostPagingList() {
                 <select
                     type="number"
                     value={limit}
-                    onChange={({ target: { value } }) => setLimit(Number(value))}
+                    onChange={({ target: { value } }) => setLimit(value)}
                 >
                     <option value="5">5</option>
                     <option value="6">6</option>

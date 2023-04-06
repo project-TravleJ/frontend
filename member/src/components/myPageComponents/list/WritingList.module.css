@@ -7,3 +7,7 @@
 .text {
     margin-left: -800px;
 }
+
+.marginBottom {
+    margin-bottom: 20px;
+}
