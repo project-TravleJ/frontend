@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DSstyle from "./detailSearch.module.css";
 import { useEffect } from "react";
-import { searchReport } from "./SearchMethod/PostReportSearch";
+import { SearchReport } from "./SearchMethod/PostReportSearch";
 
 function PostReportManagementDS() {
 
@@ -62,7 +62,7 @@ function PostReportManagementDS() {
             </div>
             <div className={DSstyle.btnBox}>
                 <button>초기화</button>
-                <button onClick={searchReport()}>검색</button>
+                <button onClick={SearchReport}>검색</button>
             </div>
         </div>
     );
