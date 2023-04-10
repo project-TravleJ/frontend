@@ -57,7 +57,7 @@ const ModalImage = () => {
         ) : (
           <img
             className={styles.image}
-            src={previewUrl ?? (imageUrl ?? '/images/Image.png')}
+            src={previewUrl ?? (imageUrl ?? './images/profileimage.png')}
             alt="image"
           />
         )}

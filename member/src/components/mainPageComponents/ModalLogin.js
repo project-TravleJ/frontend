@@ -1,4 +1,4 @@
-import GoogleButton from './GoogleButton';
+import GoogleButton from '../googleLogin/GoogleButton';
 import Modal from './Modal.module.css';
 import { useDispatch } from 'react-redux';
 import { closeModal9 } from '../../features/modal/modalSlice9';

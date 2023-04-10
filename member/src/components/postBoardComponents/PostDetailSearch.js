@@ -20,10 +20,10 @@ function PostDetatilSearch() {
     };
 
     const searchPost = (searchTravel, searchCourse, searchSeason, searchGrade) => {
-        return posts.filter(post => post.postDate && post.postDate.match(searchTravel) &&
-                                    post.course && post.course.match(searchCourse) &&
-                                    post.season && post.season.match(searchSeason) &&
-                                    post.grade && post.grade.match(searchGrade));
+        return posts.filter(post => post.period == (searchTravel) &&
+                                    post.course.match(searchCourse) &&
+                                    post.season.match(searchSeason) &&
+                                    post.grade.match(searchGrade));
 
     };
 
@@ -40,7 +40,7 @@ function PostDetatilSearch() {
                 <label>· 계절</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <select onChange={(e) => setSearchSeason(e.target.value)}>
-                    <option key="all" value="all" >전체</option>
+                    <option key="all" value="" >전체</option>
                     <option key="spring" value="spring" >봄</option>
                     <option key="summer" value="summer" >여름</option>
                     <option key="autumn" value="autumn" >가을</option>
@@ -55,7 +55,7 @@ function PostDetatilSearch() {
                     
                     <label>· 작성자 등급</label><br/>
                     <select className={ Detail.selectbox } onChange={(e) => setSearchGrade(e.target.value)}>
-                        <option key="all" value="all">전체</option>
+                        <option key="all" value="">전체</option>
                         <option key="normal" value="normal">일반</option>
                         <option key="high" value="high">더높음</option>
                         <option key="higher" value="higher">더더높음</option>

@@ -30,7 +30,7 @@ function Header() {
                 <button className={headstyle.button} onClick={handleSearch}>검색</button>
             </div>
             <div className={headstyle.write}>
-                <a href="/post">
+                <a href="/post" className={headstyle.linktext}>
                     글쓰기
                 </a>
             </div>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
-import Google from './Modal.module.css';
+import Google from '../mainPageComponents/Modal.module.css';
 // import GOOGLE_CLIENT_ID from '../../.env';
 
 function GoogleButton() {

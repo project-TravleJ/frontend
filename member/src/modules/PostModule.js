@@ -6,13 +6,16 @@ import { createActions, handleActions } from "redux-actions";
 
 const initialState = [
     {
-        code: 0,
-        name: '',
-        date: '',
-        course: '',
-        writer: '',
+        postCode: 0,
+        postName: "",
+        postDate: "",
+        course: "",
+        write: "",
         likeCount: 0,
-        image: ''
+        postImage: "",
+        season: "",
+        grade: "",
+        period: 0
     }
 ];
 

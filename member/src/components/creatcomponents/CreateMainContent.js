@@ -1,6 +1,7 @@
 import style from './createcomponents.module.css';
 import { useDispatch} from 'react-redux';
 import { openModal } from '../../features/modal/modalSlice';
+import Map from '../googlemap/Map';
 
 function CreateMainContent() {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function CreateMainContent() {
                 <input type="date" className={style.datestyle}/>
                 </div>
                 <div className={style.postmap}>
-                맵 넣을예정
+                    <Map/>
                 </div>
             </div>
             <div className={style.postmainContent4}>

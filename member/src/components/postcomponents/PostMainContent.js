@@ -1,3 +1,4 @@
+import Map from '../googlemap/Map';
 import style from './postcomponents.module.css';
 
 function PostMainContent() {
@@ -9,7 +10,7 @@ function PostMainContent() {
                 <input type="date" className={style.datestyle}/>
                 </div>
                 <div className={style.postmap}>
-                맵 넣을예정
+                    <Map/>
                 </div>
             </div>
             <div className={style.postmainContent2}>
