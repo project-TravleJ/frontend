@@ -22,6 +22,7 @@ import markers from './modules/MarkersModule';
 import selectAttraction from './modules/MapsSelectedMarker';
 import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
+import reportReducer from './modules/PostReport';
 
 export const store = configureStore({
     reducer: {
@@ -47,6 +48,7 @@ export const store = configureStore({
         markers: markers,
         selectAttraction: selectAttraction,
         rootReducer,
+        reportReducer,
 
         selectedPost: selectedPost
     },

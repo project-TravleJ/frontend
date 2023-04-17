@@ -32,4 +32,5 @@ export const callPostReportAPI = ({form}) => {
         dispatch({ type: POST_REPORT, payload: result});
 
     };
+
 }

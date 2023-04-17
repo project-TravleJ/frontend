@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CallPostReportAPI } from "../../apis/PostReportAPI";
+import { callPostReportAPI } from "../../apis/PostReportAPI";
 import { member_open, report_open } from "../../modules/ModalModule";
-import { getPostReports } from "../../modules/PostReportModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import ReportModal from "../adminControlModal/ReportModal";
 import Tstyle from "./table.module.css"
@@ -36,7 +35,7 @@ function PostReportManagementTable() {
 
     useEffect(
         () => {
-            dispatch(CallPostReportAPI());
+            dispatch(callPostReportAPI());
         },[]
     );
 
@@ -74,15 +73,15 @@ function PostReportManagementTable() {
                         </thead>
                         <tbody>
                             {data.map(postReport => {return(
-                                <tr>
+                                <tr key={postReport.reportId}>
                                     <td> <input type="checkbox"/> </td>
                                     <td> {postReport.reportId} </td>
                                     <td> {(postReport.state===0)?"미처리":(postReport.state===1)?"처리완료":"반려"} </td>
-                                    <td> {postReport.reporter} </td>
-                                    <td> {postReport.reportee} </td>
-                                    <td> {postReport.post.name} </td>
-                                    <td> {(postReport.reason===0)?"무분별한 광고":(postReport.reason===1)?"부적절한 내용/혐오조장":"기타"} </td>
-                                    <td> {postReport.description} </td>
+                                    <td> {postReport.reportWriter} </td>
+                                    <td> {postReport.reportToMember} </td>
+                                    <td> {postReport.reportPostId} </td>
+                                    <td> {(postReport.reportReason)} </td>
+                                    <td> {postReport.reportDetails} </td>
                                 </tr>
                             )})}
                         </tbody>

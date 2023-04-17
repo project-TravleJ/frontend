@@ -3,16 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const initState = [
     {
         reportId: "",
-        reporter:"",
-        reportee:"",
-        post: {
-            id:"",
-            name:"",
-            url:""
-        },
-        reason: 0,
-        description:"",
-        state: 0
+        reportWriter:"",
+        reportToMember:"",
+        reportDate: "",
+        reportReason: "",
+        reportDetails: "",
+        reportManagement: "",
+        reportPostId: 0
     }
 ];
 
