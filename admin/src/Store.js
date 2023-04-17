@@ -8,6 +8,7 @@ import dsPostRepo from './modules/detailSearch/PostRepoDSModule';
 import selectAttraction from './modules/MapsSelectedMarker';
 import memberReducer from './modules/MemberModule';
 import bulIssue from './modules/BulletinIssueModule';
+import SelectMember from './modules/detailSearch/SelectMemberModule';
 
 
 const store = configureStore({
@@ -19,8 +20,9 @@ const store = configureStore({
         markers: markers,
         locaRepo: locaRepo,
         dsPostRepo: dsPostRepo,
-        selectAttraction: selectAttraction
+        selectAttraction: selectAttraction,
         bulIssue: bulIssue,
+        selectMember: SelectMember,
     },
 
     

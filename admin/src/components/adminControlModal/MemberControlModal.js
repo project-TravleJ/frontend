@@ -1,19 +1,41 @@
 import ModalDesign from './modalComponent.module.css';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { member_close } from '../../modules/ModalModule';
 import { handleCloseRestriction } from '../adminTable/MemberManagementTable';
+import { callGetMemberByMemberCodeAPI, callPutMemberAPI } from '../../apis/MemberAPI';
 
 
-function MemberControlModal() {
+function MemberControlModal({updateMember, setUpdateMember}) {
 
     const dispatch = useDispatch();
+    const [oneItem, setOneItem] = useState({updateMember});
+    const [updateStatus, setUpdateStatus] = useState('');
+    const [updateGrade, setupdateGrade] = useState('');
 
     const modalState = useSelector(store => store.modal);
 
-    const handleCloseRestriction = () => {
-        dispatch(member_close());
-        console.log("modal false", modalState)
+    const updatedStatus = (updateMember, isChecked) => {
+        if(isChecked) {
+            setUpdateStatus([...updateStatus, updateMember]);
+        }
     }
+
+    const updatedGrade = (updateMember, isChecked) => {
+        if(isChecked) {
+            setupdateGrade([...updateGrade, updateMember]);
+        }
+    }
+    
+    const closeMemberBtn = () => {
+        dispatch(member_close());
+        console.log("modal false", modalState);
+    }
+    const updateMemberBtn = () => {
+        dispatch(callPutMemberAPI(oneItem));
+        setUpdateMember([]);
+        window.location.reload();
+        }
 
     return(
         
@@ -25,24 +47,25 @@ function MemberControlModal() {
                     <div className={ModalDesign.smallTitle}># 회원 관리</div>
                 <div className={ModalDesign.topBox}>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountLock" name="management" value="lock"/>
+                        <input type="radio" id="accountLock" name="status" value="정지"
+                        />
                         <label for="accountLock">    회원 정지    </label> 
                     </div>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountUnlock" name="management" value="unlock"/>
+                        <input type="radio" id="accountUnlock" name="status" value="정상"/>
                         <label for="accountUnlock">    정지 해제    </label> 
                     </div>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountLankUp" name="management" value="stop"/>
+                        <input type="radio" id="accountLankUp" name="grade" value="높음"/>
                         <label for="accountLankUp">    등급 승급    </label> 
                     </div>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountLankDown" name="management" value="stop"/>
+                        <input type="radio" id="accountLankDown" name="grade" value="일반"/>
                         <label for="accountLankDown">    등급 강등    </label> 
                     </div>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountStop" name="management" value="stop"/>
-                        <label for="stop">   회원 영구 정지 (차단일 inf)  </label> 
+                        <input type="radio" id="accountStop" name="status" value="영구 정지"/>
+                        <label for="accountStop">   회원 영구 정지 (차단일 inf)  </label> 
                     </div>
                 </div>
                 <br/>
@@ -66,8 +89,8 @@ function MemberControlModal() {
                 </div>
                 <br/>
                 <div className={ModalDesign.buttonBox}>
-                    <button className={ModalDesign.buttonStyle} onClick={handleCloseRestriction} >취소</button>
-                    <button className={ModalDesign.buttonStyle} onClick={handleCloseRestriction}>확인</button>
+                    <button className={ModalDesign.buttonStyle} onClick={closeMemberBtn}>취소</button>
+                    <button className={ModalDesign.buttonStyle} onClick={updateMemberBtn}>확인</button>
                 </div>
                 <br/>
             </div>

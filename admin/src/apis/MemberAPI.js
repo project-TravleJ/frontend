@@ -1,5 +1,6 @@
-import { GET_MEMBERS } from '../modules/MemberModule';
+import { GET_MEMBERS, PUT_MEMBER, GET_MEMBER } from '../modules/MemberModule';
 import member from '../data/member-data.json';
+import { getMember } from '../modules/detailSearch/SelectMemberModule';
 
 
 // export function callGetMemberAPI() {
@@ -39,3 +40,66 @@ export const callGetMemberAPI = () => {
     };
 }
     
+export const selectMemberAPI = (member) => {
+
+    return async (dispatch, getState) => {
+
+        const result = member;
+
+        // console.log('[MemberAPICalls] callLoginAPI RESULT : ', result);
+        // if(result.status === 200){
+        //     window.localStorage.setItem('accessToken', result.data.accessToken);            
+        // }
+        dispatch({ type: getMember,  payload: result });
+    }
+} 
+
+export const callPutMemberAPI = ({form}) => {
+    console.log('[ProduceAPICalls] callProductUpdateAPI Call');
+
+    const requestURL = 'http://localhost:8080/api/v1/members';
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Accept": "*/*",
+                // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            }
+        })
+        .then(response => response.json())
+        .then(res => res.result);
+
+        console.log('[ProduceAPICalls] callProductUpdateAPI RESULT : ', result);
+
+        dispatch({ type: PUT_MEMBER,  payload: result });
+        
+    };    
+}
+
+export const callGetMemberByMemberCodeAPI = ({memberCode}) => {
+    const requestURL = `http://localhost:8080/api/v1/members/${memberCode}`;
+
+    return async (dispatch, getState) => {
+
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            }
+        })
+        .then(response => response.json())
+        .then(res => res.result);
+
+        // console.log('[ProduceAPICalls] callProductDetailAPI RESULT : ', result);
+        // if(result.status === 200){
+        //     console.log('[ProduceAPICalls] callProductDetailAPI SUCCESS');
+            dispatch({ type: GET_MEMBER,  payload: result });
+        }
+        
+        
+    };

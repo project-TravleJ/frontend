@@ -13,19 +13,25 @@ const initState  = [
     }
 ];
 
+export const GET_MEMBER = 'member/GET_MEMBER';
 export const GET_MEMBERS = 'member/GET_MEMBERS';
+export const PUT_MEMBER = 'member/PUT_MEMBERS';
 
 console.log('action : ');
 
 const actions = createActions({
-    [GET_MEMBERS]: () => {}
+    [GET_MEMBER]: () => {},
+    [GET_MEMBERS]: () => {},
+    [PUT_MEMBER]: () => {}
 });
 
 const memberReducer = handleActions(
     {
         [GET_MEMBERS]: (state, { payload }) => {
             return payload;
-        }
+        },
+        [GET_MEMBER]: (state, {payload}) => {return payload;},
+        [PUT_MEMBER]: (state, {payload}) => {return payload;}
 
     },
     initState
@@ -34,21 +40,3 @@ const memberReducer = handleActions(
 // export const { getMembers } = actions;
 
 export default memberReducer;
-
-// const member = createSlice({
-//     name: 'member',
-//     initialState: initState,
-//     reducers: {
-//         getMembers: (state, action) => {
-//             return state = action.payload;
-//         },
-//         // searchName: (state, action) => {
-            
-//         // }
-//     },
-// });
-
-// export const { getMembers } = member.actions;
-
-
-// export default member.reducer;

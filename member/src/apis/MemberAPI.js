@@ -1,3 +1,5 @@
+import { getMember } from "../../../admin/src/modules/detailSearch/SelectMemberModule";
+
 export const callLoginAPI = ({form}) => {
     const requestURL = 'http://localhost:8080/auth/login';
 
