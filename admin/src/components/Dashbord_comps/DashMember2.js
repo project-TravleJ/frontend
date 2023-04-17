@@ -17,7 +17,7 @@ function FetchMember (state = [], { type, payload }) {
                         .then(data => payload)
                     },
                     []
-                );
+                )
             );
             default :
                 return state;

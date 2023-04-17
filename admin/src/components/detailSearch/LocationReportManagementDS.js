@@ -18,15 +18,15 @@ function LocationReportManagementDS() {
                     <p>
                         <div>
                             <input type="checkbox" id="infoError"/>
-                            <lable for="infoError">정보오류</lable>
+                            <lable htmlFor="infoError">정보오류</lable>
                         </div>
                         <div>
                             <input type="checkbox" id="locaError"/>
-                            <lable for="locaError">위치오류</lable>
+                            <lable htmlFor="locaError">위치오류</lable>
                         </div>
                         <div>
                             <input type="checkbox" id="etcError"/>
-                            <lable for="etcError">기타사항</lable>
+                            <lable htmlFor="etcError">기타사항</lable>
                         </div>
                     </p>
                 </div>
@@ -37,15 +37,15 @@ function LocationReportManagementDS() {
                     <p>
                         <div>
                             <input type="checkbox" id="accept"/>
-                            <label for="accept">완료</label>
+                            <label htmlFor="accept">완료</label>
                         </div>
                         <div>
                             <input type="checkbox" id="reject"/>
-                            <label for="reject">반려</label>
+                            <label htmlFor="reject">반려</label>
                         </div>
                         <div>
                             <input type="checkbox" id="uncheck"/>
-                            <label for="uncheck">미처리</label>
+                            <label htmlFor="uncheck">미처리</label>
                         </div>
                     </p>
                 </div>

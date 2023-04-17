@@ -1,11 +1,12 @@
-import GoogleButton from './GoogleButton';
+import GoogleButton from '../googleLogin/GoogleButton';
 import Modal from './Modal.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closeModal9 } from '../../features/modal/modalSlice9';
 import { openModal10 } from '../../features/modal/modalSlice10';
 
 const ModalLogin = () => {
     const dispatch = useDispatch();
+
     return (
         <aside className={ Modal.modalbackdrop} onDoubleClick={() => {
             dispatch(closeModal9());
@@ -16,8 +17,18 @@ const ModalLogin = () => {
                 <h3>로그인</h3>
             </div>
             <div className={Modal.inputs}>
-                <input className={Modal.input} type="text" name="email" placeholder="이메일"></input>
-                <input className={Modal.input} type="paaword" name="password" placeholder="비밀번호"></input>
+                <input
+                    className={Modal.input}
+                    type="text"
+                    name="id"
+                    placeholder="아이디">
+                </input>
+                <input
+                    className={Modal.input}
+                    type="password"
+                    name="password"
+                    placeholder="비밀번호">
+                </input>
             </div>
             <button className={Modal.button} onClick={() => {
                 dispatch(closeModal9());

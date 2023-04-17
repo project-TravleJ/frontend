@@ -1,10 +1,9 @@
-import { NavLink } from 'react-router-dom';
 import bestpost from './usecomponents.module.css';
 import Best from './BestpostInfo.module.css';
 function BestPostInfo() {
 
     return(
-        <a href="/postBoard">
+        <a href="/postBoard" className={bestpost.linktext}>
         <div className={bestpost.bestpostinfo}>
             <h3 className={ Best.up }>이번 달의</h3>
             <h1>인기 게시글</h1>

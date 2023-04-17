@@ -18,6 +18,9 @@ import imageReducer from './features/modal/imageSlice';
 
 import postReducer from './modules/PostModule';
 import limitReducer from './modules/LimitModule';
+import markers from './modules/MarkersModule';
+import selectAttraction from './modules/MapsSelectedMarker';
+import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
 
 export const store = configureStore({
@@ -41,6 +44,9 @@ export const store = configureStore({
 
         post: postReducer,
         limit: limitReducer,
+        markers: markers,
+        selectAttraction: selectAttraction,
+        rootReducer,
 
         selectedPost: selectedPost
     },
