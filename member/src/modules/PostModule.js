@@ -4,7 +4,8 @@ import { createActions, handleActions } from "redux-actions";
 // const initialState = posts;
 
 
-const initialState = {
+const initialState = [
+{
     "postTitle": '',
     "postDate": '',
     "postWriter": '',
@@ -13,6 +14,7 @@ const initialState = {
     "courseList": [],
     "context": ''
 }
+]
 
 export const GET_POSTS = 'posts/GET_POSTS';
 export const SEARCH_POSTS = "posts/SEARCH_POSTS";
