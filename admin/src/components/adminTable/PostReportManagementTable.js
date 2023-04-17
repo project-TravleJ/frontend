@@ -2,10 +2,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CallPostReportAPI } from "../../apis/PostReportAPI";
 import { member_open, report_open } from "../../modules/ModalModule";
-import { getReports } from "../../modules/PostReportModule";
+import { getPostReports } from "../../modules/PostReportModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import ReportModal from "../adminControlModal/ReportModal";
 import Tstyle from "./table.module.css"
+import { pagingComponent } from "../paging/Pagination";
+
+
 
 function PostReportManagementTable() {
 
@@ -33,7 +36,7 @@ function PostReportManagementTable() {
 
     useEffect(
         () => {
-            dispatch(getReports(CallPostReportAPI()));
+            dispatch(CallPostReportAPI());
         },[]
     );
 
@@ -84,6 +87,7 @@ function PostReportManagementTable() {
                             )})}
                         </tbody>
                     </table>
+                    {pagingComponent(data)}
                 </div>
             </div>
         </>

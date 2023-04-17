@@ -16,6 +16,7 @@ const initialState = [
 }
 ]
 
+
 export const GET_POSTS = 'posts/GET_POSTS';
 export const SEARCH_POSTS = "posts/SEARCH_POSTS";
 export const POST_POST_TITLE = 'posts/POST_POST_TITLE';
@@ -40,7 +41,7 @@ const postReducer = handleActions(
 
             console.log('payload : ', payload);
 
-            return payload;
+            return state =  payload;
         },
         
         [SEARCH_POSTS]: (state, { payload: { results } }) => {

@@ -3,11 +3,12 @@ import modal from './modules/ModalModule';
 import post from './modules/PostModule';
 import report from './modules/PostReportModule';
 import locaRepo from './modules/LocationReportModule';
-
 import markers from './modules/MarkersModule';
 import dsPostRepo from './modules/detailSearch/PostRepoDSModule';
 import selectAttraction from './modules/MapsSelectedMarker';
 import memberReducer from './modules/MemberModule';
+import bulIssue from './modules/BulletinIssueModule';
+
 
 const store = configureStore({
     reducer: {
@@ -19,9 +20,9 @@ const store = configureStore({
         locaRepo: locaRepo,
         dsPostRepo: dsPostRepo,
         selectAttraction: selectAttraction
+        bulIssue: bulIssue,
     },
 
-    
     
 });
 

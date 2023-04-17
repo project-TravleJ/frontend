@@ -6,6 +6,7 @@ import { callGetMemberAPI } from "../../apis/MemberAPI";
 import { getMembers } from "../../modules/MemberModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import { all_reset, member_close, member_open } from "../../modules/ModalModule";
+import { pagingComponent } from "../paging/Pagination";
 
 function MemberManagementTable() {
 
@@ -89,6 +90,7 @@ function MemberManagementTable() {
                             )})}
                         </tbody>
                     </table>
+                    {pagingComponent(members)}
                 </div>
             </div>
         </>

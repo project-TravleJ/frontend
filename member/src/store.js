@@ -21,6 +21,7 @@ import limitReducer from './modules/LimitModule';
 import markers from './modules/MarkersModule';
 import selectAttraction from './modules/MapsSelectedMarker';
 import rootReducer from './modules';
+import selectedPost from './modules/SelectedPostModule'
 
 export const store = configureStore({
     reducer: {
@@ -45,7 +46,9 @@ export const store = configureStore({
         limit: limitReducer,
         markers: markers,
         selectAttraction: selectAttraction,
-        rootReducer
+        rootReducer,
+
+        selectedPost: selectedPost
     },
 });
 
