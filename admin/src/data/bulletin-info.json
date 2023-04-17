@@ -1,9 +1,10 @@
-{ "bulletin" :[
+   
+  [
     {
         "code": 1,
         "subject": "기요미즈데라",
         "date": "2023-03-21",
-        "issue": "방문지 오류",
+        "case": "표기 오류",
         "nick": "dragon",
         "likeCount": 1
     },
@@ -11,7 +12,7 @@
         "code": 2,
         "subject": "금각사",
         "date": "2023-03-22",
-        "issue": "방문지이름 오류",
+        "case": "등록지 오류",
         "nick": "lion",
         "likeCount": 2
     },
@@ -19,25 +20,24 @@
         "code": 3,
         "subject": "후시미 이나리 신사",
         "date": "2023-03-23",
-        "issue": "방문지리스트에 없음",
+        "case": "등록지 이름변경",
         "nick": "tiger",
-        "likeCount": 3
+        "likeCount": 2
     },
     {
         "code": 4,
         "subject": "지쇼지",
         "date": "2023-03-24",
-        "issue": "표기오류",
+        "case": "등록지 오류",
         "nick": "rabbit",
-        "likeCount": 4
+        "likeCount": 1
     },
     {
         "code": 5,
         "subject": "니조 성",
         "date": "2023-03-25",
-        "issue": "니조 성",
+        "case": "방문지 패쇄",
         "nick": "zzang",
-        "likeCount": 5
+        "likeCount": 1
     }
-]
-}
+ ]
