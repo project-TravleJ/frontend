@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CallLocaRepoAPI } from "../../apis/LocationReportAPI";
 import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
+import { pagingComponent } from "../paging/Pagination";
 
 function LocationReportTable() {
 
@@ -55,6 +56,7 @@ function LocationReportTable() {
                         )})}
                     </tbody>
                 </table>
+                {pagingComponent(data)}
             </div>
         </div>
     );

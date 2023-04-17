@@ -20,7 +20,8 @@ function BulletinManage () {
 
     return (
     <>
-        <h3>회원관리</h3>
+
+        <h3>회원관리&gt;</h3>
         <div className={ dashStyle3.bullet1 }>
             <h3>게시글 관리</h3>
             <table className={ dashStyle3.table1 }>

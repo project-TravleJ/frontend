@@ -2,7 +2,9 @@ import { GET_POSTS } from "../modules/PostModule";
 import posts from "../components/data/post-detail.json";
 import bestposts from "../components/data/post-detail2.json";
 import { SEARCH_POSTS } from "../modules/PostModule";
+import {getSelectedPost} from "../modules/SelectedPostModule";
 
+const url = "http://localhost:8080/api/v1/posts";
 
 export function callGetPostsAPI() {
 
@@ -10,7 +12,14 @@ export function callGetPostsAPI() {
 
         // const result = await fetch().then(res => res.json());
 
-        const result = posts;
+        // const result = posts;
+        const result = await fetch(
+            url, 
+                {
+                    method:"GET", 
+                    headers: {"Accept": "application/json"}
+                }
+            ).then(data => data.json()).then(data => data.result);
 
         console.log('result : ', result);
 
@@ -47,7 +56,18 @@ export function callSearchPostsAPI(keyword) {
 }
 
 
-export function callGetJson() {
+export function getSelectPost(postId) {
 
-    return posts;
+    return async function selectPost(dispatch, getState){
+
+        const result = await fetch(
+            (url + "/" + postId),
+            {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            }
+        ).then(data => data.json()).then(data=>data.result);
+
+        dispatch({type:getSelectedPost, payload:result})
+    };
 }
