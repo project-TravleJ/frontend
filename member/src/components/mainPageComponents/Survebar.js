@@ -11,22 +11,14 @@ const Survebar = () => {
 
         <div className={srvbarstyle.srvbarstyle}>
             <div className={srvbarstyle.srvbartextstyle}>
-                <h4><a href="login"
-                    // { <Link onClick={() => {
-                    //     dispatch(openModal9());
-                    // }} }
-                    className={srvbarstyle.linktext}>
-                        로그인
-                        {/* </Link> */}</a>
-                        </h4>
-                <h4><a href="register"
-                    // <Link onClick={() => {
-                    //     dispatch(openModal10());
-                    // }}
-                    className={srvbarstyle.linktext}>
-                        회원가입
-                        {/* </Link> */}</a>
-                        </h4>
+                <h4><Link onClick={() => {
+                        dispatch(openModal9());
+                    }} className={srvbarstyle.linktext}>
+                        로그인</Link></h4>
+                <h4><Link onClick={() => {
+                        dispatch(openModal10());
+                    }} className={srvbarstyle.linktext}>
+                        회원가입</Link></h4>
                 <h4><a href="/myPage" className={srvbarstyle.linktext}>마이페이지</a></h4>
             </div>
         </div>

@@ -67,9 +67,6 @@ function App() {
             {/* <Route index element={ <PostBoard/> }/> */}
             <Route path="post" element={ <CreatPost/> }/>
         </Route>
-
-        <Route path="/login" element={ <ModalLogin/> } />
-        <Route path="/register" element={ <ModalJoin/> } />
       </Routes>
     </BrowserRouter>
     </main>

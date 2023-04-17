@@ -1,5 +1,5 @@
 export const callLoginAPI = ({form}) => {
-    const requestURL = `http://localhost:8080/auth/login`;
+    const requestURL = 'http://localhost:8080/auth/login';
 
     return async (dispatch, getState) => {
 
