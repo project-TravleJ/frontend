@@ -1,6 +1,6 @@
 import ModalDesign from './modalComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { member_close } from '../../modules/ModalModule';
+import { request_close } from '../../modules/ModalModule';
 import { callRequestUpdateAPI } from '../../apis/RequestAPI';
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ function RequestModal() {
     const modalState = useSelector(store => store.modal);
 
     const handleCloseRestriction = () => {
-        dispatch(member_close());
+        dispatch(request_close());
         console.log("modal false", modalState)
     }
 

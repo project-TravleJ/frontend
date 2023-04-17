@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 // import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
 import RequestModal from "../adminControlModal/RequestModal";
-import { all_reset, member_close, member_open } from "../../modules/ModalModule";
+import { request_open } from "../../modules/ModalModule";
 
 
 import {
     callRequestDeleteAPI,
+    callRequestDetailAPI,
     callRequestsAPI
 } from '../../apis/RequestAPI'
 
@@ -16,13 +17,14 @@ function LocationReportTable() {
 
     const dispatch = useDispatch();
     const [ deleteRequest, setdeleteRequest ] = useState([]);
-
+    //const [ updateItems, setupdateItems] = useState([]);
 
     const requests  = useSelector(store => store.request);
     console.log(requests);
 
+    const items = useSelector(store => store.items);
     
-
+    
     useEffect(
         () => {
             dispatch(callRequestsAPI(
@@ -32,6 +34,8 @@ function LocationReportTable() {
         []
     );
 
+
+
     const deletedRequest = (requestId, isChecked) => {
     if(isChecked) {
         setdeleteRequest([...deleteRequest, requestId]);
@@ -39,6 +43,9 @@ function LocationReportTable() {
         setdeleteRequest(deleteRequest.filter(request => request !==requestId));
         }
     }
+
+
+    
 
     const deleteRequestBtn = () => {
         
@@ -55,15 +62,15 @@ function LocationReportTable() {
     }, [deleteRequest])
 
 
-    const modalState = useSelector(store => store.modal.member);
+    const modalState = useSelector((store) => store.modal.request);
     console.log(modalState);
-    // restriction : 제재, 제약
-    // const [rankUpOpen, setRankUpOpen] = useState(false);
+
     
+
 
     const handleOpenRestriction = () => {
         console.log("modal True", modalState);
-        dispatch(member_open());
+        dispatch(request_open());
     }
 
     return (
@@ -95,24 +102,27 @@ function LocationReportTable() {
                         </tr>
                     </thead>
                     <tbody>
+                        
                         {requests.map((request) => {return(
                             <tr >
                                 <td> 
                                     <input 
                                         type="checkbox" 
-                                        name={request.requestId}
                                         value={request.requestId}
+
                                         onClick={(e)=>deletedRequest(e.target.value, e.target.checked)}
                                     /> 
                                 </td>
-                                <td> {request.requestId} </td>
+                                <td> {request.requestId}</td>
                                 <td> {request.requestManagement} </td>
                                 <td> {request.writer} </td>
                                 <td> {request.date} </td>
                                 <td> {request.title} </td>
                                 <td> {request.context} </td>
+                                
                             </tr>
-                        )})}
+                        ) 
+                        })}
 
                     </tbody>
                 </table>

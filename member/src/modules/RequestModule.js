@@ -1,7 +1,9 @@
 import { createActions, handleActions } from 'redux-actions';
 
 /* 초기값 */
-const initialState = [];
+const initialState = [
+
+];
 
 /* 액션 */
 export const POST_REQUEST    = 'request/POST_REQUEST';

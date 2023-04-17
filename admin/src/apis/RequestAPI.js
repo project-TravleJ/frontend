@@ -3,7 +3,6 @@ import {
     GET_REQUEST
   , GET_REQUESTS
   , PUT_REQUEST
-  , DELETE_REQUEST
 } from '../modules/RequestModule';
 
 export const callRequestDetailAPI = ({requestId}) => {

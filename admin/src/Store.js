@@ -9,6 +9,7 @@ import selectAttraction from './modules/MapsSelectedMarker';
 import memberReducer from './modules/MemberModule';
 import bulIssue from './modules/BulletinIssueModule';
 import requestReducer from './modules/RequestModule';
+import requestItems from './modules/ItemsMoudule';
 
 const store = configureStore({
     reducer: {
@@ -21,7 +22,8 @@ const store = configureStore({
         dsPostRepo: dsPostRepo,
         selectAttraction: selectAttraction,
         bulIssue: bulIssue,
-        request: requestReducer
+        request: requestReducer,
+        items: requestItems
     },
 
     
