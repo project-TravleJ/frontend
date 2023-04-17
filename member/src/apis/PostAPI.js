@@ -144,17 +144,18 @@ export const callPostPostContextAPI = () => {
     };
 }
 
-    return async function selectPost(dispatch, getState){
 
-        const result = await fetch(
-            (url + "/" + postId),
-            {
-                method: "GET",
-                headers: { "Accept": "application/json" }
-            }
-        ).then(data => data.json()).then(data=>data.result);
+//     return async function selectPost(dispatch, getState){
 
-        dispatch({type:getSelectedPost, payload:result})
-    };
-}
+//         const result = await fetch(
+//             (url + "/" + postId),
+//             {
+//                 method: "GET",
+//                 headers: { "Accept": "application/json" }
+//             }
+//         ).then(data => data.json()).then(data=>data.result);
+
+//         dispatch({type:getSelectedPost, payload:result})
+//     };
+// }
 
