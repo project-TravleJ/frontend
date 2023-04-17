@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DSstyle from "./detailSearch.module.css";
 import { useEffect } from "react";
-import { search } from "./SearchMethod/PostReportSearch";
+import { searchReport } from "./SearchMethod/PostReportSearch";
 import { dsPostRepo_all } from "../../modules/detailSearch/PostRepoDSModule";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -77,7 +77,7 @@ function PostReportManagementDS() {
             </div>
             <div className={DSstyle.btnBox}>
                 <button>초기화</button>
-                <button onClick={dispatch(dsPostRepo_all(search(reporter, reportee, reportDate, reportStatue_0, reportStatue_1, reportStatue_2)))}>검색</button>
+                <button onClick={dispatch(dsPostRepo_all(searchReport(reporter, reportee, reportDate, reportStatue_0, reportStatue_1, reportStatue_2)))}>검색</button>
 
             </div>
         </div>

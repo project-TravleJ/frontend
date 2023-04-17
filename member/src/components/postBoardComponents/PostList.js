@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PostItem from "./PostItem";
 import { callGetPostsAPI } from "../../apis/PostAPI";
+import { getSelectPost } from "../../apis/PostAPI";
 
 function PostList() {
 
