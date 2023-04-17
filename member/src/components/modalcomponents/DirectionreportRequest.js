@@ -33,21 +33,18 @@ function DirectionreportRequest() {
             [name]: value
         }));
     };
-      const onClickRequestHandler = () => {
+    const onClickRequestHandler = () => {
         console.log('[Request] Request event Started!!');
         console.log('form', form);
-      
         if (form.TITLE === '' || form.CONTEXT === '' || form.DATE === '' || form.WRITER === '' || form.REQEUST_MANAGEMENT === '') {
-          alert('정보를 다 입력해주세요.');
-          return ;
+            alert('정보를 다 입력해주세요.');
+            return ;
         }
-      
         dispatch(callRequestWriteAPI({	
-          form: form 
+            form: form 
         }));
         dispatch(openModal8());
-      };
-      
+    };
 
     
     return(

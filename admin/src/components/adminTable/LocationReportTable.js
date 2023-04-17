@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
+import RequestModal from "../adminControlModal/RequestModal";
+import { all_reset, member_close, member_open } from "../../modules/ModalModule";
+
 
 import {
+    callRequestDeleteAPI,
     callRequestsAPI
 } from '../../apis/RequestAPI'
 
@@ -11,14 +15,13 @@ import {
 function LocationReportTable() {
 
     const dispatch = useDispatch();
-    
-    
+    const [ deleteRequest, setdeleteRequest ] = useState([]);
+
+
     const requests  = useSelector(store => store.request);
-    //const requestList = requests.data;
     console.log(requests);
 
-    // const data = useSelector(store => store.locaRepo);
-    // console.log(data);
+    
 
     useEffect(
         () => {
@@ -29,22 +32,53 @@ function LocationReportTable() {
         []
     );
 
-    // useEffect(
-    //     () => {
-    //         dispatch(getLocaRepos(CallLocaRepoAPI()));
-    //     }
-    // );
-    
+    const deletedRequest = (requestId, isChecked) => {
+    if(isChecked) {
+        setdeleteRequest([...deleteRequest, requestId]);
+    } else {
+        setdeleteRequest(deleteRequest.filter(request => request !==requestId));
+        }
+    }
+
+    const deleteRequestBtn = () => {
+        
+        dispatch(callRequestDeleteAPI(deleteRequest));
+        setdeleteRequest([])
+        window.location.reload();
+    }
+
+
+
+
+    useEffect(() => {
+        console.log(deleteRequest)
+    }, [deleteRequest])
+
+
+    const modalState = useSelector(store => store.modal.member);
+    console.log(modalState);
+    // restriction : 제재, 제약
+    // const [rankUpOpen, setRankUpOpen] = useState(false);
     
 
+    const handleOpenRestriction = () => {
+        console.log("modal True", modalState);
+        dispatch(member_open());
+    }
+
     return (
+        <>
+        <dialog id="MemberControlModal" open={modalState} className={Tstyle.modalLocation}>
+                <RequestModal/>
+            </dialog>
         <div className={Tstyle.container}>
+            
             <div className={Tstyle.header}>
-                <p>게시글관리</p>
+                <p>정정요청 관리</p>
                 <hr/>
                 <p>
-                    <button>메인 등록</button>
-                    <button>게시글 삭제</button>
+                    <button onClick={ handleOpenRestriction }>정정요청 수정</button>
+                    <button onClick={ deleteRequestBtn }>정정요청 삭제</button>
                 </p>
             </div>
             <div>
@@ -63,7 +97,14 @@ function LocationReportTable() {
                     <tbody>
                         {requests.map((request) => {return(
                             <tr >
-                                <td> <input type="checkbox"/> </td>
+                                <td> 
+                                    <input 
+                                        type="checkbox" 
+                                        name={request.requestId}
+                                        value={request.requestId}
+                                        onClick={(e)=>deletedRequest(e.target.value, e.target.checked)}
+                                    /> 
+                                </td>
                                 <td> {request.requestId} </td>
                                 <td> {request.requestManagement} </td>
                                 <td> {request.writer} </td>
@@ -71,14 +112,16 @@ function LocationReportTable() {
                                 <td> {request.title} </td>
                                 <td> {request.context} </td>
                             </tr>
-                         )})}
+                        )})}
 
                     </tbody>
                 </table>
             </div>
         </div>
+        </>
     );
 
 }
+
 
 export default LocationReportTable; 
