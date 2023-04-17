@@ -20,9 +20,9 @@ import postReducer from './modules/PostModule';
 import limitReducer from './modules/LimitModule';
 import markers from './modules/MarkersModule';
 import selectAttraction from './modules/MapsSelectedMarker';
-import rootReducer from './modules';
-import selectedPost from './modules/SelectedPostModule'
-
+import reportReducer from './modules/PostReport';
+import selectedPost from './modules/SelectedPostModule';
+import createPost from './modules/CreatePostModule';
 export const store = configureStore({
     reducer: {
         modal: modalReducer,
@@ -41,14 +41,14 @@ export const store = configureStore({
         modal13: modalReducer13,
         modal14: modalReducer14,
         image: imageReducer,
-
+        selectedPost: selectedPost,
         post: postReducer,
         limit: limitReducer,
         markers: markers,
         selectAttraction: selectAttraction,
-        rootReducer,
+        createPost:createPost,
 
-        selectedPost: selectedPost
+        reportReducer: reportReducer,
     },
 });
 
