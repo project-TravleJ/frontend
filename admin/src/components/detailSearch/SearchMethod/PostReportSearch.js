@@ -1,21 +1,18 @@
-import { useSelector } from "react-redux";
 
+import { useSelector} from "react-redux";
 
-export function searchReport(reporter, reportee, reportDate, reportStatus_0, reportStatus_1, reportStatus_2) {
+export function SearchReport(reporter, reportee, reportDate, reportStatus) {
+
     // // const reporter = reporter;
     // // const reportee = reportee;
     // // const reportDate = reportDate;
     // // const reportStatus = reportStatus;
-    // const data = useSelector(store => store.report);
-    // const arg = {
-    //     reporter: reporter,
-    //     reportee: reportee,
-    //     reportDate: reportDate,
-    //     reportStatus: [reportStatus_0, reportStatus_1, reportStatus_2]
-    // }
+
+    // const data = useSelector(store => store.report); 
     
-    // // const filteredReports = SearchReport(reporter, reportee, reportDate, reportStatus);
-    // // console.log(arg);
+    // const filteredReports = SearchReport(reporter, reportee, reportDate, reportStatus);
+    // console.log(filteredReports);
+
     
     // // const dispatch = useDispatch();
 
@@ -27,13 +24,15 @@ export function searchReport(reporter, reportee, reportDate, reportStatus_0, rep
     //     && (!reportDate ==='')? data.reportDate.includes(reportDate): data
     //     && (!arg.reportStatus === [true, true, true]
     //         || arg.reportStatus === [false, false, false])?data:(data.status == 0
+
     //                                                         ||data.status == 1
     //                                                         ||data.status == 2
     //         );
     // });
-
+    
     // return result;
     return null;
+
 }
     
 
