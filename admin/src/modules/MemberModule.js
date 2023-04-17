@@ -4,33 +4,51 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initState  = [
     {
-        memberId: "",
-        name : "",
-        rank : "",
-        state : 0,
-        invDate : "",
-        recentLogin : ""
+        memberCode: 0,
+        memberNickname : "",
+        grade : "",
+        status : 0,
+        joinDate : "",
+        lastAccessDate : ""
     }
 ];
 
-export const GET_MEMBERS = "member/GET_MEMBERS";
+export const GET_MEMBERS = 'member/GET_MEMBERS';
 
 console.log('action : ');
 
-const member = createSlice({
-    name: 'member',
-    initialState: initState,
-    reducers: {
-        getMembers: (state, action) => {
-            return state = action.payload;
-        },
-        // searchName: (state, action) => {
-            
-        // }
-    },
+const actions = createActions({
+    [GET_MEMBERS]: () => {}
 });
 
-export const { getMembers } = member.actions;
+const memberReducer = handleActions(
+    {
+        [GET_MEMBERS]: (state, { payload }) => {
+            return payload;
+        }
+
+    },
+    initState
+);
+
+// export const { getMembers } = actions;
+
+export default memberReducer;
+
+// const member = createSlice({
+//     name: 'member',
+//     initialState: initState,
+//     reducers: {
+//         getMembers: (state, action) => {
+//             return state = action.payload;
+//         },
+//         // searchName: (state, action) => {
+            
+//         // }
+//     },
+// });
+
+// export const { getMembers } = member.actions;
 
 
-export default member.reducer;
+// export default member.reducer;

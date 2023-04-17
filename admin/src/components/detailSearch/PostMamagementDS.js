@@ -10,11 +10,11 @@ function PostManagementDS() {
                     <p>
                         <div>
                             <input type="checkbox" id="mainPost"/>
-                            <label for="mainPost"> 메인 게시글</label>
+                            <label htmlFor="mainPost"> 메인 게시글</label>
                         </div>
                         <div>
                             <input type="checkbox" id="normalPost"/>
-                            <label for="normalPost"> 일반 게시글</label>
+                            <label htmlFor="normalPost"> 일반 게시글</label>
                         </div>
                     </p>
                 </div>

@@ -16,8 +16,8 @@ const ModalLogin = () => {
                 <h3>로그인</h3>
             </div>
             <div className={Modal.inputs}>
-                <input className={Modal.input} type="text" name="email" placeholder="이메일"></input>
-                <input className={Modal.input} type="paaword" name="password" placeholder="비밀번호"></input>
+                <input className={Modal.input} type="text" name="id" placeholder="아이디"></input>
+                <input className={Modal.input} type="password" name="password" placeholder="비밀번호"></input>
             </div>
             <button className={Modal.button} onClick={() => {
                 dispatch(closeModal9());

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DSstyle from "./detailSearch.module.css";
 import { useEffect } from "react";
-import { search } from "./SearchMethod/PostReportSearch";
+import { SearchReport } from "./SearchMethod/PostReportSearch";
 import { dsPostRepo_all } from "../../modules/detailSearch/PostRepoDSModule";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -62,22 +62,22 @@ function PostReportManagementDS() {
                     <p>
                         <div>
                             <input type="checkbox" id="accept" value={reportStatue_0} onChange={e => setReportStatus_0(!reportStatue_0)}/>
-                            <label for="accept">완료</label>
+                            <label htmlFor="accept">완료</label>
                         </div>
                         <div>
                             <input type="checkbox" id="reject" value={reportStatue_1} onChange={e => setReportStatus_1(!reportStatue_1)}/>
-                            <label for="reject">반려</label>
+                            <label htmlFor="reject">반려</label>
                         </div>
                         <div>
                             <input type="checkbox" id="uncheck" value={reportStatue_2} onChange={e => setReportStatus_2(!reportStatue_2)}/>
-                            <label for="uncheck">미처리</label>
+                            <label htmlFor="uncheck">미처리</label>
                         </div>
                     </p>
                 </div>
             </div>
             <div className={DSstyle.btnBox}>
                 <button>초기화</button>
-                <button onClick={dispatch(dsPostRepo_all(search(reporter, reportee, reportDate, reportStatue_0, reportStatue_1, reportStatue_2)))}>검색</button>
+                <button onClick={dispatch(dsPostRepo_all(SearchReport(reporter, reportee, reportDate, reportStatue_0, reportStatue_1, reportStatue_2)))}>검색</button>
 
             </div>
         </div>
