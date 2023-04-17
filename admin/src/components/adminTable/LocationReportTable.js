@@ -1,22 +1,40 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CallLocaRepoAPI } from "../../apis/LocationReportAPI";
-import { getLocaRepos } from "../../modules/LocationReportModule";
+// import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
-import { pagingComponent } from "../paging/Pagination";
+
+import {
+    callRequestsAPI
+} from '../../apis/RequestAPI'
+
 
 function LocationReportTable() {
 
     const dispatch = useDispatch();
+    
+    
+    const requests  = useSelector(store => store.request);
+    //const requestList = requests.data;
+    console.log(requests);
 
-    const data = useSelector(store => store.locaRepo);
-    console.log(data);
+    // const data = useSelector(store => store.locaRepo);
+    // console.log(data);
 
     useEffect(
         () => {
-            dispatch(getLocaRepos(CallLocaRepoAPI()));
-        }
+            dispatch(callRequestsAPI(
+                
+            ));            
+        },
+        []
     );
+
+    // useEffect(
+    //     () => {
+    //         dispatch(getLocaRepos(CallLocaRepoAPI()));
+    //     }
+    // );
+    
     
 
     return (
@@ -43,24 +61,24 @@ function LocationReportTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(locaReport => {return(
-                            <tr>
+                        {requests.map((request) => {return(
+                            <tr >
                                 <td> <input type="checkbox"/> </td>
-                                <td> {locaReport.reportId} </td>
-                                <td> {(locaReport.state===0)?"미처리":(locaReport.state===1)?"처리완료":"반려"} </td>
-                                <td> {locaReport.reporter} </td>
-                                <td> {locaReport.location.name} </td>
-                                <td> {(locaReport.reason===0)?"위치오류":(locaReport.reason===1)?"정보오류/삭제요청":(locaReport.reason===2)?"추가요청":"기타"} </td>
-                                <td> {locaReport.description} </td>
+                                <td> {request.requestId} </td>
+                                <td> {request.requestManagement} </td>
+                                <td> {request.writer} </td>
+                                <td> {request.date} </td>
+                                <td> {request.title} </td>
+                                <td> {request.context} </td>
                             </tr>
-                        )})}
+                         )})}
+
                     </tbody>
                 </table>
-                {pagingComponent(data)}
             </div>
         </div>
     );
 
 }
 
-export default LocationReportTable;
+export default LocationReportTable; 
