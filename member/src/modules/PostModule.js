@@ -7,7 +7,7 @@ import { createActions, handleActions } from "redux-actions";
 const initialState = [
     {
         code: 0,
-        name: '',
+        postTitle: '',
         date: '',
         course: '',
         writer: '',
@@ -32,7 +32,7 @@ const postReducer = handleActions(
 
             console.log('payload : ', payload);
 
-            return payload;
+            return state =  payload;
         },
         
         [SEARCH_POSTS]: (state, { payload: { results } }) => {

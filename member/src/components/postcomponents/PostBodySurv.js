@@ -1,9 +1,11 @@
 import style from './postcomponents.module.css';
-import { useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { openModal4 } from '../../features/modal/modalSlice4';
 
 function PostBody() {
     const dispatch = useDispatch();
+    const post = useSelector(store => store.selectedPost);
+
     return(
         <div className={style.postbodysurvstyle}>
             수정&nbsp;&nbsp;&nbsp; <div  onClick={() => {

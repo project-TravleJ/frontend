@@ -13,7 +13,7 @@ const initState = [
 
 export const GET_REPORTS = "report/GET_REPORTS";
 
-const report = createSlice({
+const report = createSlice({    //reducer 이름 겹침
     name: 'report',
     initialState: initState,
     reducers: {

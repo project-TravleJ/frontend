@@ -6,6 +6,7 @@ import { getPostReports } from "../../modules/PostReportModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import ReportModal from "../adminControlModal/ReportModal";
 import Tstyle from "./table.module.css"
+import { pagingComponent } from "../paging/Pagination";
 
 
 
@@ -86,6 +87,7 @@ function PostReportManagementTable() {
                             )})}
                         </tbody>
                     </table>
+                    {pagingComponent(data)}
                 </div>
             </div>
         </>

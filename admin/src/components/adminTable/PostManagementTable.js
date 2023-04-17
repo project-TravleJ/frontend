@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import { callPostAPI, getPostList } from "../../apis/PostAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../modules/PostModule";
+import { pagingComponent } from "../paging/Pagination";
 
 function PostManagementTable() {
 
@@ -14,8 +15,8 @@ function PostManagementTable() {
     useEffect(
         () => {
             console.log(callPostAPI());
-            dispatch(getPosts(callPostAPI()));
-        }
+            dispatch(callPostAPI());
+        },[]
     );
 
     return (
@@ -47,14 +48,15 @@ function PostManagementTable() {
                                 <td> <input type="checkbox"/> </td>
                                 <td> {post.postId} </td>
                                 <td> {post.writer} </td>
-                                <td> {post.postName} </td>
-                                <td> {post.date} </td>
-                                <td> {post.gyechu} </td>
+                                <td> {post.postTitle} </td>
+                                <td> {post.postDate} </td>
+                                <td> {post.likes} </td>
                                 <td> {post.url} </td>
                             </tr>
                         )})}
                     </tbody>
                 </table>
+                {pagingComponent(results)}
             </div>
         </div>
     );
