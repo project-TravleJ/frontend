@@ -23,6 +23,9 @@ import selectAttraction from './modules/MapsSelectedMarker';
 import reportReducer from './modules/PostReport';
 import selectedPost from './modules/SelectedPostModule';
 import createPost from './modules/CreatePostModule';
+import creaetCourseModule from "./modules/CreaetCourseModule";
+
+
 export const store = configureStore({
     reducer: {
         modal: modalReducer,
@@ -47,7 +50,7 @@ export const store = configureStore({
         markers: markers,
         selectAttraction: selectAttraction,
         createPost:createPost,
-
+        createCourse: creaetCourseModule,
         reportReducer: reportReducer,
     },
 });

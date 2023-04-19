@@ -17,6 +17,9 @@ const createPost = createSlice({
     name: "createPost",
     initialState: initialState,
     reducers: {
+        getPost: (state, action) => {
+            return state = action.payload;
+        },
         getPostTitle: (state, action) => {
             return state.postTitle = action.payload;
         },
@@ -32,16 +35,11 @@ const createPost = createSlice({
         getContext: (state, action) => {
             return state.context = action.payload;
         },
-        getAttDTOList: (state, action) => {
-            return state.attDTOList = action.payload;
-        },
-        getCourseIdxArr: (state, action) => {
-            return state.courseIdxArr = action.payload;
-        },
-        getCourseMemoList: (state, action) => {
-            return state.courseMemoList = action.payload;
+        getCourseMemo: (state, action) => {
+            return state.courseList.courseMemoList[action.payload.idx - 1] = action.payload.courseMemo;
         },
         getCourseListAdd: (state, action) => {
+            action.payload.idx = state.courseList.size();
             return state.courseList = state.courseList.add(action.payload);
         },
         resetPost: (state) => {
@@ -51,8 +49,16 @@ const createPost = createSlice({
     }
 });
 
-export const { getPostTitle, getWriter, getPostStart, getPostEnd
-    , getContext, getAttDTOList, getCourseIdxArr, getCourseMemoList
-    ,resetPost} = createPost.actions;
+export const { getPost,
+    getPostTitle,
+    getWriter,
+    getPostStart,
+    getPostEnd,
+    getContext,
+    getAttDTOList,
+    getCourseIdxArr,
+    getCourseMemoList,
+    resetPost,
+    getCourseListAdd } = createPost.actions;
 
 export default createPost.reducer;

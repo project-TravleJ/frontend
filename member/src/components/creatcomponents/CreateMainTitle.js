@@ -4,6 +4,7 @@ import { openModal1 } from '../../features/modal/modalSlice1';
 import { POST_POST_TITLE } from '../../modules/PostModule';
 import { useState } from 'react';
 import {getPostTitle} from "../../modules/CreatePostModule";
+import {callRegistPostAPI} from "../../apis/PostAPI";
 
 function CreateMainTitle() {
     const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function CreateMainTitle() {
                 () => {
                     // onClickPostPostTilteHandler();
                     dispatch(openModal1());
+                    dispatch(callRegistPostAPI(newPost))
                 }}>
                 완료</button>
         </div>

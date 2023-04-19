@@ -23,7 +23,7 @@ function CreateMainContent() {
                 placeholder='내용 입력'
                 value={newPost.context}
                 onChange={ (e) => { dispatch(getContext(e.target.value))} }
-                />
+            />
             
         </div>
     );
