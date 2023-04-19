@@ -56,13 +56,6 @@ export function callSearchPostsAPI(keyword) {
 }
 
 
-export function getSelectPost(postId) {
-
-
-    return posts;
-}
-
-
 export const callPostPostTitleAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
@@ -144,17 +137,19 @@ export const callPostPostContextAPI = () => {
     };
 }
 
+export const getSelectPost = (postId) => {
+    
     return async function selectPost(dispatch, getState){
-
+        
         const result = await fetch(
             (url + "/" + postId),
             {
                 method: "GET",
                 headers: { "Accept": "application/json" }
             }
-        ).then(data => data.json()).then(data=>data.result);
-
-        dispatch({type:getSelectedPost, payload:result})
+            ).then(data => data.json()).then(data=>data.result);
+            
+            dispatch({type:getSelectedPost, payload:result})
     };
 }
 

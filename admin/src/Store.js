@@ -9,6 +9,7 @@ import selectAttraction from './modules/MapsSelectedMarker';
 import memberReducer from './modules/MemberModule';
 import bulIssue from './modules/BulletinIssueModule';
 import SelectMember from './modules/detailSearch/SelectMemberModule';
+import memberDetailReducer from './modules/detailSearch/MemberDetailModule';
 
 
 const store = configureStore({
@@ -23,6 +24,7 @@ const store = configureStore({
         selectAttraction: selectAttraction,
         bulIssue: bulIssue,
         selectMember: SelectMember,
+        memberDetail: memberDetailReducer
     },
 
     

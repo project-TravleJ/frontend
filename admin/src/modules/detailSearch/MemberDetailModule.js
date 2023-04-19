@@ -11,18 +11,22 @@ const initState  = [
     }
 ];
 
-export const GET_MEMBERS = 'member/GET_MEMBERS';
-
+export const GET_MEMBER = 'memberDetail/GET_MEMBER';
+export const PUT_MEMBER = 'memberDetail/PUT_MEMBER';
 
 console.log('action : ');
 
 const actions = createActions({
-    [GET_MEMBERS]: () => {}
+    [GET_MEMBER]: () => {},
+    [PUT_MEMBER]: () => {}
 });
 
-const memberReducer = handleActions(
+const memberDetailReducer = handleActions(
     {
-        [GET_MEMBERS]: (state, { payload }) => {
+        [GET_MEMBER]: (state, { payload }) => {
+            return payload;
+        },
+        [PUT_MEMBER]: (state, { payload }) => {
             return payload;
         }
 
@@ -30,4 +34,4 @@ const memberReducer = handleActions(
     initState
 );
 
-export default memberReducer;
+export default memberDetailReducer;
