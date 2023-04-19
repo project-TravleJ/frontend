@@ -38,8 +38,9 @@
 }
 
 .topItems {
-    margin-right: 50px;
+    margin-right: 20px;
     margin-top: 5px;
+    line-height: 25px;
 }
 
 .midBox {
