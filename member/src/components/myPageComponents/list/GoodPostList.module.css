@@ -2,10 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
 }
 
 .text {
-    margin-left: -700px;
+    margin-left: -695px;
     margin-top: 70px;
+}
+
+.marginBottom {
+    margin-bottom: 20px;
 }

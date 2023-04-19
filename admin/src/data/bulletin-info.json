@@ -1,0 +1,43 @@
+   
+  [
+    {
+        "code": 1,
+        "subject": "기요미즈데라",
+        "date": "2023-03-21",
+        "case": "표기 오류",
+        "nick": "dragon",
+        "likeCount": 1
+    },
+    {
+        "code": 2,
+        "subject": "금각사",
+        "date": "2023-03-22",
+        "case": "등록지 오류",
+        "nick": "lion",
+        "likeCount": 2
+    },
+    {
+        "code": 3,
+        "subject": "후시미 이나리 신사",
+        "date": "2023-03-23",
+        "case": "등록지 이름변경",
+        "nick": "tiger",
+        "likeCount": 2
+    },
+    {
+        "code": 4,
+        "subject": "지쇼지",
+        "date": "2023-03-24",
+        "case": "등록지 오류",
+        "nick": "rabbit",
+        "likeCount": 1
+    },
+    {
+        "code": 5,
+        "subject": "니조 성",
+        "date": "2023-03-25",
+        "case": "방문지 패쇄",
+        "nick": "zzang",
+        "likeCount": 1
+    }
+ ]

@@ -1,18 +1,21 @@
 import style from './postcomponents.module.css';
+import {useSelector} from "react-redux";
 
 function PostMainTitle() {
+    const post = useSelector(store => store.selectedPost);
+
     return(
         <div className={style.postContent}>
                 <div className={style.postmaintitlestyle}>
-                <div>&nbsp;&nbsp;교토식 한옥마을 일정</div>
+                <div>&nbsp;&nbsp;{post.postTitle}</div>
                 </div>
 
                 <div className={style.postContent1}>
                     <div className={style.postrecommend}>
-                    &nbsp;&nbsp; 개추 : 12
+                    &nbsp;&nbsp; 좋아요 : {post.likes}
                     </div>
                     <div className={style.postwriter}>
-                    작성자:00 작성일 :00 &nbsp;&nbsp;&nbsp;
+                    작성자:{post.writer} 작성일 :{post.postDate} &nbsp;&nbsp;&nbsp;
                     </div>
                 </div>
         </div>

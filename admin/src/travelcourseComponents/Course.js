@@ -1,8 +1,18 @@
 import CourseStyle from "./coursecomponents.module.css";
-import Maps from "../components/googlemap/Maps";
+import Map from "../components/googlemap/Map";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 function Course() {
+
+    const selectAtt = useSelector(store => store.selectAttraction);
+
+
+    console.log("selectAtt : ", selectAtt);
+    // useEffect(() => {
+
+    // }, []);
 
     return (
 
@@ -12,12 +22,12 @@ function Course() {
             </div>
             <div className={CourseStyle.contents}>
                 <div className={ CourseStyle.Map}>
-                    <Maps/>
+                    <Map/>
                 </div>
                 <div className={ CourseStyle.Sidebar}>
                     <div align="center">
                         <p align="center">여행지 이름</p>
-                        <input type="text" className={CourseStyle.text1}/>
+                        <input type="text" className={CourseStyle.text1} value={(selectAtt)? selectAtt.name: ""}/>
                     </div>
                     <div className= {CourseStyle.Box1}>
                         <p>여행지 사진</p>
@@ -25,7 +35,7 @@ function Course() {
                     </div>
                     <div className={CourseStyle.bottomBox}>
                         <p align="center">여행지 설명</p>
-                        <input type="text"></input>
+                        <input type="text" value={(selectAtt)?selectAtt.def:""}></input>
                     </div>
                 </div>
             </div>

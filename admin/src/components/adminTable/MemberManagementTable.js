@@ -1,11 +1,12 @@
 import Tstyle from "./table.module.css";
 import {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux';
-import { callMemberAPI } from "../../apis/MemberAPI";
+import { callGetMemberAPI } from "../../apis/MemberAPI";
 import { getMembers } from "../../modules/MemberModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import { all_reset, member_close, member_open } from "../../modules/ModalModule";
-
+import { pagingComponent } from "../paging/Pagination";
 
 function MemberManagementTable() {
 
@@ -17,7 +18,6 @@ function MemberManagementTable() {
 
     const members = result;
     console.log("members : ", members);
-
 
     /* modal을 위한 state redux */
     const modalState = useSelector(store => store.modal.member);
@@ -40,10 +40,11 @@ function MemberManagementTable() {
 
     useEffect(
         () => {
-            console.log(callMemberAPI())
-            dispatch(getMembers(callMemberAPI()));
+            // console.log(getMembers(callGetMemberAPI()));
+            dispatch(callGetMemberAPI());
             
-        }
+        },
+        []
     );
 
 
@@ -79,16 +80,17 @@ function MemberManagementTable() {
                             {members.map((member) => {return(
                                 <tr>
                                     <td><input type="checkbox"/></td>
-                                    <td> {member.memberId} </td>
-                                    <td> {member.name} </td>
-                                    <td> {member.rank} </td>
-                                    <td> {(member.state===0)?"정상":(member.state===1)?"정지":"탈퇴"} </td>
-                                    <td> {member.invDate} </td>
-                                    <td> {member.recentLogin} </td>
+                                    <td> {member.memberCode} </td>
+                                    <td> {member.memberNickname} </td>
+                                    <td> {member.grade} </td>
+                                    <td> {(member.status===0)?"정상":(member.status===1)?"정지":"탈퇴"} </td>
+                                    <td> {member.joinDate} </td>
+                                    <td> {member.lastAccessDate} </td>
                                 </tr>
                             )})}
                         </tbody>
                     </table>
+                    {pagingComponent(members)}
                 </div>
             </div>
         </>

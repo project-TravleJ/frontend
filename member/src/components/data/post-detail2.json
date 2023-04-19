@@ -1,29 +1,30 @@
 [
     {
-        "postCode": 1,
-        "postName": "기요미즈데라, 유네스코 세계유산으로 지정된 고도 교토의 문화재",
+        "postId": 1,
+        "postTitle": "기요미즈데라, 유네스코 세계유산으로 지정된 고도 교토의 문화재",
         "postDate": "2023-03-21",
         "course": "기요미즈데라 -> 금각사 -> 후시미 이나리 신사 -> 지쇼지 -> 니조 성",
         "writer": "김용민",
-        "likeCount": 1,
+        "likes": 1,
         "postImage": "/images/kyoto1.jpg"
     },
     {
-        "postCode": 2,
-        "postName": "금각사",
+        "postId": 2,
+        "postTitle": "금각사",
         "postDate": "2023-03-22",
         "course": "금각사",
         "writer": "김지수",
-        "likeCount": 2,
+        "price":20000,
+        "likes": 2,
         "postImage": "/images/kyoto2.jpg"
     },
     {
-        "postCode": 3,
-        "postName": "후시미 이나리 신사",
+        "postId": 3,
+        "postTitle": "후시미 이나리 신사",
         "postDate": "2023-03-23",
         "course": "후시미 이나리 신사",
         "writer": "신예찬",
-        "likeCount": 3,
+        "likes": 3,
         "postImage": "/images/kyoto3.jpg"
     }
 ]

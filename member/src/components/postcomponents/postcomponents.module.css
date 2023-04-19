@@ -5,15 +5,17 @@
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1080px;
-    height: 1100px;
+    width: 800px;
+    height: 900px;
     display: flex;
     border: 1px solid black;
     flex-direction: column;
     justify-content : space-around;
     align-items: center;
-    overflow: scroll;
-}
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}  
 
 .postheaderstyle {
     width: 100%;
@@ -38,15 +40,17 @@
     margin: auto;
 }
 .postbodystyle {
-    width: 80%;
+    width: 95%;
+    height: 100%;
     background: white;
     font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 25px;
+    margin-left: 5px;
 
 }
 
@@ -59,6 +63,7 @@
     align-items: flex-end;
     flex-direction: center;
     font-size: 15px;
+    margin-top: 300px;
 }
 
 .postContent {
@@ -159,6 +164,13 @@
     flex-direction: center;
     margin-bottom: 10px;
 }
+
+/* .Map {
+    width: 740px;
+    height: 420px;
+    border: 1px solid black;
+    display: flex;
+} */
 
 .postintrocontent {
     width: 100%;
@@ -269,18 +281,7 @@
 
 }
 
-.postbodystyle {
-    width: 100%;
-    background: white;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: center;
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
+
 
 .poststyle {
     width: 80%;
