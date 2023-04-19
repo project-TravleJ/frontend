@@ -5,13 +5,13 @@ import member from '../data/member-data.json';
 // export function callGetMemberAPI() {
 
 //     return member;
-//     // return async function getMembers(dispatch, getState) {
+    // return async function getMembers(dispatch, getState) {
         
-//     //     const result = member;
-//     //     console.log("result: ", result);
+    //     const result = member;
+    //     console.log("result: ", result);
 
-//     //         return result;
-//     }
+    //         return result;
+    // }
 
 
 export const callGetMemberAPI = () => {
