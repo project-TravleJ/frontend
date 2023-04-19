@@ -13,16 +13,16 @@ const initState = [
     }
 ];
 
-const report = createSlice({
-    name: "report",
+const detailreports = createSlice({
+    name: "detailreports",
     initialState: initState,
     reducers:{
-        getReports: (state, action) => {
+        getdetailreport: (state, action) => {
             return state = action.payload;
         },
     },
 });
 
-export const { getReports } = report.actions;
+export const { getdetailreport } = detailreports.actions;
 
-export default report.reducer;
+export default detailreports.reducer;

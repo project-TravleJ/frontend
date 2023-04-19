@@ -1,84 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { getLocaRepos } from "../../modules/LocationReportModule";
+import { CallLocaRepoAPI } from "../../apis/LocationReportAPI";
+import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
-import RequestModal from "../adminControlModal/RequestModal";
-import { all_reset, member_close, member_open } from "../../modules/ModalModule";
-
-
-import {
-    callRequestDeleteAPI,
-    callRequestsAPI
-} from '../../apis/RequestAPI'
-
+import { pagingComponent } from "../paging/Pagination";
 
 function LocationReportTable() {
 
     const dispatch = useDispatch();
-    const [ deleteRequest, setdeleteRequest ] = useState([]);
 
-
-    const requests  = useSelector(store => store.request);
-    console.log(requests);
-
-    
+    const data = useSelector(store => store.locaRepo);
+    console.log(data);
 
     useEffect(
         () => {
-            dispatch(callRequestsAPI(
-                
-            ));            
-        },
-        []
-    );
-
-    const deletedRequest = (requestId, isChecked) => {
-    if(isChecked) {
-        setdeleteRequest([...deleteRequest, requestId]);
-    } else {
-        setdeleteRequest(deleteRequest.filter(request => request !==requestId));
+            dispatch(getLocaRepos(CallLocaRepoAPI()));
         }
-    }
-
-    const deleteRequestBtn = () => {
-        
-        dispatch(callRequestDeleteAPI(deleteRequest));
-        setdeleteRequest([])
-        window.location.reload();
-    }
-
-
-
-
-    useEffect(() => {
-        console.log(deleteRequest)
-    }, [deleteRequest])
-
-
-    const modalState = useSelector(store => store.modal.member);
-    console.log(modalState);
-    // restriction : 제재, 제약
-    // const [rankUpOpen, setRankUpOpen] = useState(false);
+    );
     
 
-    const handleOpenRestriction = () => {
-        console.log("modal True", modalState);
-        dispatch(member_open());
-    }
-
     return (
-        <>
-        <dialog id="MemberControlModal" open={modalState} className={Tstyle.modalLocation}>
-                <RequestModal/>
-            </dialog>
         <div className={Tstyle.container}>
-            
             <div className={Tstyle.header}>
-                <p>정정요청 관리</p>
+                <p>게시글관리</p>
                 <hr/>
                 <p>
-                    <button onClick={ handleOpenRestriction }>정정요청 수정</button>
-                    <button onClick={ deleteRequestBtn }>정정요청 삭제</button>
+                    <button>메인 등록</button>
+                    <button>게시글 삭제</button>
                 </p>
             </div>
             <div>
@@ -95,33 +43,24 @@ function LocationReportTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {requests.map((request) => {return(
-                            <tr >
-                                <td> 
-                                    <input 
-                                        type="checkbox" 
-                                        name={request.requestId}
-                                        value={request.requestId}
-                                        onClick={(e)=>deletedRequest(e.target.value, e.target.checked)}
-                                    /> 
-                                </td>
-                                <td> {request.requestId} </td>
-                                <td> {request.requestManagement} </td>
-                                <td> {request.writer} </td>
-                                <td> {request.date} </td>
-                                <td> {request.title} </td>
-                                <td> {request.context} </td>
+                        {data.map(locaReport => {return(
+                            <tr>
+                                <td> <input type="checkbox"/> </td>
+                                <td> {locaReport.reportId} </td>
+                                <td> {(locaReport.state===0)?"미처리":(locaReport.state===1)?"처리완료":"반려"} </td>
+                                <td> {locaReport.reporter} </td>
+                                <td> {locaReport.location.name} </td>
+                                <td> {(locaReport.reason===0)?"위치오류":(locaReport.reason===1)?"정보오류/삭제요청":(locaReport.reason===2)?"추가요청":"기타"} </td>
+                                <td> {locaReport.description} </td>
                             </tr>
                         )})}
-
                     </tbody>
                 </table>
+                {pagingComponent(data)}
             </div>
         </div>
-        </>
     );
 
 }
 
-
-export default LocationReportTable; 
+export default LocationReportTable;

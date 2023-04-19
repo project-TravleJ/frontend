@@ -7,13 +7,12 @@ import locaRepoReducer from './LocationReportModule';
 import markersReducer from './MarkersModule';
 import dsPostRepoReducer from './detailSearch/PostRepoDSModule';
 import selectAttraction from './MapsSelectedMarker';
-import requestReducer from './RequestModule';
 
 const rootReducer = combineReducers({
     /* 해당 폴더에 새로 생성한 하위 리덕스를 여기에 추가 */
     memberReducer, modalReducer, markersReducer,
     postReducer, postReportReducer, locaRepoReducer,
-    dsPostRepoReducer, selectAttraction,requestReducer
+    dsPostRepoReducer, selectAttraction
 });
 
 export default rootReducer;

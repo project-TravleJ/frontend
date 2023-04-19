@@ -8,7 +8,9 @@ import dsPostRepo from './modules/detailSearch/PostRepoDSModule';
 import selectAttraction from './modules/MapsSelectedMarker';
 import memberReducer from './modules/MemberModule';
 import bulIssue from './modules/BulletinIssueModule';
-import requestReducer from './modules/RequestModule';
+import detailreports from './modules/DetailPostReportModule';
+import reportReducer from './modules';
+
 
 const store = configureStore({
     reducer: {
@@ -21,9 +23,11 @@ const store = configureStore({
         dsPostRepo: dsPostRepo,
         selectAttraction: selectAttraction,
         bulIssue: bulIssue,
-        request: requestReducer
-    },
-
+        detailreports: detailreports,
+        reportReducer,
+        
+    }
+    
     
 });
 
