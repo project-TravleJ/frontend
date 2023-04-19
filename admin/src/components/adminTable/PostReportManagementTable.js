@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callPostReportAPI } from "../../apis/PostReportAPI";
+import { callPostReportAPI, deleteReportAPI} from "../../apis/PostReportAPI";
 import { member_open, report_open } from "../../modules/ModalModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import ReportModal from "../adminControlModal/ReportModal";
 import Tstyle from "./table.module.css"
 import { pagingComponent } from "../paging/Pagination";
+// import { CallDeletePostReportAPI } from "../../apis/PostReportAPI";
 
 
 
@@ -13,11 +14,14 @@ function PostReportManagementTable() {
 
     /* 테이블 데이터 */
     const dispatch = useDispatch();
+    const [deleteReport, setdeleteReport] = useState([]);
 
     const data = useSelector(store => store.report);
     console.log(data);
 
-
+    
+    
+    
     /* 모달 */
     const memberModal = useSelector(store => store.modal.member);
     const reportModal = useSelector(store => store.modal.report);
@@ -32,12 +36,26 @@ function PostReportManagementTable() {
         console.log("report modal open ", reportModal);
         dispatch(report_open());
     }
-
+    
     useEffect(
         () => {
             dispatch(callPostReportAPI());
         },[]
-    );
+        );
+        
+        const deletedReport = (reportId, isChecked) => {
+            if(isChecked) {
+                setdeleteReport([...deleteReport, reportId]);
+            } else {
+                setdeleteReport(deleteReport.filter(report => report !== reportId));
+            }
+        }
+        
+        const deleteReportBtn = () => {
+            dispatch(deleteReportAPI(deleteReport));
+            setdeleteReport([]);
+            window.location.reload();
+        }
 
     return (
         <>
@@ -52,7 +70,7 @@ function PostReportManagementTable() {
                     <p>게시글 신고관리</p>
                     <hr/>
                     <p>
-                        <button>게시글 삭제</button>
+                        <button onClick={ deleteReportBtn }>게시글 삭제</button>
                         <button onClick={handleOpenReportModal}>신고 처리</button>
                         <button onClick={handleOpenMemberModal}>회원 관리</button>
                     </p>
@@ -72,9 +90,16 @@ function PostReportManagementTable() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map(postReport => {return(
-                                <tr key={postReport.reportId}>
-                                    <td> <input type="checkbox"/> </td>
+                            {data.map((postReport) => {return(
+                                <tr >
+                                    <td> 
+                                        <input 
+                                            type="checkbox"
+                                            name={postReport.reportId}
+                                            value={postReport.reportId}
+                                            onClick={e=>deletedReport(e.target.value, e.target.checked)}
+                                        />
+                                    </td>
                                     <td> {postReport.reportId} </td>
                                     <td> {(postReport.state===0)?"미처리":(postReport.state===1)?"처리완료":"반려"} </td>
                                     <td> {postReport.reportWriter} </td>

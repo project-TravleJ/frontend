@@ -2,24 +2,27 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initState = [
     {
-        reportWriter: "",
+        reportId: "",
+        reportWriter:"",
+        reportToMember:"",
         reportDate: "",
-        reportReason:"",
+        reportReason: "",
         reportDetails: "",
-        reportManagement: ""
+        reportManagement: "",
+        reportPostId: 0
     }
 ];
 
-const detailreport = createSlice({
-    name: "detailreport",
+const detailreports = createSlice({
+    name: "detailreports",
     initialState: initState,
     reducers:{
-        getDetailreport: (state, action) => {
+        getdetailreport: (state, action) => {
             return state = action.payload;
         },
     },
 });
 
-export const { getDetailreport } = report.actions;
+export const { getdetailreport } = detailreports.actions;
 
-export default detailreport.reducer;
+export default detailreports.reducer;
