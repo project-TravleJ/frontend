@@ -55,9 +55,6 @@ export function callSearchPostsAPI(keyword) {
     }
 }
 
-
-
-
 export const callPostPostTitleAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
@@ -139,7 +136,6 @@ export const callPostPostContextAPI = () => {
     };
 }
 
-
 export const getSelectPost = (postId) => {
     
     return async function selectPost(dispatch, getState){
@@ -199,3 +195,4 @@ export const callRegistPostAPI = (post) => {
         dispatch({type: getSelectedPost, payload:result})
     };
 }
+

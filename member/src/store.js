@@ -24,6 +24,9 @@ import reportReducer from './modules/PostReport';
 import selectedPost from './modules/SelectedPostModule';
 import createPost from './modules/CreatePostModule';
 import creaetCourseModule from "./modules/CreaetCourseModule";
+import rootReducer from './modules';
+import selectedPost from './modules/SelectedPostModule'
+import reportReducer from './modules/PostReport';
 
 
 export const store = configureStore({
@@ -52,6 +55,12 @@ export const store = configureStore({
         createPost:createPost,
         createCourse: creaetCourseModule,
         reportReducer: reportReducer,
+
+        rootReducer,
+        reportReducer,
+
+        selectedPost: selectedPost
+
     },
 });
 
