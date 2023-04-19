@@ -19,7 +19,7 @@ function PostMainContent() {
             <div className={style.postmainContent2}>
                 #코스 리스트
             
-                <input type="text" className={style.comentBox} defaultValue={post.courseList}/>
+                <input type="text" className={style.comentBox} value={post.courseList} readOnly={true}/>
             </div>
         </div>
     );

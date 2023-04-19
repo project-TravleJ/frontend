@@ -14,6 +14,7 @@ import detailreports from './modules/DetailPostReportModule';
 import reportReducer from './modules';
 
 
+
 const store = configureStore({
     reducer: {
         member: memberReducer,
@@ -30,6 +31,7 @@ const store = configureStore({
         detailreports: detailreports,
         reportReducer
     }
+
     
 });
 
