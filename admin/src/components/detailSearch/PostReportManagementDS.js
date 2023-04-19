@@ -1,18 +1,20 @@
 import { useState } from "react";
 import DSstyle from "./detailSearch.module.css";
 import { useEffect } from "react";
-import { SearchReport } from "./SearchMethod/PostReportSearch";
-import { dsPostRepo_all } from "../../modules/detailSearch/PostRepoDSModule";
+// import { SearchReport } from "./SearchMethod/PostReportSearch";
+// import { dsPostRepo_all } from "../../modules/detailSearch/PostRepoDSModule";
 import { useDispatch, useSelector } from "react-redux";
+import { callDetailPostReportAPI } from "../../apis/PostReportAPI";
+import { getdetailreport } from "../../modules/DetailPostReportModule";
 
 
 function PostReportManagementDS() {
 
     const dispatch = useDispatch();
 
-    const find = useSelector(store => store.dsPostRepo);
+    const find = useSelector(store => store.report);
 
-    const [reporter, setReporter] = useState('');
+    const [reportWriter, setReportWriter] = useState('');
     const [reportee, setReportee] = useState('');
     const [reportDate, setReportDate] = useState('');
     const [reportStatue_0, setReportStatus_0] = useState(false);
@@ -33,7 +35,9 @@ function PostReportManagementDS() {
     // }
 
     useEffect(
-        () => {}, [find]
+        () => {
+            dispatch(callDetailPostReportAPI);
+        }, [find]
     );
 
     return(
@@ -42,7 +46,7 @@ function PostReportManagementDS() {
                 <div>
                     <p>
                         <label>신고자 : </label>
-                        <input type="text" value={reporter} onChange={e => setReporter(e.target.value)}/>
+                        <input type="text" name= "search" value={reportWriter} onChange={e => setReportWriter(e.target.value)}/>
                     </p>
                     <p>
                         <label>피신고자 : </label>
@@ -77,7 +81,7 @@ function PostReportManagementDS() {
             </div>
             <div className={DSstyle.btnBox}>
                 <button>초기화</button>
-                <button onClick={dispatch(dsPostRepo_all(SearchReport(reporter, reportee, reportDate, reportStatue_0, reportStatue_1, reportStatue_2)))}>검색</button>
+                <button onClick={dispatch(getdetailreport())}>검색</button>
 
             </div>
         </div>

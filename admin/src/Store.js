@@ -10,6 +10,8 @@ import memberReducer from './modules/MemberModule';
 import bulIssue from './modules/BulletinIssueModule';
 import SelectMember from './modules/detailSearch/SelectMemberModule';
 import memberDetailReducer from './modules/detailSearch/MemberDetailModule';
+import detailreports from './modules/DetailPostReportModule';
+import reportReducer from './modules';
 
 
 const store = configureStore({
@@ -24,9 +26,10 @@ const store = configureStore({
         selectAttraction: selectAttraction,
         bulIssue: bulIssue,
         selectMember: SelectMember,
-        memberDetail: memberDetailReducer
-    },
-
+        memberDetail: memberDetailReducer,
+        detailreports: detailreports,
+        reportReducer
+    }
     
 });
 
