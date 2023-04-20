@@ -192,13 +192,12 @@ export const callRegistPostAPI = (post) => {
                 body: JSON.stringify({
                     postId: form.postId,
                     postTitle: form.postTitle,
-                    writer: form.writer,
-                    postDate: form.postDate,
                     postStart: form.postStart,
                     postEnd: form.postEnd,
+                    writer: form.writer,
+                    postDate: form.postDate,
                     courseList: form.courseList,
-                    context: form.context,
-                    likes: form.likes
+                    context: form.context
                 })
             }
         ).then(data => data.json())
