@@ -26,7 +26,7 @@ export function callPostReportAPI() {
 }
 
 
-export function callDetailPostReportAPI() {
+export function callDetailPostReportAPI(form) {
 
     const url = "http://localhost:8080/api/v1/reports";
 
@@ -36,7 +36,10 @@ export function callDetailPostReportAPI() {
             url+"{reportWriter}",
         {
                 method: "GET",
-                headers: {"Accept": "application/json"}
+                headers: {"Accept": "application/json"},
+                body: JSON.stringify({
+                    reportWriter: form.reportWriter
+                })
         }
         ).then(data => data.json())
         .then(data => data.result);
@@ -49,10 +52,11 @@ export function callDetailPostReportAPI() {
 
 export const deleteReportAPI = (report) => {
 
+    console.log(report);
     
     for(const reportId in report) {
         
-        const reportURL = `http://localhost:8080/api/v1/reports/${reportId}`;
+        const reportURL = `http://localhost:8080/api/v1/reports/${report}`;
     
     return async (dispatch, getState) => {
         const result = await fetch(reportURL,

@@ -37,8 +37,15 @@ function PostReportManagementDS() {
     useEffect(
         () => {
             dispatch(callDetailPostReportAPI);
-        }, [find]
+        }, []
     );
+
+    const searchData = () => {
+        const form = {
+            reportWriter: reportWriter,
+            reportToMember: reportee
+        }
+    }
 
     return(
         <div className={DSstyle.exBoard}>

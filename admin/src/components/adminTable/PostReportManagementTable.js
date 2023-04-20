@@ -70,7 +70,7 @@ function PostReportManagementTable() {
                     <p>게시글 신고관리</p>
                     <hr/>
                     <p>
-                        <button onClick={ deleteReportBtn }>게시글 삭제</button>
+                        <button onClick={() => deleteReportBtn() }>게시글 삭제</button>
                         <button onClick={handleOpenReportModal}>신고 처리</button>
                         <button onClick={handleOpenMemberModal}>회원 관리</button>
                     </p>
