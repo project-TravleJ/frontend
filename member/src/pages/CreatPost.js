@@ -58,7 +58,7 @@ function  CreatPost() {
         console.log("포스트 라 라이드")
         console.log(post);
 
-        return newPost
+        return post
     }
 
     const changeCourseMemo = (courseMemo, idx) => {

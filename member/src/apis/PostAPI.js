@@ -175,10 +175,8 @@ export const callDeletePostAPI = (postId) => {
 }
 
 export const callRegistPostAPI = (post) => {
-
-    console.log("before ", post);
-    const form = {form : post}
-    console.log(form);
+    
+    //JSON.stringify() 억까 해결
     return async function registPost(dispatch, getState) {
 
         const result = await fetch(
@@ -189,16 +187,18 @@ export const callRegistPostAPI = (post) => {
                     "Content-Type": "application/json",
                     "Accept": "*/*"
                 },
-                body: JSON.stringify({
-                    postId: form.postId,
-                    postTitle: form.postTitle,
-                    postStart: form.postStart,
-                    postEnd: form.postEnd,
-                    writer: form.writer,
-                    postDate: form.postDate,
-                    courseList: form.courseList,
-                    context: form.context
-                })
+                body: JSON.stringify(
+                    {
+                        postId: post.postId,
+                        postTitle: post.postTitle,
+                        postStart: post.postStart,
+                        postEnd: post.postEnd,
+                        writer: post.writer,
+                        postDate: post.postDate,
+                        courseList: post.courseList,
+                        context: post.context
+                    }
+                )
             }
         ).then(data => data.json())
             .then(data => data.result);

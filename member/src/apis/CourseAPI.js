@@ -8,6 +8,17 @@ export const callRegistCourseAPI = (post) => {
     console.log("코스");
     console.log("after ", post);
 
+    const inputList = post.courseList.map(course => JSON.stringify(
+        {
+            CourseId: course.CourseId,
+            postId: post.postId,
+            idx: course.idx,
+            attractionId: course.attractionId,
+            courseMemo: course.courseMemo,
+
+        }))
+    console.log(inputList);
+
     return async (dispatch, getState) => {
 
         const result = await fetch(
@@ -18,7 +29,7 @@ export const callRegistCourseAPI = (post) => {
                     "Content-Type": "application/json",
                     "Accept": "*/*"
                 },
-                body: post.courseList
+                body: inputList
             }
         ).then(data => data.json())
             .then(data => data.result);
