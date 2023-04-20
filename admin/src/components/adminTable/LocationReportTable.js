@@ -17,7 +17,6 @@ function LocationReportTable() {
 
     const dispatch = useDispatch();
     const [ deleteRequest, setdeleteRequest ] = useState([]);
-    const items = useSelector(store => store.requestDetail)
     const requests  = useSelector(store => store.request);
     console.log(requests);
 

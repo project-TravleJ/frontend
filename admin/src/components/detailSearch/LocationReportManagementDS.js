@@ -68,15 +68,15 @@ function LocationReportManagementDS() {
                     </p>
                     <p>
                         <div>
-                            <input type="checkbox" name="requestManagement" id="accept"  onChange={onChangeHandler} />
+                            <input type="checkbox" name="requestManagement" id="accept" value="처리"  onChange={onChangeHandler} />
                             <label htmlFor="accept">처리</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="requestManagement" id="reject" onChange={onChangeHandler} />
+                            <input type="checkbox" name="requestManagement" id="reject" value="반려"  onChange={onChangeHandler} />
                             <label htmlFor="reject">반려</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="requestManagement" id="uncheck"  onChange={onChangeHandler} />
+                            <input type="checkbox" name="requestManagement" id="uncheck"  value="미처리"  onChange={onChangeHandler} />
                             <label htmlFor="uncheck">미처리</label>
                         </div>
                     </p>

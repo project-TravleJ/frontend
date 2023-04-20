@@ -1,14 +1,17 @@
 
 import { 
- 
-  GET_REQUESTS
-  , PUT_REQUEST
-  , DELETE_REQUEST
-  , GET_SEARCH
+
+    GET_REQUESTS
+    , PUT_REQUEST
+    , DELETE_REQUEST
 } from '../modules/RequestModule';
 import { 
     GET_REQUEST
 } from '../modules/RequestDetailModule';
+
+import {
+    GET_SEARCH
+} from '../modules/RequestSearchModule';
 
 export const callRequestDetailAPI = (requestId) => {
     const requestURL = 'http://localhost:8080/api/v1/requests/' + requestId;
@@ -94,7 +97,7 @@ export const callRequestsAPI = () => {
     export const callRequestDeleteAPI = (request) => { 
         
         for(const requestId in request) {
-        const requestURL = `http://localhost:8080/api/v1/requests/${request[requestId]}`;
+        const requestURL = `http://localhost:8080/api/v1/requests/${request}`;
     
         return async (dispatch, getState) => {    
             const result = await fetch(requestURL, {
@@ -105,14 +108,15 @@ export const callRequestsAPI = () => {
                 }
             } 
         ).then(res=>res.json())
+        .then(res => res.result);
     };
     }
     }
 
     export const callRequestSearchAPI = ({form}) => {
         console.log('[RequestAPICalls] callRequestSearchAPI Call');
-    
-        const requestURL = `http://localhost:8080/api/v1/requests/search`
+        console.log(form);
+        const requestURL = 'http://localhost:8080/api/v1/requests/search'
     
         return async (dispatch, getState) => {
     
@@ -121,7 +125,7 @@ export const callRequestsAPI = () => {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "*/*",
-                    "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+                    // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
                 },
                 body: JSON.stringify({
                 title: form.title,
@@ -134,7 +138,7 @@ export const callRequestsAPI = () => {
     
             console.log('[RequestAPICalls] callRequestSearchAPI RESULT : ', result);
     
-            dispatch({ type: GET_SEARCH,  payload: result });
+            dispatch({ type: GET_REQUESTS,  payload: result });
             
         };    
     }
