@@ -17,7 +17,7 @@ const selectedPost = createSlice({
     initialState: initialState,
     reducers: {
         getSelectedPost: (state, action) => {
-            console.log(action.payload);
+            console.log("select reducer: ",  action.payload);
             return state = action.payload;
         },
         resetSelectPost: (state) => {

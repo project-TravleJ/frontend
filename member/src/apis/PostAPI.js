@@ -97,7 +97,7 @@ export const callPostPostStartAPI = () => {
     };
 }
 
-export const callPostPostCourseAPI = () => {
+export const callPostPostCourseAPI = (post) => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
     
