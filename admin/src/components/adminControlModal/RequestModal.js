@@ -1,6 +1,6 @@
 import ModalDesign from './modalComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { member_close } from '../../modules/ModalModule';
+import { request_close } from '../../modules/ModalModule';
 import { callRequestUpdateAPI } from '../../apis/RequestAPI';
 import { useState } from "react";
 
@@ -8,30 +8,22 @@ import { useState } from "react";
 function RequestModal() {
 
     const dispatch = useDispatch();
-
+    // const items = useSelector(store => store.items)
+    const items = useSelector(store => store.requestDetail)
+    console.log(items);
     const modalState = useSelector(store => store.modal);
 
     const handleCloseRestriction = () => {
-        dispatch(member_close());
+        dispatch(request_close());
         console.log("modal false", modalState)
     }
-
-    const [form, setForm] = useState({
-        REQUEST_ID: '0',    
-        TITLE: '',
-        CONTEXT: '',
-        DATE: '',
-        WRITER: '',
-        REQEUST_MANAGEMENT: ""
-        
-    });
-
+    const [form, setForm] = useState();
+    
     const onChangeHandler = (e) => {
-        const { name, value } = e.target;
-        setForm(prevForm => ({
-            ...prevForm,
-            [name]: value
-        }));
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
     };
 
 
@@ -41,14 +33,23 @@ function RequestModal() {
     const onClickRequestHandler = () => {
         console.log('[Update] Request event Started!!');
         console.log('form', form);
-        if (form.REQEUST_MANAGEMENT === '') {
+        
+        if (form.requestManagement === "") {
             alert('선택해주세요.');
+            
             return ;
         }
-        dispatch(callRequestUpdateAPI({	
-            form: form 
+
+        dispatch(callRequestUpdateAPI( 
+            items.result.requestId, {	
+            // requestId: form.REQUEST_ID,    
+            // title: form.TITLE,
+            // context: form.CONTEXT,
+            // date: form.DATE,
+            // writer: form.WRITER,
+            form: form
         }));
-        
+        window.location.reload();
     };
 
     return(
@@ -61,15 +62,15 @@ function RequestModal() {
                     <div className={ModalDesign.smallTitle}># 처리상태 관리</div>
                 <div className={ModalDesign.topBox}>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountLock" name="REQUEST_MANAGEMENT" value="처리" onChange={onChangeHandler}/>
+                        <input type="radio" id="accountLock" name="requestManagement" value="처리" onClick={onChangeHandler}/>
                         <label for="accountLock">    처리 상태    </label> 
                     </div>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountUnlock" name="REQUEST_MANAGEMENT" value="미처리" onChange={onChangeHandler}/>
+                        <input type="radio" id="accountUnlock" name="requestManagement" value="미처리" onClick={onChangeHandler}/>
                         <label for="accountUnlock">    미처리 상태    </label> 
                     </div>
                     <div className={ModalDesign.topItems}>
-                        <input type="radio" id="accountLankUp" name="REQUEST_MANAGEMENT" value="반려" onChange={onChangeHandler}/>
+                        <input type="radio" id="accountLankUp" name="requestManagement" value="반려" onClick={onChangeHandler}/>
                         <label for="accountLankUp">    반려 상태    </label> 
                     </div>
                 </div>

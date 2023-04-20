@@ -1,14 +1,46 @@
 import DSstyle from "./detailSearch.module.css";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { callRequestSearchAPI } from "../../apis/RequestAPI";
 
 function LocationReportManagementDS() {
 
+    const dispatch = useDispatch();
+    const [form, setForm] = useState({
+        title: '',
+        writer: '',
+        reqeustManagement: ''
+        
+    });
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+        console.log(e.target.value);
+    };
+
+    const onClickDetailSearchHandler = () => {
+        dispatch(callRequestSearchAPI({form: form}));
+    }
+
+    const resetHandler = () => {
+        window.location.reload();
+    }
+
     return(
+
         <div className={DSstyle.exBoard}>
             <div className={DSstyle.searchBox_C}>
                 <div>
                     <p>
                     <label>닉네임 : </label>
-                    <input type="text"/>
+                    <input type="text"
+                            name="writer"
+                            onChange={onChangeHandler}
+                            />
+                            
                     </p>
                 </div>
                 <div className={DSstyle.items}>
@@ -17,15 +49,15 @@ function LocationReportManagementDS() {
                     </p>
                     <p>
                         <div>
-                            <input type="checkbox" id="infoError"/>
+                            <input type="checkbox" name="title" value="정보오류" id="infoError" onChange={onChangeHandler} />
                             <lable htmlFor="infoError">정보오류</lable>
                         </div>
                         <div>
-                            <input type="checkbox" id="locaError"/>
+                            <input type="checkbox" name="title" value="위치오류" id="locaError" onChange={onChangeHandler} />
                             <lable htmlFor="locaError">위치오류</lable>
                         </div>
                         <div>
-                            <input type="checkbox" id="etcError"/>
+                            <input type="checkbox" name="title" value="기타사항" id="etcError"  onChange={onChangeHandler} />
                             <lable htmlFor="etcError">기타사항</lable>
                         </div>
                     </p>
@@ -36,23 +68,23 @@ function LocationReportManagementDS() {
                     </p>
                     <p>
                         <div>
-                            <input type="checkbox" id="accept"/>
-                            <label htmlFor="accept">완료</label>
+                            <input type="checkbox" name="requestManagement" id="accept"  onChange={onChangeHandler} />
+                            <label htmlFor="accept">처리</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="reject"/>
+                            <input type="checkbox" name="requestManagement" id="reject" onChange={onChangeHandler} />
                             <label htmlFor="reject">반려</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="uncheck"/>
+                            <input type="checkbox" name="requestManagement" id="uncheck"  onChange={onChangeHandler} />
                             <label htmlFor="uncheck">미처리</label>
                         </div>
                     </p>
                 </div>
             </div>
             <div className={DSstyle.btnBox}>
-                <button>초기화</button>
-                <button>검색</button>
+                <button onClick={resetHandler}>초기화</button>
+                <button onClick={onClickDetailSearchHandler}>검색</button>
             </div>
         </div>
     );

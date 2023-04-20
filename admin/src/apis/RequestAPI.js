@@ -1,13 +1,17 @@
 
 import { 
-    GET_REQUEST
-  , GET_REQUESTS
+ 
+  GET_REQUESTS
   , PUT_REQUEST
   , DELETE_REQUEST
+  , GET_SEARCH
 } from '../modules/RequestModule';
+import { 
+    GET_REQUEST
+} from '../modules/RequestDetailModule';
 
-export const callRequestDetailAPI = ({requestId}) => {
-    const requestURL = `http://$localhost:8080/api/v1/requests/${requestId}`;
+export const callRequestDetailAPI = (requestId) => {
+    const requestURL = 'http://localhost:8080/api/v1/requests/' + requestId;
 
     return async (dispatch, getState) => {
 
@@ -19,10 +23,11 @@ export const callRequestDetailAPI = ({requestId}) => {
             }
         })
         .then(response => response.json());
-
+        console.log(result);
         console.log('[RequestAPICalls] callRequestDetailAPI RESULT : ', result);
         if(result.status === 200){
             console.log('[RequestAPICalls] callRequestDetailAPI SUCCESS');
+
             dispatch({ type: GET_REQUEST,  payload: result });
         }
 
@@ -30,10 +35,10 @@ export const callRequestDetailAPI = ({requestId}) => {
     };
 }
 
-export const callRequestUpdateAPI = ({form}, requestId) => {
+export const callRequestUpdateAPI = (requestId, {form}) => {
     console.log('[RequestAPICalls] callRequestUpdateAPI Call');
 
-    const requestURL = `http://localhost:8080/api/v1/requests/${requestId}`;
+    const requestURL = 'http://localhost:8080/api/v1/requests/' + requestId;
 
     return async (dispatch, getState) => {
 
@@ -45,15 +50,16 @@ export const callRequestUpdateAPI = ({form}, requestId) => {
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             },
             body: JSON.stringify({
-                requestId : form.REQUEST_ID,
-                title: form.TITLE,
-                context: form.CONTEXT,
-                date: form.DATE,
-                writer: form.WRITER,
-                requestManagement: form.REQEUST_MANAGEMENT,
-            })
+            // requestId : form.REQUEST_ID,
+            // title: form.TITLE,
+            // context: form.CONTEXT,
+            // date: form.DATE,
+            // writer: form.WRITER,
+            requestManagement: form.requestManagement
+            }),
         })
-        .then(response => response.json());
+        .then(response => response.json())
+        .then(response => response.result);
 
         console.log('[RequestAPICalls] callRequestUpdateAPI RESULT : ', result);
 
@@ -102,4 +108,36 @@ export const callRequestsAPI = () => {
     };
     }
     }
+
+    export const callRequestSearchAPI = ({form}) => {
+        console.log('[RequestAPICalls] callRequestSearchAPI Call');
+    
+        const requestURL = `http://localhost:8080/api/v1/requests/search`
+    
+        return async (dispatch, getState) => {
+    
+            const result = await fetch(requestURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*",
+                    "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+                },
+                body: JSON.stringify({
+                title: form.title,
+                writer: form.writer,
+                requestManagement: form.requestManagement
+                }),
+            })
+            .then(response => response.json())
+            .then(res => res.result);
+    
+            console.log('[RequestAPICalls] callRequestSearchAPI RESULT : ', result);
+    
+            dispatch({ type: GET_SEARCH,  payload: result });
+            
+        };    
+    }
+
+
     
