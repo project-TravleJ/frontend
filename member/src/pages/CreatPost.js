@@ -4,6 +4,9 @@ import CreatMainContent from '../components/creatcomponents/CreateMainContent';
 import CreatIntroduce from '../components/creatcomponents/CreateIntroduce';
 import CreatComent from '../components/creatcomponents/CreateComent';
 import Footer from "../components/Footer";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {getPost} from "../modules/CreatePostModule";
 
 function  CreatPost() {
 
