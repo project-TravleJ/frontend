@@ -20,6 +20,8 @@ import postReducer from './modules/PostModule';
 import limitReducer from './modules/LimitModule';
 import markers from './modules/MarkersModule';
 import selectAttraction from './modules/MapsSelectedMarker';
+import createPost from './modules/CreatePostModule';
+import creaetCourseModule from "./modules/CreaetCourseModule";
 import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
 import reportReducer from './modules/PostReport';
@@ -48,7 +50,7 @@ export const store = configureStore({
         markers: markers,
         selectAttraction: selectAttraction,
         rootReducer,
-        reportReducer,
+
 
         selectedPost: selectedPost
     },

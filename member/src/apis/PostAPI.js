@@ -3,6 +3,7 @@ import posts from "../components/data/post-detail.json";
 import bestposts from "../components/data/post-detail2.json";
 import { SEARCH_POSTS } from "../modules/PostModule";
 import {getSelectedPost} from "../modules/SelectedPostModule";
+import {callRegistCourseAPI} from "./CourseAPI";
 
 const url = "http://localhost:8080/api/v1/posts";
 
@@ -149,5 +150,99 @@ export const getSelectPost = (postId) => {
             ).then(data => data.json()).then(data=>data.result);
             
             dispatch({type:getSelectedPost, payload:result})
+    };
+}
+
+export const callDeletePostAPI = (postId) => {
+
+    console.log("delete ", postId);
+    console.log("url : " + url + "/" + postId)
+
+    return async ()=> {
+
+        const result = await fetch(
+            (url + "/" + postId),
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                }
+            }
+        ).then(data => data.json());
+
+        console.log(result);
+    };
+
+}
+
+export const callRegistPostAPI = (post) => {
+    
+    //JSON.stringify() 억까 해결
+    return async function registPost(dispatch, getState) {
+
+        const result = await fetch(
+            (url),
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                },
+                body: JSON.stringify(
+                    {
+                        postId: post.postId,
+                        postTitle: post.postTitle,
+                        postStart: post.postStart,
+                        postEnd: post.postEnd,
+                        writer: post.writer,
+                        postDate: post.postDate,
+                        courseList: post.courseList,
+                        context: post.context
+                    }
+                )
+            }
+        ).then(data => data.json())
+            .then(data => data.result);
+
+        dispatch({type: getSelectedPost, payload:result})
+
+        await callRegistCourseAPI(result);
+    };
+}
+
+
+export const callUpdatePostAPI = (post) => {
+
+    //JSON.stringify() 억까 해결
+    return async function registPost(dispatch, getState) {
+
+        const result = await fetch(
+            (url + "/" + post.postId),
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                },
+                body: JSON.stringify(
+                    {
+                        postId: post.postId,
+                        postTitle: post.postTitle,
+                        postStart: post.postStart,
+                        postEnd: post.postEnd,
+                        writer: post.writer,
+                        postDate: post.postDate,
+                        courseList: post.courseList,
+                        context: post.context
+                    }
+                )
+            }
+        ).then(data => data.json())
+            .then(data => data.result);
+
+        dispatch({type: getSelectedPost, payload:result})
+
+        await callRegistCourseAPI(result);
     };
 }
