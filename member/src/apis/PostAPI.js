@@ -176,8 +176,9 @@ export const callDeletePostAPI = (postId) => {
 
 export const callRegistPostAPI = (post) => {
 
-    console.log(post);
-
+    console.log("before ", post);
+    const form = {form : post}
+    console.log(form);
     return async function registPost(dispatch, getState) {
 
         const result = await fetch(
@@ -188,7 +189,17 @@ export const callRegistPostAPI = (post) => {
                     "Content-Type": "application/json",
                     "Accept": "*/*"
                 },
-                body: post
+                body: JSON.stringify({
+                    postId: form.postId,
+                    postTitle: form.postTitle,
+                    writer: form.writer,
+                    postDate: form.postDate,
+                    postStart: form.postStart,
+                    postEnd: form.postEnd,
+                    courseList: form.courseList,
+                    context: form.context,
+                    likes: form.likes
+                })
             }
         ).then(data => data.json())
             .then(data => data.result);

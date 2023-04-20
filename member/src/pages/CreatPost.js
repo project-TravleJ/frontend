@@ -55,6 +55,7 @@ function  CreatPost() {
         }
 
         dispatch(getPost(post));
+        console.log("포스트 라 라이드")
         console.log(post);
 
         return newPost
