@@ -49,6 +49,8 @@ export const store = configureStore({
         limit: limitReducer,
         markers: markers,
         selectAttraction: selectAttraction,
+        createPost:createPost,
+        createCourse: creaetCourseModule,
         rootReducer,
 
 
