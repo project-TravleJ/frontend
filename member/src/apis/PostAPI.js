@@ -155,7 +155,10 @@ export const getSelectPost = (postId) => {
 
 export const callDeletePostAPI = (postId) => {
 
-    return async function deletePost(dispatch, getState){
+    console.log("delete ", postId);
+    console.log("url : " + url + "/" + postId)
+
+    return async ()=> {
 
         const result = await fetch(
             (url + "/" + postId),
@@ -166,10 +169,9 @@ export const callDeletePostAPI = (postId) => {
                     "Accept": "*/*"
                 }
             }
-        ).then(data => data.json())
-            .then(data => console.log(data));
+        ).then(data => data.json());
 
-        dispatch({type:deletePost, payload:result})
+        console.log(result);
     };
 
 }
@@ -209,3 +211,38 @@ export const callRegistPostAPI = (post) => {
     };
 }
 
+
+export const callUpdatePostAPI = (post) => {
+
+    //JSON.stringify() 억까 해결
+    return async function registPost(dispatch, getState) {
+
+        const result = await fetch(
+            (url + "/" + post.postId),
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                },
+                body: JSON.stringify(
+                    {
+                        postId: post.postId,
+                        postTitle: post.postTitle,
+                        postStart: post.postStart,
+                        postEnd: post.postEnd,
+                        writer: post.writer,
+                        postDate: post.postDate,
+                        courseList: post.courseList,
+                        context: post.context
+                    }
+                )
+            }
+        ).then(data => data.json())
+            .then(data => data.result);
+
+        dispatch({type: getSelectedPost, payload:result})
+
+        await callRegistCourseAPI(result);
+    };
+}

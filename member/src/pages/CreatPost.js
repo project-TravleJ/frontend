@@ -41,6 +41,7 @@ function  CreatPost() {
             setEnd(selectPost.postEnd);
             setCourseList(selectPost.courseList);
         }
+        console.log("select:",  selectPost);
     }, []
     );
 
