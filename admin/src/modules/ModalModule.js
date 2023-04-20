@@ -4,7 +4,9 @@ const initState = {
     member: false,
     post: false,
     report: false,
-    location: false
+    location: false,
+    request: false
+
 };
 
 
@@ -26,12 +28,19 @@ const modal = createSlice({
         },
         report_close: (state) => {
             state.report = false;
+        },
+        request_open: (state) => {
+            state.request = true;
+        },
+        request_close: (state) => {
+            state.request = false;
         }
+
     },
 });
 
 export const {
-        all_reset, member_open, member_close, report_open, report_close
+        all_reset, member_open, member_close, report_open, report_close, request_open, request_close
     } = modal.actions;
 
 export default modal.reducer;
