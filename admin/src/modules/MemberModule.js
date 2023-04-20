@@ -5,7 +5,7 @@ const initState  = [
         memberCode: 0,
         memberNickname : "",
         grade : "",
-        status : 0,
+        status : "",
         joinDate : "",
         lastAccessDate : ""
     }

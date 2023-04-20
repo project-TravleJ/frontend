@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import headstyle from './usecomponents.module.css';
 import { SEARCH_POSTS } from '../../modules/PostModule';
-// import posts from '../data/post-detail.json';
-
+import posts from '../data/post-detail.json';
 
 function Header() {
     const dispatch = useDispatch();
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-    const posts = useSelector(store => store.post);
 
 
     const handleSearch = async () => {
@@ -21,7 +19,7 @@ function Header() {
     };
 
     const searchPost = (searchTerm) => {
-        return posts.filter(post => post.postTitle && post.postTitle.match(searchTerm));
+        return posts.filter(post => post.postName && post.postName.match(searchTerm));
     };
 
     return (

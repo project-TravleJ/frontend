@@ -20,7 +20,7 @@ function PostreportRequest () {
         reportToMember: '',
         reportDate: '',
         reportReason:'',
-        reportDetails: '',
+        reportDetailes: '',
         reportManagement: '',
         reportPostId: '',
     });

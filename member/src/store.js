@@ -26,7 +26,6 @@ import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
 import reportReducer from './modules/PostReport';
 
-
 export const store = configureStore({
     reducer: {
         modal: modalReducer,
@@ -45,19 +44,15 @@ export const store = configureStore({
         modal13: modalReducer13,
         modal14: modalReducer14,
         image: imageReducer,
+
         post: postReducer,
         limit: limitReducer,
         markers: markers,
         selectAttraction: selectAttraction,
-        createPost:createPost,
-        createCourse: creaetCourseModule,
-        reportReducer: reportReducer,
-
         rootReducer,
 
 
         selectedPost: selectedPost
-
     },
 });
 

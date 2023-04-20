@@ -70,8 +70,8 @@ export const callPutMemberAPI = (memberCode, {form}) => {
                 // "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             },
             body: JSON.stringify({
-                status: form.status,
-                grade: form.grade
+                grade: form.grade,
+                status: form.status
             })
         })
         .then(response => response.json())
@@ -111,8 +111,8 @@ export const callGetMemberByMemberCodeAPI = (memberCode) => {
     };
 
     export const callGetMemberByMultipleAPI = ({form}) => {
-        const requestURL = 'http://localhost:8080/api/v1/members/searchMultiple';
-    
+        const requestURL = 'http://localhost:8080/api/v1/members/searchMulti';
+        console.log(form);
         return async (dispatch, getState) => {
     
     
@@ -125,6 +125,8 @@ export const callGetMemberByMemberCodeAPI = (memberCode) => {
                 },
                 body: JSON.stringify({
                     memberNickname: form.memberNickname,
+                    status: form.status,
+                    grade: form.grade,
                     joinDate: form.joinDate,
                     lastAccessDate: form.lastAccessDate
                 })

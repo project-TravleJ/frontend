@@ -17,7 +17,6 @@ import requestReducer from './modules/RequestModule';
 import itemsReducer from './modules/requestItems';
 import requestDetailReducer from './modules/RequestDetailModule';
 
-
 const store = configureStore({
     reducer: {
         member: memberReducer,
@@ -31,14 +30,12 @@ const store = configureStore({
         bulIssue: bulIssue,
         selectMember: SelectMember,
         memberDetail: memberDetailReducer,
-        detailReportReducer,
+        detailreports: detailreports,
         reportReducer,
         request: requestReducer,
         items: itemsReducer,
         requestDetail: requestDetailReducer
     },
-
-
     
 });
 

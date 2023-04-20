@@ -1,18 +1,15 @@
 import style from './createcomponents.module.css';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { openModal } from '../../features/modal/modalSlice';
 import Map from '../googlemap/Map';
 import { POST_POST_START } from '../../modules/PostModule';
-import {getPostStart} from "../../modules/CreatePostModule";
 
 function CreateMainContent() {
-
     const dispatch = useDispatch();
-    const newPost = useSelector(store => store.createPost);
 
-    // const datehandler = (postDate) => {
-    //     dispatch({ type: POST_POST_START, paylode: postDate })
-    // };
+    const datehandler = (postDate) => {
+        dispatch({ type: POST_POST_START, paylode: postDate })
+    };
     
     return(
         <div className={style.postmainContent}>
@@ -21,8 +18,7 @@ function CreateMainContent() {
                 <input
                     type="date"
                     className={style.datestyle}
-                    onChange={(e) => {dispatch(getPostStart(e.target.value))} }
-                    value = {newPost.postStart}
+                    onChange={datehandler}    
                 />
                 </div>
                 <div className={style.postmap}>
@@ -37,7 +33,7 @@ function CreateMainContent() {
                         추가</button>
                 </div>
                 <div className={style.postmainContent3}>
-                    <input type="text" className={style.comentBox} value={newPost.courseList} readOnly={true}/>
+                <input type="text" className={style.comentBox}/>
                 </div>
             </div>
         </div>

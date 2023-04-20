@@ -10,7 +10,9 @@ function PostItem({ post }) {
     <div onClick={() => {
     dispatch(openModal3());
         }}>
-        <div className={ Item.item } onClick={() => dispatch(getSelectPost(post.postId))}>
+        <div className={ Item.item } onClick={dispatch(() => {
+            getSelectPost(post.postId)
+        })}>
             <img className={ Item.image } src="../../images/profileImage.png"/>
             <div className={ Item.postcontent }>
                 <div className={ Item.postname }>

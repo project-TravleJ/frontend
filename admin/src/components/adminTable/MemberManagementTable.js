@@ -109,7 +109,7 @@ function MemberManagementTable() {
                                             <td> {member.memberId} </td>
                                             <td> {member.memberNickname} </td>
                                             <td> {member.grade} </td>
-                                            <td> {(member.status === 0) ? "정상" : (member.status === 1) ? "정지" : "영구 정지"} </td>
+                                            <td> {member.status} </td>
                                             <td> {member.joinDate} </td>
                                             <td> {member.lastAccessDate} </td>
                                         </tr>
