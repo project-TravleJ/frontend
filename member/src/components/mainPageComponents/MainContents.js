@@ -1,5 +1,5 @@
 import BestPostList from './BestPostList';
-import BestPostInfo from './BestPostInfo';
+import BestPostInfo from './BestpostInfo';
 import Maincontentsstyle from './usecomponents.module.css';
 function MainContents() {
 

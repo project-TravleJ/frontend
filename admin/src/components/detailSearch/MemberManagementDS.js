@@ -6,11 +6,13 @@ import { callGetMemberByMultipleAPI } from '../../apis/MemberAPI';
 function MemberManagementDS() {
 
     const dispatch = useDispatch();
-    const members = useSelector(store => store.member);
-    const [memberNickname, setMemberNickname] = useState('');
-    const [joinDate, setJoinDate] = useState('');
-    const [lastAccessDate, setLastAccessDate] = useState('');
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({
+        memberNickname: '',
+        status: '',
+        grade: '',
+        joinDate: '',
+        lastAccessDate: ''
+    });
 
     const onChangeHandler = (e) => {
         setForm({
@@ -37,7 +39,6 @@ function MemberManagementDS() {
                         <input
                             type="text"
                             name="memberNickname"
-                            // value={null}
                             onChange={onChangeHandler}
                         />
                     </p>
@@ -46,7 +47,6 @@ function MemberManagementDS() {
                         <input
                             type="date"
                             name="joinDate"
-                            // value={null ? members.joinDate: form.joinDate}
                             onChange={onChangeHandler}
                         />
                     </p>
@@ -55,7 +55,6 @@ function MemberManagementDS() {
                         <input
                             type="date"
                             name="lastAccessDate"
-                            // value={null}
                             onChange={onChangeHandler}
                         />
                     </p>
@@ -64,23 +63,47 @@ function MemberManagementDS() {
                     <p className={DSstyle.rank}>
                         <label>등급 : </label>
                         <div>
-                            <input type="checkbox" />
+                            <input type="checkbox"
+                            name="grade"
+                            value="뉴비"
+                            onClick={onChangeHandler}
+                            />
                             <label> 뉴비</label>
                         </div>
                         <div>
-                            <input type="checkbox" />
+                            <input type="checkbox"
+                            name="grade"
+                            value="마스터"
+                            onClick={onChangeHandler}
+                            />
                             <label> 마스터</label>
                         </div>
                     </p>
                     <p className={DSstyle.user}>
                         <label>회원 상태 : </label>
                         <div>
-                            <input type="checkbox"/>
+                            <input type="checkbox"
+                            name="status"
+                            value="정상"
+                            onClick={onChangeHandler}
+                            />
                             <label> 정상</label>
                         </div>
                         <div>
-                            <input type="checkbox"/>
+                            <input type="checkbox"
+                            name="status"
+                            value="정지"
+                            onClick={onChangeHandler}
+                            />
                             <label> 정지</label>
+                        </div>
+                        <div>
+                            <input type="checkbox"
+                            name="status"
+                            value="영구 정지"
+                            onClick={onChangeHandler}
+                            />
+                            <label> 영구 정지</label>
                         </div>
                     </p>
                 </div>

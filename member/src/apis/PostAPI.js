@@ -96,7 +96,7 @@ export const callPostPostStartAPI = () => {
     };
 }
 
-export const callPostPostCourseAPI = (post) => {
+export const callPostPostCourseAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
     
@@ -151,48 +151,3 @@ export const getSelectPost = (postId) => {
             dispatch({type:getSelectedPost, payload:result})
     };
 }
-
-export const callDeletePostAPI = (postId) => {
-
-    return async function deletePost(dispatch, getState){
-
-        const result = await fetch(
-            (url + "/" + postId),
-            {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "*/*"
-                }
-            }
-        ).then(data => data.json())
-            .then(data => console.log(data));
-
-        dispatch({type:deletePost, payload:result})
-    };
-
-}
-
-export const callRegistPostAPI = (post) => {
-
-    console.log(post);
-
-    return async function registPost(dispatch, getState) {
-
-        const result = await fetch(
-            (url),
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "*/*"
-                },
-                body: post
-            }
-        ).then(data => data.json())
-            .then(data => data.result);
-
-        dispatch({type: getSelectedPost, payload:result})
-    };
-}
-

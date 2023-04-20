@@ -5,15 +5,15 @@ import { createActions, handleActions } from "redux-actions";
 
 
 const initialState = [
-    {
-        "postTitle": '',
-        "postDate": '',
-        "postWriter": '',
-        "postStart": '',
-        "postEnd": '',
-        "courseList": [],
-        "context": ''
-    }
+{
+    "postTitle": '',
+    "postDate": '',
+    "postWriter": '',
+    "postStart": '',
+    "postEnd": '',
+    "courseList": [],
+    "context": ''
+}
 ]
 
 
@@ -43,11 +43,11 @@ const postReducer = handleActions(
 
             return state =  payload;
         },
-
+        
         [SEARCH_POSTS]: (state, { payload: { results } }) => {
-
+        
             console.log("search results : ", results);
-
+            
             return results;
         },
         [POST_POST_TITLE]: (state, { payload }) => { return payload; },

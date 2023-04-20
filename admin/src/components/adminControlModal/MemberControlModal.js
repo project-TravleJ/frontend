@@ -10,11 +10,10 @@ function MemberControlModal() {
     const dispatch = useDispatch();
     const oneMember = useSelector(store => store.memberDetail);
     const modalState = useSelector(store => store.modal);
-    const [form, setForm] = useState({});
-    // setForm({
-    //     status: oneMember.status,
-    //     grade: oneMember.grade
-    // });
+    const [form, setForm] = useState({
+        status: '',
+        grade: ''
+    });
 
     const onChangeHandler = (e) => {
         setForm({
@@ -23,16 +22,6 @@ function MemberControlModal() {
         });
         console.log(e.target.value);
     };
-
-    useEffect(
-        () => {
-            setForm({
-                status: oneMember.status,
-                grade: oneMember.grade
-            });
-        },
-        []
-    )
 
     const closeMemberBtn = () => {
         dispatch(member_close());
@@ -77,21 +66,21 @@ function MemberControlModal() {
                     </div>
                     <div className={ModalDesign.topItems}>
                         <input type="radio" id="accountUnlock" name="status"
-                            value={0}
+                            value="정상"
                             onClick={onChangeHandler}
                         />
                         <label for="accountUnlock">    정상(상태)    </label>
                     </div>
                     <div className={ModalDesign.topItems}>
                         <input type="radio" id="accountLock" name="status"
-                            value={1}
+                            value="정지"
                             onClick={onChangeHandler}
                         />
                         <label for="accountLock">    정지(상태)    </label>
                     </div>
                     <div className={ModalDesign.topItems}>
                         <input type="radio" id="accountStop" name="status"
-                            value={2}
+                            value="영구 정지"
                             onClick={onChangeHandler}
                         />
                         <label for="accountStop">   회원 영구 정지 (상태/차단일 inf)  </label>
