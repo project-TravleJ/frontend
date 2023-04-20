@@ -1,13 +1,15 @@
 import {getCourse} from "../modules/CreaetCourseModule";
 
 
-const url = "http://localhost:8080/api/v1/posts";
 
 export const callRegistCourseAPI = (post) => {
+
+    const url = "http://localhost:8080/api/v1/posts/" + post.postId + "/courses";
+
     return async (dispatch, getState) => {
 
         const result = await fetch(
-            (url +"/"+post.postId+"/courses"),
+            url,
             {
                 method: "POST",
                 headers: {

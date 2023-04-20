@@ -12,8 +12,8 @@ const initialState = {
     likes: 0
 }
 
-const selectPost = createSlice({
-    name: "selectPost",
+const selectedPost = createSlice({
+    name: "selectedPost",
     initialState: initialState,
     reducers: {
         getSelectedPost: (state, action) => {
@@ -31,6 +31,6 @@ const selectPost = createSlice({
     },
 });
 
-export const { getSelectedPost, resetSelectPost, getPostTitle } = selectPost.actions;
+export const { getSelectedPost, resetSelectPost, getPostTitle } = selectedPost.actions;
 
-export default selectPost.reducer;
+export default selectedPost.reducer;

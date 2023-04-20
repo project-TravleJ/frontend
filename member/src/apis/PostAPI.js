@@ -3,6 +3,7 @@ import posts from "../components/data/post-detail.json";
 import bestposts from "../components/data/post-detail2.json";
 import { SEARCH_POSTS } from "../modules/PostModule";
 import {getSelectedPost} from "../modules/SelectedPostModule";
+import {callRegistCourseAPI} from "./CourseAPI";
 
 const url = "http://localhost:8080/api/v1/posts";
 
@@ -193,6 +194,8 @@ export const callRegistPostAPI = (post) => {
             .then(data => data.result);
 
         dispatch({type: getSelectedPost, payload:result})
+
+        await callRegistCourseAPI(result);
     };
 }
 
