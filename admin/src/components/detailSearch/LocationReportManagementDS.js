@@ -6,11 +6,11 @@ import { callRequestSearchAPI } from "../../apis/RequestAPI";
 function LocationReportManagementDS() {
 
     const dispatch = useDispatch();
+    
     const [form, setForm] = useState({
         title: '',
         writer: '',
-        reqeustManagement: ''
-        
+        requestManagement: ''
     });
 
     const onChangeHandler = (e) => {

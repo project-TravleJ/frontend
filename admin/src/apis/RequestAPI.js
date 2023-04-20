@@ -66,7 +66,8 @@ export const callRequestUpdateAPI = (requestId, {form}) => {
 
         console.log('[RequestAPICalls] callRequestUpdateAPI RESULT : ', result);
 
-        dispatch({ type: PUT_REQUEST,  payload: result });
+        dispatch({ type: GET_REQUEST,  payload: result });
+        /* 시험 */
         
     };    
 }

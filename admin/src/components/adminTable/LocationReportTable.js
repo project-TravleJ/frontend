@@ -47,11 +47,6 @@ function LocationReportTable() {
     }
 
 
-    useEffect(() => {
-        console.log(deleteRequest)
-    }, [deleteRequest])
-
-
 
     const modalState = useSelector(store => store.modal.request);
     console.log(modalState);
