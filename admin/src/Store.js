@@ -10,7 +10,7 @@ import memberReducer from './modules/MemberModule';
 import bulIssue from './modules/BulletinIssueModule';
 import SelectMember from './modules/detailSearch/SelectMemberModule';
 import memberDetailReducer from './modules/detailSearch/MemberDetailModule';
-import detailreports from './modules/DetailPostReportModule';
+import detailReportReducer from './modules/DetailPostReportModule';
 import reportReducer from './modules';
 
 
@@ -28,7 +28,7 @@ const store = configureStore({
         bulIssue: bulIssue,
         selectMember: SelectMember,
         memberDetail: memberDetailReducer,
-        detailreports: detailreports,
+        detailReportReducer,
         reportReducer
     }
 

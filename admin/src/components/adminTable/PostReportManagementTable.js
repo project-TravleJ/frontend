@@ -84,7 +84,7 @@ function PostReportManagementTable() {
                                 <th nowrap width="100">처리상태</th>
                                 <th nowrap width="100">신고자</th>
                                 <th nowrap width="100">피신고자</th>
-                                <th nowrap width="150">피신고글</th>
+                                <th nowrap width="150">신고ID</th>
                                 <th nowrap width="100">신고사유</th>
                                 <th nowrap width="150">상세이유</th>
                             </tr>
@@ -101,7 +101,7 @@ function PostReportManagementTable() {
                                         />
                                     </td>
                                     <td> {postReport.reportId} </td>
-                                    <td> {(postReport.state===0)?"미처리":(postReport.state===1)?"처리완료":"반려"} </td>
+                                    <td> {(postReport.PostReportManagement===0)?"미처리":(postReport.PostReportManagement===1)?"처리완료":"반려"} </td>
                                     <td> {postReport.reportWriter} </td>
                                     <td> {postReport.reportToMember} </td>
                                     <td> {postReport.reportPostId} </td>

@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createActions, handleActions} from "redux-actions";
 
 const initState = [
     {
-        reportId: "",
+        reportId: 0,
         reportWriter:"",
         reportToMember:"",
         reportDate: "",
@@ -13,16 +13,19 @@ const initState = [
     }
 ];
 
-const detailreports = createSlice({
-    name: "detailreports",
-    initialState: initState,
-    reducers:{
-        getdetailreport: (state, action) => {
-            return state = action.payload;
-        },
-    },
+export const detailreports = 'report/GET_REPORTS';
+
+const actions = createActions({
+    [detailreports]: () => {}
 });
 
-export const { getdetailreport } = detailreports.actions;
+const detailReportReducer = handleActions(
+    {
+        [detailreports]: (state, { payload }) => {
+            return payload;
+        }
+    },
+    initState
+);
 
-export default detailreports.reducer;
+export default detailReportReducer;
