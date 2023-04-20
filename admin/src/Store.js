@@ -30,7 +30,7 @@ const store = configureStore({
         bulIssue: bulIssue,
         selectMember: SelectMember,
         memberDetail: memberDetailReducer,
-        detailreports: detailreports,
+        detailReportReducer,
         reportReducer,
         request: requestReducer,
         items: itemsReducer,
