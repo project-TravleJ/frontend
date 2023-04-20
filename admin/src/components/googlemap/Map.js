@@ -73,7 +73,7 @@ function Map() {
       >
       {callmarkers.map(marker => {console.log(marker); return( 
         <>
-        <Marker position={marker.loc}
+        <Marker position={marker}
           onClick = {() => 
             handleSelectMarker(marker)
           }
@@ -81,7 +81,7 @@ function Map() {
           id = {marker.id}
         >
           {selectedMarker.id === marker.id && <InfoWindow    // 함수나 props로 하나만 띄우도록 고쳐야 함.
-            position={marker.loc}
+            position={marker}
             // options={{pixelOffset: new window.google.maps.Size(0, -25)}}
             
             onCloseClick={() => {

@@ -1,8 +1,8 @@
 import style from './modalcomponents.module.css';
 import { closeModal2, openModal2 } from '../../features/modal/modalSlice2';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal6 } from '../../features/modal/modalSlice6';
-import {callPostReportAPI } from '../../apis/PostReportAPI';
+import { closeModal6, openModal6 } from '../../features/modal/modalSlice6';
+import { callPostReportAPI } from '../../apis/PostReportAPI';
 import { useEffect, useState } from 'react';
 
 
@@ -15,14 +15,14 @@ function PostreportRequest () {
     // decodeJwt(window.localStorage.getItem("accessToken"));
 
     const [form, setForm] = useState({
-        reportId: "2",
+        reportId: "",
         reportWriter:'',
         reportToMember: '',
         reportDate: '',
         reportReason:'',
-        reportDetailes: '',
+        reportDetails: '',
         reportManagement: '',
-        reportPostId: '2',
+        reportPostId: '',
     });
 
     const onChangeHandler = (e) => {
@@ -44,7 +44,7 @@ function PostreportRequest () {
         dispatch(callPostReportAPI({   
             form: form 
         }));
-        dispatch(openModal2());
+        dispatch(openModal6());
     };
 
         return(

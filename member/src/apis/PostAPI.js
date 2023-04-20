@@ -55,20 +55,12 @@ export function callSearchPostsAPI(keyword) {
     }
 }
 
-
-export function getSelectPost(postId) {
-
-
-    return posts;
-}
-
-
 export const callPostPostTitleAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -79,7 +71,7 @@ export const callPostPostTitleAPI = () => {
         })
         .then(reponse => reponse.json())
         .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_TITLE,  payload: result });
     };
 }
@@ -87,9 +79,9 @@ export const callPostPostTitleAPI = () => {
 export const callPostPostStartAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -99,17 +91,17 @@ export const callPostPostStartAPI = () => {
         })
         .then(reponse => reponse.json())
         // .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_START,  payload: result });
     };
 }
 
-export const callPostPostCourseAPI = () => {
+export const callPostPostCourseAPI = (post) => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -119,7 +111,7 @@ export const callPostPostCourseAPI = () => {
         })
         .then(reponse => reponse.json())
         .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_COURSE,  payload: result });
     };
 }
@@ -127,9 +119,9 @@ export const callPostPostCourseAPI = () => {
 export const callPostPostContextAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -139,23 +131,68 @@ export const callPostPostContextAPI = () => {
         })
         .then(reponse => reponse.json())
         .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_CONTEXT,  payload: result });
     };
 }
 
+export const getSelectPost = (postId) => {
+    
+    return async function selectPost(dispatch, getState){
+        
+        const result = await fetch(
+            (url + "/" + postId),
+            {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            }
+            ).then(data => data.json()).then(data=>data.result);
+            
+            dispatch({type:getSelectedPost, payload:result})
+    };
+}
 
-//     return async function selectPost(dispatch, getState){
+export const callDeletePostAPI = (postId) => {
 
-//         const result = await fetch(
-//             (url + "/" + postId),
-//             {
-//                 method: "GET",
-//                 headers: { "Accept": "application/json" }
-//             }
-//         ).then(data => data.json()).then(data=>data.result);
+    return async function deletePost(dispatch, getState){
 
-//         dispatch({type:getSelectedPost, payload:result})
-//     };
-// }
+        const result = await fetch(
+            (url + "/" + postId),
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                }
+            }
+        ).then(data => data.json())
+            .then(data => console.log(data));
+
+        dispatch({type:deletePost, payload:result})
+    };
+
+}
+
+export const callRegistPostAPI = (post) => {
+
+    console.log(post);
+
+    return async function registPost(dispatch, getState) {
+
+        const result = await fetch(
+            (url),
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                },
+                body: post
+            }
+        ).then(data => data.json())
+            .then(data => data.result);
+
+        dispatch({type: getSelectedPost, payload:result})
+    };
+}
 
