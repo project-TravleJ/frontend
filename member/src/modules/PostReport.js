@@ -12,15 +12,15 @@ const actions = createActions({
 
 const reportReducer = handleActions(
     {
-        [GET_REPORT]: (state, {payload}) => {
+        [GET_REPORT]: (state, action) => {
 
-            return payload;
+            return state = action.payload;
         }
     },
     {
-        [POST_REPORT]: (state, {payload}) => {
+        [POST_REPORT]: (state, action) => {
 
-            return payload;
+            return state = action.payload;
         }
     },
     initialState

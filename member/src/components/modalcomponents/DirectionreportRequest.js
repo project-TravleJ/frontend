@@ -14,7 +14,12 @@ function DirectionreportRequest() {
                 </div>
                 <div>
                     <div className={style.smallTitle}>신고 사유</div>
-                    <input type='text' className={style.reporttitle}/>
+                    {/*<input type='text' className={style.reporttitle}/>*/}
+                    <select className={style.reporttitle}>
+                        <option key="title" value="정보오류" >정보오류</option>
+                        <option key="title" value="위치오류" >위치오류</option>
+                        <option key="title" value="기타사항" >기타사항</option>
+                    </select>
                     </div>
                     <div className={style.smallTitle}>신고 내용</div>
                     <input type='text' className={style.reportcontent}/>

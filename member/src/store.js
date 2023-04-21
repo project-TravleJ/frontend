@@ -25,6 +25,7 @@ import creaetCourseModule from "./modules/CreaetCourseModule";
 import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
 import reportReducer from './modules/PostReport';
+import requestReducer from "./modules/RequestModule";
 
 export const store = configureStore({
     reducer: {
@@ -51,10 +52,11 @@ export const store = configureStore({
         selectAttraction: selectAttraction,
         createPost:createPost,
         createCourse: creaetCourseModule,
-        rootReducer,
+        // rootReducer,
+        reportReducer: reportReducer,
+        requestReducer: requestReducer,
 
-
-        selectedPost: selectedPost
+        selectedPost: selectedPost,
     },
 });
 

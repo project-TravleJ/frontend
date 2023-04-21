@@ -41,9 +41,7 @@ function PostreportRequest () {
             return ;
         }
         
-        dispatch(callPostReportAPI({   
-            form: form 
-        }));
+        dispatch(callPostReportAPI(form));
         dispatch(openModal6());
     };
 
@@ -57,7 +55,7 @@ function PostreportRequest () {
                     <div>
                         <div className={style.smallTitle}>신고 사유</div>
                         <input 
-                        name='TITLE'
+                        name='reportReason'
                         placeholder='신고사유'
                         autoComplete='off'
                         onChange= { onChangeHandler}
@@ -65,7 +63,7 @@ function PostreportRequest () {
                         </div>
                         <div className={style.smallTitle}>신고 내용</div>
                         <input
-                        name='CONTEXT'
+                        name='reportDetails'
                         autoComplete='off'
                         onChange= {onChangeHandler}
                         className={style.reportcontent}/>
