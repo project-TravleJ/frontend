@@ -53,16 +53,15 @@ function Map() {
   
   useEffect(
     () => {
-      dispatch(setMarkers(CallLocationAPI()));
-      console.log(callmarkers)
+      dispatch(CallLocationAPI());
     }, []
   );
   // const onUnmount = useCallback(function callback(map){
   //   setMap(null);
   // }, [])
 
-  console.log(callmarkers);
-  console.log(selectedLocation);
+  // console.log(callmarkers);
+  // console.log(selectedLocation);
   return isLoaded ? (
     <GoogleMap 
       mapContainerStyle={containerStyle}

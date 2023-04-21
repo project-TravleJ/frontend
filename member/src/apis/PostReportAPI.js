@@ -3,8 +3,21 @@ import {
     POST_REPORT
 } from '../modules/PostReport';
 
-export const callPostReportAPI = ({form}) => {
+export const callPostReportAPI = (form) => {
     const requestURL = `http://localhost:8080/api/v1/reports/reportPost`;
+
+    console.log("폼", form);
+
+    console.log( JSON.stringify({
+        reportId: form.reportId,
+        reportWriter: form.reportWriter,
+        reportToMember: form.reportToMember,
+        reportDate: form.reportDate,
+        reportReason: form.reportReason,
+        reportDetails: form.reportDetails,
+        reportManagement: form.reportManagement,
+        reportPostId: form.reportPostId
+    }));
 
     return async (dispatch, getState) => {
 

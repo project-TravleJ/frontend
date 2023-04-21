@@ -14,7 +14,7 @@ function BulletinManage () {
 
     useEffect(
         () => {
-            dispatch(getBulIssues(CallBulIssueAPI()));
+            dispatch(CallBulIssueAPI());
         }
     );
 

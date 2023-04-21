@@ -49,7 +49,7 @@ function RequestModal() {
             // writer: form.WRITER,
             form: form
         }));
-        // window.location.reload();
+        window.location.reload();
     };
 
     return(
