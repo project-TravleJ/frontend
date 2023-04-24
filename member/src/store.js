@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
 import modalReducer from './features/modal/modalSlice';
 import modalReducer1 from './features/modal/modalSlice1';
 import modalReducer2 from './features/modal/modalSlice2';
@@ -26,6 +26,10 @@ import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
 import reportReducer from './modules/PostReport';
 import requestReducer from "./modules/RequestModule";
+import loginReducer from './modules/LoginModule';
+import memberReducer from './modules/MemberModule';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import ReduxThunk from 'redux-thunk';
 
 export const store = configureStore({
     reducer: {
@@ -50,14 +54,18 @@ export const store = configureStore({
         limit: limitReducer,
         markers: markers,
         selectAttraction: selectAttraction,
-        createPost:createPost,
+        createPost: createPost,
         createCourse: creaetCourseModule,
         // rootReducer,
         reportReducer: reportReducer,
         requestReducer: requestReducer,
 
         selectedPost: selectedPost,
+        login: loginReducer,
+        member: memberReducer,
     },
-});
+},
+    composeWithDevTools(applyMiddleware(ReduxThunk))
+    );
 
 export default store;
