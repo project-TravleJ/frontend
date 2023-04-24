@@ -24,3 +24,4 @@ export const CallLocationAPI = () => {
         dispatch({type:setMarkers, payload: result});
     }
 }
+

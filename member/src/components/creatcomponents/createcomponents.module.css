@@ -117,7 +117,9 @@
     flex-direction: column;
     background: #EBEBEB;
     font-size: 25px;
+    margin-bottom: 50px;
 }
+
 .postintrocontent1 {
     width: 100%;
     height: 220px;
@@ -201,7 +203,13 @@
 
 .comentBox {
     width: 95%;
-    height: 180px;
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid black;
+}
+
+.courseMemoBox {
+    border-bottom: 100px;
 }
 
 .comentBox2 {

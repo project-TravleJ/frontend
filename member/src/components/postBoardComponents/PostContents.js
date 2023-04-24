@@ -3,6 +3,7 @@ import PostSortbar from "./PostSortbar";
 import Post from "./PostContents.module.css";
 // import PostList from "./PostList";
 import PostPagingList from "./PostPagingList";
+import {useNavigate} from "react-router-dom";
 
 function PostContents() {
 
