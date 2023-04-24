@@ -52,10 +52,11 @@ export const deleteLocationAPI = (location) => {
 
 export const updateLocationAPI = (attractionId, {form}) =>{
 
-    const resultURL = `http://localhost:8080/api/v1/attraction/+${attractionId}`;
+    const resultURL = "http://localhost:8080/api/v1/attraction/";
 
     return async (dispatch, getState) => {
-        const result = await fetch(resultURL,
+        const result = await fetch(
+            (resultURL + attractionId),
             {
                 method: "PUT",
                 headers: {

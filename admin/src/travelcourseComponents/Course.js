@@ -3,6 +3,7 @@ import Map from "../components/googlemap/Map";
 import { useDispatch ,useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { CallLocationAPI, deleteLocationAPI, updateLocationAPI} from "../apis/LocationAPI";
+import { modifyName, modifyDef } from "../modules/MapsSelectedMarker";
 
 
 
@@ -11,20 +12,6 @@ function Course() {
     const dispatch = useDispatch();
     const [deleteLocation, setdeleteLocation] = useState([]);
     const selectAtt = useSelector(store => store.selectAttraction);
-    
-    const handleNameChange = (e) => {
-        dispatch(updateLocationAPI({
-            ...selectAtt,
-            name: e.target.value
-        }));
-    };
-
-    const handleDescriptionChange = (e) => {
-        dispatch(updateLocationAPI({
-            ...selectAtt,
-            def: e.target.value
-        }));
-    };
 
     console.log("selectAtt : ", selectAtt);
     // useEffect(() => {
@@ -62,7 +49,7 @@ function Course() {
                 <div className={ CourseStyle.Sidebar}>
                     <div align="center">
                         <p align="center">여행지 이름</p>
-                        <input type="text" className={CourseStyle.text1} value={(selectAtt)? selectAtt.name: ""} onChange={handleNameChange}/>
+                        <input type="text" className={CourseStyle.text1} value={(selectAtt)? selectAtt.name: ""} onChange={(e) => {dispatch(modifyName(e.target.value))}}/>
                     </div>
                     <div className= {CourseStyle.Box1}>
                         <p>여행지 사진</p>
@@ -70,7 +57,7 @@ function Course() {
                     </div>
                     <div className={CourseStyle.bottomBox}>
                         <p align="center">여행지 설명</p>
-                        <input type="text" value={(selectAtt)?selectAtt.def:""} onChange={handleDescriptionChange}></input>
+                        <input type="text" value={(selectAtt)?selectAtt.def:""} onChange={(e) => {dispatch(modifyDef(e.target.value))}}></input>
                     </div>
                 </div>
             </div>
