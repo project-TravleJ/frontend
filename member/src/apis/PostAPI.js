@@ -206,7 +206,6 @@ export const callRegistPostAPI = (post) => {
                 },
                 body: JSON.stringify(
                     {
-
                         postTitle: post.postTitle,
                         postStart: post.postStart,
                         postEnd: post.postEnd,
@@ -219,10 +218,15 @@ export const callRegistPostAPI = (post) => {
             }
         ).then(data => data.json())
             .then(data => data.result);
+            // .then(result => dispatch(dispatch(callRegistCourseAPI(result))))
 
-        dispatch({type: getSelectedPost, payload:result})
+        await dispatch({type: getSelectedPost, payload:result})
 
-        await callRegistCourseAPI(result);
+        console.log("코스 등록 API 실행2");
+        console.log("result : ", result);
+
+        // await dispatch(callRegistCourseAPI(result));
+
     };
 }
 

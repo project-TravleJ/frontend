@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState} from 'react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMarkers } from '../../modules/MarkersModule';
+import {setMarkers, setMarkersByCourse} from '../../modules/MarkersModule';
 import { CallLocationAPI } from '../../apis/LocationAPI';
 import {GoogleMap, InfoWindow, Marker, MarkerF, useJsApiLoader} from '@react-google-maps/api';
 import { resetAtt, setAtt } from '../../modules/MapsSelectedMarker';
@@ -59,8 +59,7 @@ function PostMap() {
   useEffect(
       () => {
 
-        const courseList = selectedPost.courseList;
-        dispatch(setMarkers(courseList.map(course => course.attraction)))
+        dispatch(setMarkersByCourse(selectedPost.courseList.map(course => course)))
 
       }, [selectedPost.postId]
   );
@@ -71,16 +70,17 @@ function PostMap() {
       <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={12}
-          onLoad={onLoad}
+          zoom={10}
+          // onLoad={onLoad}
           // onUnmount={onUnmount}
       >
-        {callmarkers && callmarkers.map(marker => {console.log(marker); return(
+        {callmarkers && callmarkers.map(marker => {return(
             <>
               <Marker position={marker.loc}
                       onClick = {() => handleSelectMarker(marker)}
                       value = {marker}
                       id = {marker.id}
+                      label = {marker.idx}
               >
                 {selectedMarker.id === marker.id && <InfoWindow    // 함수나 props로 하나만 띄우도록 고쳐야 함.
                     position={marker.loc}

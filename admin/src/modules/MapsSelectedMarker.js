@@ -4,7 +4,7 @@ const initState = {
     "id":"",
     "name":"",
     "loc":{
-        "lat":0.0, 
+        "lat":0.0,
         "lng": 0.0
     },
     "def":""
@@ -27,3 +27,5 @@ const selectAttraction  = createSlice({
 export const {setAtt, resetAtt} = selectAttraction.actions;
 
 export default selectAttraction.reducer;
+
+public void String ajh

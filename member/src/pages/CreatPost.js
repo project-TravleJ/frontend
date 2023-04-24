@@ -20,7 +20,7 @@ function  CreatPost() {
     console.log("작성 페이지");
 
     const dispatch = useDispatch();
-    // const selectPost = useSelector(store => store.selectedPost);
+    const selectPost = useSelector(store => store.selectedPost);
     const newPost = useSelector(store => store.createPost);
     const newCourse = useSelector(store => store.createCourse)
 
@@ -55,11 +55,11 @@ function  CreatPost() {
                         onChange={(e) => {dispatch(getPostTitle(e.target.value))}}
                     />
                     <button className={style.btnset} onClick={
-                        async () => {
-                            // onClickPostPostTilteHandler();
+                         () => {
                             dispatch(openModal1());
-                            await dispatch(callRegistPostAPI(newPost));   // 작성 완료 이벤트
-                            // await dispatch(callRegistCourseAPI(selectPost));
+                            dispatch(callRegistPostAPI(newPost))
+                            dispatch(callRegistCourseAPI(selectPost));
+                            console.log("완료", selectPost);
                         }
                     }>
                         완료
