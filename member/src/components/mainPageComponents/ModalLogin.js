@@ -24,7 +24,7 @@ const ModalLogin = () => {
         <div className={Modal.modaljoin}>
             <div className={Modal.logo}>
             <img src="../../image/travelJLogo.png" height="73px" />
-                <h3>로그인</h3>
+                <h3>카카오 간편 로그인</h3>
             </div>
             {/* <div className={Modal.inputs}>
                 <input
@@ -54,10 +54,11 @@ const ModalLogin = () => {
             <div className={Modal.or}>
                 OR
             </div> */}
-                <button
+
+                <img src="../../../images/kakao_login_button.png"
+                    className={Modal.kakaobutton}
                     onClick={loginHandler}
-                ><img src="../../../images/kakao_login_button.png"/>
-                </button>
+                />
         </div>
         </aside>
     );

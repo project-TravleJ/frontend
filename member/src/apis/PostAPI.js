@@ -18,13 +18,19 @@ export function callGetPostsAPI() {
             url, 
                 {
                     method:"GET", 
-                    headers: {"Accept": "application/json"}
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "*/*",
+                        "Auth": window.localStorage.getItem('jwtToken')
                 }
-            ).then(data => data.json()).then(data => data.result);
+                }
+            ).then(data => data.json())
 
+        console.log(window.localStorage.getItem("jwtToken"));
         console.log('result : ', result);
-
+        if (result.status === 200) {
         dispatch({ type: GET_POSTS, payload: result });
+        }
     }
 }
 
