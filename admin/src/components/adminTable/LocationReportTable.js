@@ -22,14 +22,50 @@ function LocationReportTable() {
 
     
 
+    const [start, setStart] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [endPage, setEndPage] = useState(1);
+
+    const requestList = requests?.requestList?.content || requests?.searchByMultiple?.content;
+    const pageInfo = requests?.paging;
+
+
+       // 총 페이지의 모음
+    const pageNumber = [1];
+
+    if (pageInfo) {
+        for (let i = pageInfo.startPage + 1; i <= pageInfo.endPage; i++) {
+            pageNumber.push(i);
+            
+        }
+    }
+
     useEffect(
         () => {
-            dispatch(callRequestsAPI(
-                
-            ));            
-        },
-        []
+            // setStart((currentPage - 1) * 5);
+            dispatch(callRequestsAPI({currentPage: currentPage}))
+            
+        }
+        ,[currentPage]
+    
     );
+
+
+    useEffect(() => {
+        console.log("Current page:", currentPage);
+    }, [currentPage]);
+
+
+    // useEffect(
+    //     () => {
+    //         dispatch(callRequestsAPI(
+                
+    //         ));            
+    //     },
+    //     []
+    // );
+
+
 
     const deletedRequest = (requestId, isChecked) => {
     if(isChecked) {
@@ -45,7 +81,6 @@ function LocationReportTable() {
         setdeleteRequest([])
         window.location.reload();
     }
-
 
 
     const modalState = useSelector(store => store.modal.request);
@@ -85,7 +120,7 @@ function LocationReportTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        { requests && requests.map((request) => {return(
+                        { Array.isArray(requestList) && requestList.map((request) => {return(
                             <tr >
                                 <td> 
                                     <input 
@@ -108,6 +143,41 @@ function LocationReportTable() {
                     </tbody>
                 </table>
             </div>
+
+            <div className={Tstyle.pageTable}>
+            <div className={Tstyle.minusBtn}>
+            { Array.isArray(requestList) &&                
+            <button 
+                onClick={() => setCurrentPage(currentPage - 1)} 
+                disabled={currentPage === 1}
+            >
+                &lt;
+            </button>
+            }
+            </div>
+
+            <div className={Tstyle.pageNumber}>
+            {pageNumber.map((num) => (
+            <li key={num} onClick={() => setCurrentPage(num)}>
+                <button 
+                    style={currentPage === num ? {backgroundColor : 'orange' } : null}
+                >
+                    {num}
+                </button>
+            </li>
+            ))}
+            </div>
+            <div className={Tstyle.plusBtn}>
+            { Array.isArray(requestList) &&  
+            <button 
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage === pageInfo?.endPage || pageInfo?.endPage == 1}>
+            
+                &gt;
+            </button>
+        }
+        </div>
+        </div>
         </div>
         </>
     );

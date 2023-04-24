@@ -14,6 +14,7 @@ import modalReducer11 from './features/modal/modalSlice11';
 import modalReducer12 from './features/modal/modalSlice12';
 import modalReducer13 from './features/modal/modalSlice13';
 import modalReducer14 from './features/modal/modalSlice14';
+import modalReducer15 from './features/modal/modalSlice15';
 import imageReducer from './features/modal/imageSlice';
 
 import postReducer from './modules/PostModule';
@@ -26,6 +27,7 @@ import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
 import reportReducer from './modules/PostReport';
 import requestReducer from "./modules/RequestModule";
+import attractions from "./modules/AttractionModule";
 import loginReducer from './modules/LoginModule';
 import memberReducer from './modules/MemberModule';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -48,6 +50,7 @@ export const store = configureStore({
         modal12: modalReducer12,
         modal13: modalReducer13,
         modal14: modalReducer14,
+        modal15: modalReducer15,
         image: imageReducer,
 
         post: postReducer,
@@ -61,6 +64,7 @@ export const store = configureStore({
         requestReducer: requestReducer,
 
         selectedPost: selectedPost,
+        attractions: attractions,
         login: loginReducer,
         member: memberReducer,
     },

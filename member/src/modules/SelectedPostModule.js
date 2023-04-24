@@ -7,7 +7,14 @@ const initialState = {
     writer: '',
     postStart: '',
     postEnd: '',
-    courseList: [{courseId:0, Attraction:{}, courseMemo:"", idx:0}],
+    courseList: [
+        {
+            attraction: {attractionId: 0, attractionName: "", attractionDef: "", attractionLat: 0.0, attractionLng: 0.0},
+            courseId: 0,
+            courseMemo: "",
+            courseIdx:0
+        }
+    ],
     context: "",
     likes: 0
 }
@@ -27,10 +34,18 @@ const selectedPost = createSlice({
         getPostTitle:(state, action) => {
             console.log(action.payload);
             return state.postId = action.payload;
+        },
+        getCourseList: (state, action) => {
+            state.courseList = action.payload;
         }
     },
 });
 
-export const { getSelectedPost, resetSelectPost, getPostTitle } = selectedPost.actions;
+export const {
+    getSelectedPost,
+    resetSelectPost,
+    getPostTitle,
+    getCourseList
+} = selectedPost.actions;
 
 export default selectedPost.reducer;

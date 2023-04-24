@@ -1,18 +1,46 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { report_close } from '../../modules/ModalModule';
 import ModalDesign from './modalComponent.module.css';
+import { callUpdatePostReportAPI } from '../../apis/PostReportAPI';
+import { useState } from "react";
+
 
 
 function ReportModal() {
 
     const dispatch = useDispatch();
 
-    // const modalStatus = useSelector(store => store.modal);
+    const items = useSelector(store => store.detailReportReducer)
+    const modalState = useSelector(store => store.modal);
+    const [form, setForm] = useState({
+        reportManagement: ''
+    });
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
 
     const handleCloseModal = () => {
         dispatch(report_close());
-        console.log("report modal close");
+        console.log("report modal close", modalState);
     }
+
+
+    
+    const updateReportBtn = () => {
+    
+        console.log("update report button", form);
+        console.log(items.reportId);
+        dispatch(callUpdatePostReportAPI(
+            items.reportId, {
+                form: form
+            }));
+            window.location.reload();
+    }
+    
 
     return(
     
@@ -25,11 +53,11 @@ function ReportModal() {
                     <div className={ModalDesign.smallTitle}># 신고 처리하기</div>
                     <div className={ModalDesign.topBox}>
                         <div className={ModalDesign.topItems}>
-                            <input type="radio" id="reportHandle" name="report" value="accept"/>
+                            <input type="radio" id="reportHandle" name="reportManagement" value="처리" onClick={onChangeHandler}/>
                             <label for="reportHandle">  신고 처리</label>
                         </div>
                         <div className={ModalDesign.topItems}>
-                            <input type="radio" id="reportReturn" name="report" value="reject"/>
+                            <input type="radio" id="reportReturn" name="reportManagement" value="반려" onClick={onChangeHandler}/>
                             <label for="reportReturn">  신고 반려</label>
                         </div>
                     </div>
@@ -57,7 +85,7 @@ function ReportModal() {
                 </div>
                 <div className={ModalDesign.buttonBox}>
                     <button className={ModalDesign.buttonStyle} onClick={handleCloseModal}>취소</button>
-                    <button className={ModalDesign.buttonStyle} onClick={handleCloseModal}>확인</button>
+                    <button className={ModalDesign.buttonStyle} onClick={updateReportBtn}>확인</button>
                 </div>
                 <br/>
             </div>

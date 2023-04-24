@@ -1,26 +1,26 @@
-import style from '../components/creatcomponents/createcomponents.module.css';
-import CreatMainTitle from '../components/creatcomponents/CreateMainTitle';
-import CreatMainContent from '../components/creatcomponents/CreateMainContent';
-import CreatIntroduce from '../components/creatcomponents/CreateIntroduce';
-import CreatComent from '../components/creatcomponents/CreateComent';
-import Footer from "../components/Footer";
+import style from '../../components/creatcomponents/createcomponents.module.css';
+import CreatMainTitle from '../creatcomponents/CreateMainTitle';
+import CreatMainContent from '../creatcomponents/CreateMainContent';
+import CreatIntroduce from '../creatcomponents/CreateIntroduce';
+import CreatComent from '../creatcomponents/CreateComent';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {getContext, getPost, getPostEnd, getPostStart, getPostTitle, getCourseMemo} from "../modules/CreatePostModule";
-import Map from "../components/googlemap/Map";
-import {openModal} from "../features/modal/modalSlice";
-import {openModal1} from "../features/modal/modalSlice1";
-import {callRegistPostAPI} from "../apis/PostAPI";
-import {resetCourse} from "../modules/CreaetCourseModule";
-import CreateIntroduce from "../components/creatcomponents/CreateIntroduce";
-import {callRegistCourseAPI} from "../apis/CourseAPI";
+import {getContext, getPost, getPostEnd, getPostStart, getPostTitle, getCourseMemo} from "../../modules/CreatePostModule";
+import Map from "../../components/googlemap/Map";
+import {openModal} from "../../features/modal/modalSlice";
+import {openModal1} from "../../features/modal/modalSlice1";
+import {callRegistPostAPI} from "../../apis/PostAPI";
+import {resetCourse} from "../../modules/CreaetCourseModule";
+import CreateIntroduce from "../../components/creatcomponents/CreateIntroduce";
+import {callRegistCourseAPI} from "../../apis/CourseAPI";
+import {closeModal15} from "../../features/modal/modalSlice15";
 
-function  CreatPost() {
+function  PostUpdate() {
 
     console.log("작성 페이지");
 
     const dispatch = useDispatch();
-    const selectPost = useSelector(store => store.selectedPost);
+    // const selectPost = useSelector(store => store.selectedPost);
     const newPost = useSelector(store => store.createPost);
     const newCourse = useSelector(store => store.createCourse)
 
@@ -43,7 +43,10 @@ function  CreatPost() {
 
     return(
         // <div className={style.maginhead }>
-        <div className={ style.container}>
+        <aside className={style.modalbackdrop} onDoubleClick={() => {
+            dispatch(closeModal15());
+        }}>
+        <div className={ style.modalcontainer}>
             <div className={ style.postbodystyle }>
                 <br/>
                 <div className={style.createmaintitlestyle}>
@@ -55,11 +58,11 @@ function  CreatPost() {
                         onChange={(e) => {dispatch(getPostTitle(e.target.value))}}
                     />
                     <button className={style.btnset} onClick={
-                         () => {
+                        async () => {
+                            // onClickPostPostTilteHandler();
                             dispatch(openModal1());
-                            dispatch(callRegistPostAPI(newPost))
-                            dispatch(callRegistCourseAPI(selectPost));
-                            console.log("완료", selectPost);
+                            await dispatch(callRegistPostAPI(newPost));   // 작성 완료 이벤트
+                            // await dispatch(callRegistCourseAPI(selectPost));
                         }
                     }>
                         완료
@@ -141,12 +144,9 @@ function  CreatPost() {
 
                 </div>
             </div>
-            {/* </div> */}
-            {/* <div className={style.maginhead }> */}
-            <Footer/>
-            {/* </div> */}
         </div>
+        </aside>
     )
 }
 
-export default CreatPost;
+export default PostUpdate;

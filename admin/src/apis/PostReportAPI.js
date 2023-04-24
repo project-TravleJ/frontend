@@ -1,18 +1,24 @@
 // import report from "../data/post-report-data.json"
-import { detailreports } from '../modules/DetailPostReportModule';
-import { updateReports } from "../modules/PostUpdateModule";
+import { getdetailreport } from '../modules/DetailPostReportModule';
+import { PUT_REPORT } from "../modules/PostUpdateModule";
 import { getReports } from "../modules/PostReportModule";
 
 
 
-export function callPostReportAPI() {
+export function callPostReportAPI({currentPage}) {
 
-    const url = "http://localhost:8080/api/v1/reports";
+    // const url = "http://localhost:8080/api/v1/reports";
+
+    if (currentPage !== undefined || currentPage !== null) {
+        URL = `http://localhost:8080/api/v1/reports/?page=${currentPage}`;
+    } else {
+        URL = 'localhost:8080/api/v1/reports/';
+    }
 
     return async function getPostReport(dispatch, getState) {
     
         const result = await fetch(
-            url+"/list",
+            URL,
         {
                 method: "GET",
                 headers: {"Accept": "application/json"}
@@ -20,6 +26,7 @@ export function callPostReportAPI() {
             ).then(data => data.json())
             .then(data => data.result);
 
+            console.log('[ReportAPICalls] callReportAPI RESULT : ', result);
             dispatch({type:getReports, payload:result});
         }
 }
@@ -71,14 +78,15 @@ export const deleteReportAPI = (report) => {
 }
 }
 
-export const callUpdatePostReportAPI = ({form}) =>{
+export const callUpdatePostReportAPI = (reportId ,{form}) =>{
+    
 
-    const url = "http://localhost:8080/api/v1/reports";
+    const resultURL = "http://localhost:8080/api/v1/reports/";
 
     return async (dispatch, getState) => {
 
         const result = await fetch(
-            url+"{reportId}",
+            (resultURL + reportId),
             {
                 method: "PUT",
                 headers: {
@@ -91,21 +99,50 @@ export const callUpdatePostReportAPI = ({form}) =>{
             })
             }
         ).then(response => response.json())
-        .then(res => res.result);
-        console.log(result);
+        .then(response => response.result);
+                
 
-        dispatch({type:updateReports, payload:result});
+        dispatch({type: PUT_REPORT, payload: result});
     };
 }
 
-export const callDetailPostReportAPI = ({form}) => {
+// 상세 조회
+export const detailPostReportAPI = (reportId) => {
+    const reportURL = "http://localhost:8080/api/v1/reports/"+ reportId;
 
-    const url = "http://localhost:8080/api/v1/reports/searchReport";
+    return async (dispatch, getState) => {
 
+        const result = await fetch(reportURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            }
+        })
+        .then(response => response.json())
+        .then(response => response.result);
+        console.log(result);
+        
+        dispatch({ type: getdetailreport, payload: result });
+    }
+}
+
+// 검색 조회 API
+export const callDetailPostReportAPI = ({form, currentPage}) => {
+
+    console.log(form);
+
+    // const url = "http://localhost:8080/api/v1/reports/searchReport";
+
+    if (currentPage !== undefined || currentPage !== null) {
+        URL = `http://localhost:8080/api/v1/reports/searchReport?page=${currentPage}`;
+    } else {
+        URL = 'localhost:8080/api/v1/reports/searchReport';
+    }
     return async function getDetailreport(dispatch, getState) {
 
         const result = await fetch(
-            url,
+            URL,
         {
                 method: "POST",
                 headers: {
@@ -115,12 +152,14 @@ export const callDetailPostReportAPI = ({form}) => {
                 body: JSON.stringify({
                     reportWriter: form.reportWriter,
                     reportToMember: form.reportToMember,
-                    reportDate: form.reportDate
+                    reportDate: form.reportDate,
+                    reportManagement : form.reportManagement
                 })
         }
         ).then(data => data.json())
         .then(data => data.result);
-
+        
+        console.log('[ReportsearchAPICalls] callsearchAPI RESULT : ', result);
         dispatch({type:getReports, payload:result});
     }
 

@@ -149,6 +149,17 @@
     align-items: center;
 }
 
+.createPlaceInsertAttList {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.createPlaceInsertAttItems {
+    border: 1px solid black;
+    margin: 5px;
+}
+
 .placeplace {
     width: 90%;
     height: 230px;
