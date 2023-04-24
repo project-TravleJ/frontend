@@ -63,6 +63,6 @@ const markers = createSlice ({
     },
 });
 
-export const { setMarkers, addMarker } = markers.actions;
+export const { setMarkers, addMarker, setMarkersByCourse } = markers.actions;
 
 export default markers.reducer;

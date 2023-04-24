@@ -7,7 +7,8 @@ export const callRegistCourseAPI = (post) => {
 
     const url = "http://localhost:8080/api/v1/posts/" + post.postId + "/courses";
     console.log("코스");
-    console.log("after ", post.courseList);
+    console.log("after ", post);
+    console.log("코스 API url:", url);
 
     const inputList = post.courseList.map(course => JSON.stringify(
         {
@@ -23,7 +24,7 @@ export const callRegistCourseAPI = (post) => {
             courseMemo: course.courseMemo,
 
         }))
-    console.log(inputList);
+    console.log("코스API : ", inputList);
 
     return async (dispatch, getState) => {
 
@@ -35,8 +36,8 @@ export const callRegistCourseAPI = (post) => {
                     "Content-Type": "application/json",
                     "Accept": "*/*"
                 },
-                // body: inputList
-                body: post.courseList
+                body: "[" + inputList + "]"
+                // body: post.courseList
             }
         ).then(data => data.json())
             .then(data => data.result);
