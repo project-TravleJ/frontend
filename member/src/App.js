@@ -21,6 +21,7 @@ import ModalPwd from './components/myPageComponents/ModalPwd';
 import ModalImage from './components/myPageComponents/ModalImage';
 import Memberdelete from './components/modalcomponents/Memberdelete';
 import MemberdeleteFinish from './components/modalcomponents/MemberdeletFinish';
+import Oauth from './components/mainPageComponents/Oauth';
 
 function App() {
   const { isOpen} = useSelector((store) => store.modal);
@@ -66,7 +67,8 @@ function App() {
             <Route path="postBoard" element={<PostBoard />} />
             {/* <Route index element={ <PostBoard/> }/> */}
             <Route path="post" element={ <CreatPost/> }/>
-        </Route>
+          </Route>
+          <Route path="/oauth" element={<Oauth/>} />
       </Routes>
     </BrowserRouter>
     </main>
