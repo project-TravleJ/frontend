@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callPostReportAPI, deleteReportAPI} from "../../apis/PostReportAPI";
+import { detailPostReportAPI, callPostReportAPI, deleteReportAPI} from "../../apis/PostReportAPI";
 import { member_open, report_open } from "../../modules/ModalModule";
 import MemberControlModal from "../adminControlModal/MemberControlModal";
 import ReportModal from "../adminControlModal/ReportModal";
@@ -90,18 +90,19 @@ function PostReportManagementTable() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((postReport) => {return(
+                            { data && data.map((postReport) => {return(
                                 <tr >
                                     <td> 
                                         <input 
                                             type="checkbox"
                                             name={postReport.reportId}
                                             value={postReport.reportId}
-                                            onClick={e=>deletedReport(e.target.value, e.target.checked)}
+                                            onClick={() => dispatch(detailPostReportAPI(postReport.reportId))}
+                                            onChange={e=>deletedReport(e.target.value, e.target.checked)}
                                         />
                                     </td>
                                     <td> {postReport.reportId} </td>
-                                    <td> {(postReport.PostReportManagement===0)?"미처리":(postReport.PostReportManagement===1)?"처리완료":"반려"} </td>
+                                    <td> {postReport.reportManagement} </td>
                                     <td> {postReport.reportWriter} </td>
                                     <td> {postReport.reportToMember} </td>
                                     <td> {postReport.reportPostId} </td>

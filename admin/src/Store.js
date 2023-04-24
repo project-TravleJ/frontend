@@ -17,6 +17,9 @@ import requestReducer from './modules/RequestModule';
 import itemsReducer from './modules/requestItems';
 import requestDetailReducer from './modules/RequestDetailModule';
 import attraction from "./modules/LocationModule";
+import updateReportReducer from './modules/PostUpdateModule';
+import locationReducer from './modules/LocationDeleteModule';
+import updateLocationReducer from './modules/LocationUpdateModule';
 
 const store = configureStore({
     reducer: {
@@ -36,7 +39,10 @@ const store = configureStore({
         request: requestReducer,
         items: itemsReducer,
         requestDetail: requestDetailReducer,
-        attraction: attraction
+        attraction: attraction,
+        updateReportReducer,
+        locationReducer,
+        updateLocationReducer
     },
     
 });
