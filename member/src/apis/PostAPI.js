@@ -3,7 +3,7 @@ import posts from "../components/data/post-detail.json";
 import bestposts from "../components/data/post-detail2.json";
 import { SEARCH_POSTS } from "../modules/PostModule";
 import {getSelectedPost} from "../modules/SelectedPostModule";
-import {callRegistCourseAPI} from "./CourseAPI";
+import {callGetCoursesAPI, callRegistCourseAPI} from "./CourseAPI";
 
 const url = "http://localhost:8080/api/v1/posts";
 
@@ -150,6 +150,8 @@ export const getSelectPost = (postId) => {
             ).then(data => data.json()).then(data=>data.result);
             
             dispatch({type:getSelectedPost, payload:result})
+
+            dispatch(callGetCoursesAPI(postId));
     };
 }
 
@@ -177,12 +179,25 @@ export const callDeletePostAPI = (postId) => {
 }
 
 export const callRegistPostAPI = (post) => {
+
+    console.log(post);
+
+    const newPost = JSON.stringify({
+        postId:0,
+        postTitle: post.postTitle,
+        writer: post.postWriter,
+        postStart: post.postStart,
+        postEnd: post.postEnd,
+        courseList: post.courseList,
+        context: post.context
+    })
+    console.log(newPost);
     
     //JSON.stringify() 억까 해결
     return async function registPost(dispatch, getState) {
 
         const result = await fetch(
-            (url),
+            ("http://localhost:8080/api/v1/postswithcourse"),
             {
                 method: "POST",
                 headers: {
@@ -191,12 +206,12 @@ export const callRegistPostAPI = (post) => {
                 },
                 body: JSON.stringify(
                     {
-                        postId: post.postId,
+
                         postTitle: post.postTitle,
                         postStart: post.postStart,
                         postEnd: post.postEnd,
                         writer: post.writer,
-                        postDate: post.postDate,
+                        // postDate: post.postDate,
                         courseList: post.courseList,
                         context: post.context
                     }

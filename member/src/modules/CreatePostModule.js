@@ -10,7 +10,9 @@ const initialState = {
     "attDTOList": [],
     courseIdxArr: [],
     courseMemoList: [],
-    courseList: [{Attraction:{}, courseMemo:"", idx:0}]
+    courseList: [],
+    courseIdx:0,
+    isCreate: false
 }
 
 const createPost = createSlice({
@@ -21,26 +23,31 @@ const createPost = createSlice({
             return state = action.payload;
         },
         getPostTitle: (state, action) => {
-            return state.postTitle = action.payload;
+            state.postTitle = action.payload;
         },
         getWriter: (state, action) => {
-            return state.postWriter = action.payload;
+            state.postWriter = action.payload;
         },
         getPostStart: (state, action) => {
-            return state.postStart = action.payload;
+            state.postStart = action.payload;
         },
         getPostEnd: (state, action) => {
-            return state.postEnd = action.payload;
+            state.postEnd = action.payload;
         },
         getContext: (state, action) => {
-            return state.context = action.payload;
+            state.context = action.payload;
         },
         getCourseMemo: (state, action) => {
-            return state.courseList.courseMemoList[action.payload.idx - 1] = action.payload.courseMemo;
+            console.log("메모 저장 이므니다.");
+            console.log(action.payload);
+            state.courseList[action.payload.idx - 1].courseMemo = action.payload.courseMemo;
         },
         getCourseListAdd: (state, action) => {
-            action.payload.idx = state.courseList.size();
-            return state.courseList = state.courseList.add(action.payload);
+            
+                action.payload.idx = state.courseIdx + 1;
+                state.courseIdx = state.courseIdx + 1;
+                state.courseList = [...state.courseList, action.payload];
+
         },
         resetPost: (state) => {
             return state = initialState;
@@ -55,10 +62,9 @@ export const { getPost,
     getPostStart,
     getPostEnd,
     getContext,
-    getAttDTOList,
-    getCourseIdxArr,
-    getCourseMemoList,
+    getCourseMemo,
     resetPost,
-    getCourseListAdd } = createPost.actions;
+    getCourseListAdd,
+    } = createPost.actions;
 
 export default createPost.reducer;

@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initState = {
-    "id":"",
-    "name":"",
-    "loc":{
-        "lat":0.0, 
-        "lng": 0.0
-    },
-    "def":""
+    // "id":"",
+    // "name":"",
+    // "loc":{
+    //     "lat":0.0,
+    //     "lng": 0.0
+    // },
+    // "def":""
 };
 
 const selectAttraction  = createSlice({

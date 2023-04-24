@@ -26,6 +26,7 @@ import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
 import reportReducer from './modules/PostReport';
 import requestReducer from "./modules/RequestModule";
+import attractions from "./modules/AttractionModule";
 
 export const store = configureStore({
     reducer: {
@@ -57,6 +58,7 @@ export const store = configureStore({
         requestReducer: requestReducer,
 
         selectedPost: selectedPost,
+        attractions: attractions,
     },
 });
 
