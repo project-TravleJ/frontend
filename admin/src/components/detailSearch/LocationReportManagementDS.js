@@ -26,6 +26,7 @@ function LocationReportManagementDS() {
 
     const onClickDetailSearchHandler = () => {
         dispatch(callRequestSearchAPI({form: form, currentPage:currentPage}));
+        console.log("form", form);
     }
 
     const resetHandler = () => {

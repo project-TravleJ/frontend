@@ -17,6 +17,8 @@ import {openModal4} from "../features/modal/modalSlice4";
 import Map from "../components/googlemap/Map";
 import {openModal2} from "../features/modal/modalSlice2";
 import PostMap from "../components/googlemap/PostMap";
+import { openModal15 } from '../features/modal/modalSlice15';
+
 
 function  PostLayout() {
 
@@ -45,8 +47,8 @@ function  PostLayout() {
                 <div className={ style.postbodystyle }>
                     {/*<PostBodySurv/>*/}
                     <div className={style.postbodysurvstyle}>
-                        <div>
-                            <div>수정</div>
+                        <div onClick={() => {dispatch(closeModal3()); dispatch(openModal15()); }}>
+                            수정
                         </div>
                         &nbsp;&nbsp;&nbsp;
                         <div onClick={() => {dispatch(openModal4());}}>
@@ -72,6 +74,8 @@ function  PostLayout() {
                     <div className={style.postmainContent}>
                         <div className={style.postmainContent1}>
                             <div className={style.postcalender}>
+                                <input type="date" className={style.datestyle}/>
+                                &nbsp; &nbsp;
                                 <input type="date" className={style.datestyle}/>
                             </div>
                             <div className={style.postmap}>

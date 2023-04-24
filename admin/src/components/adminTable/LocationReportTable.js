@@ -40,20 +40,22 @@ function LocationReportTable() {
         }
     }
 
-
     useEffect(
         () => {
             // setStart((currentPage - 1) * 5);
             dispatch(callRequestsAPI({currentPage: currentPage}))
-
+            
         }
         ,[currentPage]
+    
     );
 
 
     useEffect(() => {
         console.log("Current page:", currentPage);
     }, [currentPage]);
+
+
     // useEffect(
     //     () => {
     //         dispatch(callRequestsAPI(

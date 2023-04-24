@@ -73,17 +73,17 @@ export const callRequestUpdateAPI = (requestId, {form}) => {
 }
 
 export const callRequestsAPI = ({currentPage}) => { 
-    // const requestURL = `http://localhost:8080/api/v1/requests/page?offset=${currentPage}`;
+    const requestURL = `http://localhost:8080/api/v1/requests/?page=${currentPage}`;
     
-    if (currentPage !== undefined || currentPage !== null) {
-        URL = `http://localhost:8080/api/v1/requests/?page=${currentPage}`;
-    } else {
-        URL = 'localhost:8080/api/v1/requests/page';
-    }
+    // if (currentPage !== undefined || currentPage !== null) {
+    //     URL = `http://localhost:8080/api/v1/requests/?page=${currentPage}`;
+    // } else {
+    //     URL = 'localhost:8080/api/v1/requests/page';
+    // }
     console.log("current",currentPage);
     return async (dispatch, getState) => {
 
-        const result = await fetch(URL, {
+        const result = await fetch(requestURL, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -125,15 +125,15 @@ export const callRequestsAPI = ({currentPage}) => {
     export const callRequestSearchAPI = ({form, currentPage}) => {
         console.log('[RequestAPICalls] callRequestSearchAPI Call');
         console.log(form);
-        // const requestURL = 'http://localhost:8080/api/v1/requests/search'
-        if (currentPage !== undefined || currentPage !== null) {
-            URL = `http://localhost:8080/api/v1/requests/search?page=${currentPage}`;
-        } else {
-            URL = 'localhost:8080/api/v1/requests/search';
-        }
+        const requestURL = `http://localhost:8080/api/v1/requests/search?page=${currentPage}`
+        // if (currentPage !== undefined || currentPage !== null) {
+        //     URL = `http://localhost:8080/api/v1/requests/search?page=${currentPage}`;
+        // } else {
+        //     URL = 'localhost:8080/api/v1/requests/search';
+        // }
         return async (dispatch, getState) => {
     
-            const result = await fetch(URL, {
+            const result = await fetch(requestURL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
