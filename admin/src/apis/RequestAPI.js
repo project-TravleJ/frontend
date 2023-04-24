@@ -72,12 +72,18 @@ export const callRequestUpdateAPI = (requestId, {form}) => {
     };    
 }
 
-export const callRequestsAPI = () => { 
-    const requestURL = `http://localhost:8080/api/v1/requests/`;
-
+export const callRequestsAPI = ({currentPage}) => { 
+    // const requestURL = `http://localhost:8080/api/v1/requests/page?offset=${currentPage}`;
+    
+    if (currentPage !== undefined || currentPage !== null) {
+        URL = `http://localhost:8080/api/v1/requests/?page=${currentPage}`;
+    } else {
+        URL = 'localhost:8080/api/v1/requests/page';
+    }
+    console.log("current",currentPage);
     return async (dispatch, getState) => {
 
-        const result = await fetch(requestURL, {
+        const result = await fetch(URL, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -86,9 +92,11 @@ export const callRequestsAPI = () => {
         })
         .then(response => response.json())
         .then(res => res.result);
-
+        // .then(res => res.content);
+        
         console.log('[RequestAPICalls] callRequestAPI RESULT : ', result);
             dispatch({ type: GET_REQUESTS,  payload: result});
+            
         }
 
         
@@ -114,14 +122,18 @@ export const callRequestsAPI = () => {
     }
     }
 
-    export const callRequestSearchAPI = ({form}) => {
+    export const callRequestSearchAPI = ({form, currentPage}) => {
         console.log('[RequestAPICalls] callRequestSearchAPI Call');
         console.log(form);
-        const requestURL = 'http://localhost:8080/api/v1/requests/search'
-    
+        // const requestURL = 'http://localhost:8080/api/v1/requests/search'
+        if (currentPage !== undefined || currentPage !== null) {
+            URL = `http://localhost:8080/api/v1/requests/search?page=${currentPage}`;
+        } else {
+            URL = 'localhost:8080/api/v1/requests/search';
+        }
         return async (dispatch, getState) => {
     
-            const result = await fetch(requestURL, {
+            const result = await fetch(URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -136,10 +148,11 @@ export const callRequestsAPI = () => {
             })
             .then(response => response.json())
             .then(res => res.result);
-    
+            // .then(res => res.searchByMultiple)
+            // .then(res => res.content);   
             console.log('[RequestAPICalls] callRequestSearchAPI RESULT : ', result);
     
-            dispatch({ type: GET_REQUESTS,  payload: result });
+            dispatch({ type: GET_REQUESTS,  payload: result});
             
         };    
     }

@@ -6,7 +6,10 @@ import { callRequestSearchAPI } from "../../apis/RequestAPI";
 function LocationReportManagementDS() {
 
     const dispatch = useDispatch();
-    
+
+    const [currentPage, setCurrentPage] = useState(0);
+
+
     const [form, setForm] = useState({
         title: '',
         writer: '',
@@ -22,7 +25,7 @@ function LocationReportManagementDS() {
     };
 
     const onClickDetailSearchHandler = () => {
-        dispatch(callRequestSearchAPI({form: form}));
+        dispatch(callRequestSearchAPI({form: form, currentPage:currentPage}));
     }
 
     const resetHandler = () => {
@@ -86,6 +89,7 @@ function LocationReportManagementDS() {
                 <button onClick={resetHandler}>초기화</button>
                 <button onClick={onClickDetailSearchHandler}>검색</button>
             </div>
+        
         </div>
     );
 }
