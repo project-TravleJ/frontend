@@ -5,16 +5,15 @@
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
+    width: 1050px;
+    height: 850px;
     display: flex;
     border: 1px solid black;
     flex-direction: column;
-    justify-content : space-around;
+    
     align-items: center;
     overflow-y: scroll;
     overflow-x: hidden;
-
 }  
 
 .postheaderstyle {
@@ -41,7 +40,7 @@
 }
 .postbodystyle {
     width: 90%;
-    height: 100%;
+    
     background: white;
     font-size: 20px;
     display: flex;
@@ -63,7 +62,6 @@
     align-items: flex-end;
     /*flex-direction: center;*/
     font-size: 15px;
-    margin-top: 300px;
 }
 
 .postContent {
@@ -74,7 +72,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     
 }
 
@@ -118,21 +116,21 @@
 
 .postmainContent{
     width: 100%;
-    height: 320px;
+    height: 400px;
     flex-direction: row;
     display: flex;
 }
 
 .postmainContent1 {
-    width: 50%;
-    height: 320px;
+    width: 70%;
+    height: 400px;
     display: flex;
     flex-direction: column;
 }
 
 .postmainContent2 {
-    width: 50%;
-    height: 270px;
+    width: 30%;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -163,7 +161,7 @@
 
 .postmap {
     width: 90%;
-    height: 250px;
+    height: 320px;
     background: white;
     border: 1px solid black;
     display: flex;
@@ -266,13 +264,13 @@
 
 .comentBox {
     width: 95%;
-    height: 245px;
+    height: 320px;
     overflow-y: scroll;
     border: 1px solid black;
 }
 
 .datestyle {
-    width: 40%;
+    width: 30%;
     height: 30px;
     font-size: 18px;
 }
@@ -280,14 +278,11 @@
     width: 100%;
     height: 50px;
     background: white;
-
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-direction: center;
     margin: auto;
-    margin-top: 25px;
-    margin-bottom: 25px;
 
 }
 

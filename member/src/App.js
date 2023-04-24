@@ -22,6 +22,7 @@ import ModalImage from './components/myPageComponents/ModalImage';
 import Memberdelete from './components/modalcomponents/Memberdelete';
 import MemberdeleteFinish from './components/modalcomponents/MemberdeletFinish';
 import Oauth from './components/mainPageComponents/Oauth';
+import PostUpdate from './components/modalcomponents/PostUpdate';
 
 function App() {
   const { isOpen} = useSelector((store) => store.modal);
@@ -39,9 +40,11 @@ function App() {
   const { isOpen12} = useSelector((store) => store.modal12);
   const { isOpen13} = useSelector((store) => store.modal13);
   const { isOpen14} = useSelector((store) => store.modal14);
+  const { isOpen15} = useSelector((store) => store.modal15);
 
   return (
     <main>
+      {isOpen15 && <PostUpdate/>}
       {isOpen && <CreatePlaceInsert />}
       {isOpen1 && <PostInsert />}
       {isOpen2 && <PostreportRequest />}
