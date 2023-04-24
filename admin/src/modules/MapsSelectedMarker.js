@@ -20,10 +20,16 @@ const selectAttraction  = createSlice({
         },
         resetAtt: (state) => {
             return state = initState;
-        }
+        },
+        modifyName: (state, action) => {
+            state.name = action.payload;
+        },
+        modifyDef: (state, action) => {
+            state.def = action.payload;
+        },
     },
 });
 
-export const {setAtt, resetAtt} = selectAttraction.actions;
+export const {setAtt, resetAtt, modifyName, modifyDef} = selectAttraction.actions;
 
 export default selectAttraction.reducer;
