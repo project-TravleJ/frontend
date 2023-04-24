@@ -2,26 +2,26 @@ import {createActions, handleActions} from "redux-actions";
 
 const initState = [
     {
-        reportId: 0,
+        reportId: "",
         reportWriter:"",
         reportToMember:"",
         reportDate: "",
         reportReason: "",
         reportDetails: "",
         reportManagement: "",
-        reportPostId: 0
-    }
+        reportPostId: ""
+    },
 ];
 
-export const detailreports = 'report/GET_REPORTS';
+export const getdetailreport = 'report/GET_REPORTS';
 
 const actions = createActions({
-    [detailreports]: () => {}
+    [getdetailreport]: () => {},
 });
 
 const detailReportReducer = handleActions(
     {
-        [detailreports]: (state, { payload }) => {
+        [getdetailreport]: (state, { payload }) => {
             return payload;
         }
     },

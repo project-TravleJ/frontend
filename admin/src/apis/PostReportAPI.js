@@ -1,6 +1,6 @@
 // import report from "../data/post-report-data.json"
-import { detailreports } from '../modules/DetailPostReportModule';
-import { updateReports } from "../modules/PostUpdateModule";
+import { getdetailreport } from '../modules/DetailPostReportModule';
+import { PUT_REPORT } from "../modules/PostUpdateModule";
 import { getReports } from "../modules/PostReportModule";
 
 
@@ -71,14 +71,15 @@ export const deleteReportAPI = (report) => {
 }
 }
 
-export const callUpdatePostReportAPI = ({form}) =>{
+export const callUpdatePostReportAPI = (reportId ,{form}) =>{
+    
 
-    const url = "http://localhost:8080/api/v1/reports";
+    const resultURL = "http://localhost:8080/api/v1/reports/";
 
     return async (dispatch, getState) => {
 
         const result = await fetch(
-            url+"{reportId}",
+            (resultURL + reportId),
             {
                 method: "PUT",
                 headers: {
@@ -91,14 +92,38 @@ export const callUpdatePostReportAPI = ({form}) =>{
             })
             }
         ).then(response => response.json())
-        .then(res => res.result);
-        console.log(result);
+        .then(response => response.result);
+                
 
-        dispatch({type:updateReports, payload:result});
+        dispatch({type: PUT_REPORT, payload: result});
     };
 }
 
+// 상세 조회
+export const detailPostReportAPI = (reportId) => {
+    const reportURL = "http://localhost:8080/api/v1/reports/"+ reportId;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(reportURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            }
+        })
+        .then(response => response.json())
+        .then(response => response.result);
+        console.log(result);
+        
+        dispatch({ type: getdetailreport, payload: result });
+    }
+}
+
+// 검색 조회 API
 export const callDetailPostReportAPI = ({form}) => {
+
+    console.log(form);
 
     const url = "http://localhost:8080/api/v1/reports/searchReport";
 

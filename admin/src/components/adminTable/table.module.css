@@ -51,3 +51,30 @@
     text-align: center;
     padding: 5px;
 }
+
+.minusBtn {
+    width: 5%;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 5%;
+    
+}
+
+.plusBtn {
+    width: 10%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.pageTable{
+    width: 100%;
+    display: flex;
+    
+}
+
+.pageNumber{
+    width: 90%;
+    display: flex;
+    align-items: center;
+
+}
