@@ -18,6 +18,10 @@ function  PostBoard() {
         alert('로그인을 먼저해주세요');
         dispatch(openModal9());
         return ;
+       }
+
+    const goEditPost = () => {
+        navigator('/post');
     }
 
     return(

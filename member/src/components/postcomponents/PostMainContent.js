@@ -1,9 +1,12 @@
 import Map from '../googlemap/Map';
 import style from './postcomponents.module.css';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+// import {callGetCoursesAPI} from "../../apis/CourseAPI";
 
 function PostMainContent() {
 
+    const dispatch = useDispatch();
     const post = useSelector(store => store.selectedPost);
     
     return(

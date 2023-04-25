@@ -54,12 +54,10 @@ function PostreportRequest () {
                     </div>
                     <div>
                         <div className={style.smallTitle}>신고 사유</div>
-                        <input 
-                        name='reportReason'
-                        placeholder='신고사유'
-                        autoComplete='off'
-                        onChange= { onChangeHandler}
-                        className={style.reporttitle}/>
+                        <select className={style.reporttitle}>
+                            <option key="tltle" value = "광고">광고성게시물</option>
+                            <option key="tltle" value = "불건전게시물">불건전게시물</option>
+                        </select>
                         </div>
                         <div className={style.smallTitle}>신고 내용</div>
                         <input

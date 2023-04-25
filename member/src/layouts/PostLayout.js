@@ -8,27 +8,125 @@ import PostBodySurv from '../components/postcomponents/PostBodySurv';
 import PostComent from '../components/postcomponents/PostComent';
 import { closeModal3 } from '../features/modal/modalSlice3';
 import {useDispatch, useSelector} from 'react-redux';
-import {resetSelectPost} from "../modules/SelectedPostModule";
+import {getSelectedPost, resetSelectPost} from "../modules/SelectedPostModule";
+import {useNavigate} from "react-router-dom";
+import React, {useEffect} from "react";
+// import {callGetCoursesAPI} from "../apis/CourseAPI";
+import {getSelectPost} from "../apis/PostAPI";
+import {openModal4} from "../features/modal/modalSlice4";
+import Map from "../components/googlemap/Map";
+import {openModal2} from "../features/modal/modalSlice2";
+import PostMap from "../components/googlemap/PostMap";
+import { openModal15 } from '../features/modal/modalSlice15';
+
+
 function  PostLayout() {
+
+    // const navigator = useNavigate();
+    // 코스가 2 이상으로 들어있을 경우 제목을 비롯한 글의 상단부분이 잘리는 현상 발생
 
     const dispatch = useDispatch();
     const post = useSelector(store => store.selectedPost);
 
+    useEffect( () => {
+        // dispatch(getSelectPost(post.postId));
+        // await dispatch(callGetCoursesAPI());
+        dispatch(getSelectPost(post.postId));
+;        console.log(post);
+        console.log(post.courseList);
+    }, [post.postId]
+    )
+
+    console.log("리턴 마에", post.courseList);
     return(
         <aside className={style.modalbackdrop} onDoubleClick={() => {
             dispatch(closeModal3());
-            dispatch(resetSelectPost);
+            dispatch(resetSelectPost());
         }}>
             <div className={ style.container}>
                 <div className={ style.postbodystyle }>
-                    <PostBodySurv/>
-                    <PostMainTitle/>
-                    <PostMainContent/>
-                    {post.courseList.map(course => {
-                        PostIntroduce(course, course.courseId)
+                    {/*<PostBodySurv/>*/}
+                    <div className={style.postbodysurvstyle}>
+                        <div onClick={() => {dispatch(closeModal3()); dispatch(openModal15()); dispatch(getSelectedPost(post.postId))}}>
+                            수정
+                        </div>
+                        &nbsp;&nbsp;&nbsp;
+                        <div onClick={() => {dispatch(openModal4());}}>
+                            삭제
+                        </div>
+                    </div>
+                    {/*<PostMainTitle/>*/}
+                    <div className={style.postContent}>
+                        <div className={style.postmaintitlestyle}>
+                            <div>&nbsp;&nbsp;{post.postTitle}</div>
+                        </div>
+
+                        <div className={style.postContent1}>
+                            <div className={style.postrecommend}>
+                                &nbsp;&nbsp; 좋아요 : {post.likes}
+                            </div>
+                            <div className={style.postwriter}>
+                                작성자:{post.writer} 작성일 :{post.postDate} &nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    {/*<PostMainContent/>*/}
+                    <div className={style.postmainContent}>
+                        <div className={style.postmainContent1}>
+                            <div className={style.postcalender}>
+                                <input type="date" className={style.datestyle}/>
+                                &nbsp; &nbsp;
+                                <input type="date" className={style.datestyle}/>
+                            </div>
+                            <div className={style.postmap}>
+                                <PostMap/>
+                            </div>
+                        </div>
+                        <div className={style.postmainContent2}>
+                            #코스 리스트
+                            <div className={style.postmainContent3}>
+                                {/*<input type="text" className={style.comentBox} value={courseList} readOnly={true}/>*/}
+                                <div className={style.comentBox}>
+
+                                    {post.courseList && post.courseList.map(course => {return(
+                                            <p>{course.idx}. {course.attraction.attractionName} </p>
+                                        )}
+                                    )}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {post.courseList && post.courseList.map(course => {
+                        return(<div className={style.postintrocontent} key={course.idx}>
+                            &nbsp; #{course.idx} {course.attraction.attractionName}
+                            <div className={style.postintrocontent1}>
+                                <div className={style.postintroimage}>
+                                    Image
+                                </div>
+                                <div className={style.postintroduce}>
+                                    <input type="text" className={style.courseMemoBox} value={course.courseMemo}/>
+
+                                </div>
+                            </div>
+                        </div>)
                     })}
-                    <PostComent/>
-                    
+                    {/*<PostComent/>*/}
+                    <div className={style.postcoment}>
+                        &nbsp;&nbsp;
+                        <input type="text" className={style.comentBox} value={post.context}/>
+                        <div className={style.postbutton}>
+                            <div>
+                                <button className={style.postbutton1}>좋아요</button>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div>
+                                <button className={style.postbutton2} onClick={() =>
+                                    dispatch(openModal2())}>
+                                    신고</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </aside>

@@ -1,10 +1,14 @@
 import style from './modalcomponents.module.css';
 import { closeModal4 } from '../../features/modal/modalSlice4';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { openModal5 } from '../../features/modal/modalSlice5';
+import {closeModal3} from "../../features/modal/modalSlice3";
+import {callDeletePostAPI, callGetPostsAPI} from "../../apis/PostAPI";
 
 const Postdelete = () => {
     const dispatch = useDispatch();
+    const post = useSelector(store => store.selectedPost);
+
     return(
     <aside className={style.modalbackdrop}> 
         <div className= { style.smallmodalbox }>
@@ -19,7 +23,10 @@ const Postdelete = () => {
                 </p>
                 <p>
                 <button className={ style.btnset } onClick={() => {
+                        dispatch(callDeletePostAPI(post.postId));
                         dispatch(openModal5());
+                        dispatch(closeModal3());
+                        dispatch(callGetPostsAPI());
                     }}>확인</button> 
                 </p>
             </div>
