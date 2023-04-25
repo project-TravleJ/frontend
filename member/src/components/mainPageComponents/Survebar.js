@@ -6,7 +6,9 @@ import { openModal9 } from '../../features/modal/modalSlice9';
 
     
 const Survebar = () => {
+    const token = window.localStorage.getItem('jwtToken');
     const dispatch = useDispatch();
+
     return (
 
         <div className={srvbarstyle.srvbarstyle}>
@@ -14,7 +16,7 @@ const Survebar = () => {
                 <h4><Link onClick={() => {
                         dispatch(openModal9());
                     }} className={srvbarstyle.linktext}>
-                        로그인</Link></h4>
+                        {token === undefined || token === null ? "로그인": "로그아웃"}</Link></h4>
                 {/* <h4><Link onClick={() => {
                         dispatch(openModal10());
                     }} className={srvbarstyle.linktext}>

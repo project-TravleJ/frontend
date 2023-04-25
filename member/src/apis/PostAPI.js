@@ -29,7 +29,7 @@ export function callGetPostsAPI() {
         console.log(window.localStorage.getItem("jwtToken"));
         console.log('result : ', result);
         if (result.status === 200) {
-        dispatch({ type: GET_POSTS, payload: result });
+        dispatch({ type: GET_POSTS, payload: result.result });
         }
     }
 }
