@@ -269,6 +269,13 @@
     border: 1px solid black;
 }
 
+.courseMemoBox {
+    width: 90%;
+    height: 240px;
+    overflow-y: scroll;
+    border: 1px solid blue;
+}
+
 .datestyle {
     width: 30%;
     height: 30px;

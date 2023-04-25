@@ -24,12 +24,12 @@ export function callGetPostsAPI() {
                         "Auth": window.localStorage.getItem('jwtToken')
                 }
                 }
-            ).then(data => data.json())
+            ).then(data => data.json());
 
         console.log(window.localStorage.getItem("jwtToken"));
         console.log('result : ', result);
         if (result.status === 200) {
-        dispatch({ type: GET_POSTS, payload: result });
+        dispatch({ type: GET_POSTS, payload: result.result });
         }
     }
 }

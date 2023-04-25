@@ -5,24 +5,34 @@ import CreatIntroduce from '../creatcomponents/CreateIntroduce';
 import CreatComent from '../creatcomponents/CreateComent';
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {getContext, getPost, getPostEnd, getPostStart, getPostTitle, getCourseMemo} from "../../modules/CreatePostModule";
+import {
+    getContext,
+    getPost,
+    getPostEnd,
+    getPostStart,
+    getPostTitle,
+    getCourseMemo,
+    resetSelectPost
+} from "../../modules/SelectedPostModule";
 import Map from "../../components/googlemap/Map";
 import {openModal} from "../../features/modal/modalSlice";
 import {openModal1} from "../../features/modal/modalSlice1";
-import {callRegistPostAPI} from "../../apis/PostAPI";
+import {callRegistPostAPI, callUpdatePostAPI, getSelectPost} from "../../apis/PostAPI";
 import {resetCourse} from "../../modules/CreaetCourseModule";
 import CreateIntroduce from "../../components/creatcomponents/CreateIntroduce";
 import {callRegistCourseAPI} from "../../apis/CourseAPI";
 import {closeModal15} from "../../features/modal/modalSlice15";
+import PostMap from "../googlemap/PostMap";
+import {resetPost} from "../../modules/CreatePostModule";
 
 function  PostUpdate() {
 
-    console.log("작성 페이지");
+    console.log("수정 페이지");
 
     const dispatch = useDispatch();
-    // const selectPost = useSelector(store => store.selectedPost);
-    const newPost = useSelector(store => store.createPost);
-    const newCourse = useSelector(store => store.createCourse)
+    const editPost = useSelector(store => store.selectedPost);
+    const newCourse = useSelector(store => store.createCourse);
+    // const editPost = useSelector(store => store.createPost);
 
     const [title, setTitle] = useState("");
     const [start, setStart] = useState("");
@@ -36,15 +46,20 @@ function  PostUpdate() {
 
     /* 작성 완료시 POST API에 전달할 인자(post 객체)를 만드는 역할 */
 
-    useEffect(() => {
-
+    useEffect( () => {
+        dispatch(getSelectPost(editPost));
+        // await dispatch(getPost(selectPost));
     }, []
     );
+
+    console.log("수정 실행");
+    // console.log("select : ", selectPost);
+    console.log("edit : ", editPost);
 
     return(
         // <div className={style.maginhead }>
         <aside className={style.modalbackdrop} onDoubleClick={() => {
-            dispatch(closeModal15());
+            dispatch(closeModal15()); dispatch(resetPost()); dispatch(resetSelectPost());
         }}>
         <div className={ style.modalcontainer}>
             <div className={ style.postbodystyle }>
@@ -54,15 +69,15 @@ function  PostUpdate() {
                         className={style.posttitle}
                         type='text'
                         placeholder='제목 입력'
-                        value={newPost.postTitle}
+                        value={editPost.postTitle}
                         onChange={(e) => {dispatch(getPostTitle(e.target.value))}}
                     />
                     <button className={style.btnset} onClick={
                         async () => {
                             // onClickPostPostTilteHandler();
                             dispatch(openModal1());
-                            await dispatch(callRegistPostAPI(newPost));   // 작성 완료 이벤트
-                            // await dispatch(callRegistCourseAPI(selectPost));
+                            await dispatch(callUpdatePostAPI(editPost));   // 작성 완료 이벤트
+                            // await dispatch(callRegistCourseAPI(editPost));
                         }
                     }>
                         완료
@@ -98,7 +113,7 @@ function  PostUpdate() {
                             {/*<input type="text" className={style.comentBox} value={courseList} readOnly={true}/>*/}
                             <div className={style.comentBox}>
 
-                                {newPost.courseList.length!=0 &&newPost.courseList.map(course => {return(
+                                {editPost.courseList && editPost.courseList.map(course => {return(
                                     <p>{course.idx}. {course.attraction.attractionName} </p>
                                 )}
                                 )}
@@ -108,7 +123,7 @@ function  PostUpdate() {
                     </div>
                 </div>
 
-                {newPost.courseList && newPost.courseList.map(course => {
+                {editPost.courseList && editPost.courseList.map(course => {
                     // CreateIntroduce(course, course.idx);
                     return(<div className={style.postintrocontent} key={course.idx}>
                         &nbsp; #{course.idx} {course.attraction.attractionName}
@@ -138,7 +153,7 @@ function  PostUpdate() {
                         type="text"
                         className={style.comentBox2}
                         placeholder='내용 입력'
-                        value={newPost.context}
+                        value={editPost.context}
                         onChange={ (e) => { dispatch(getContext(e.target.value))} }
                     />
 

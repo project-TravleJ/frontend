@@ -25,7 +25,7 @@ function Map() {
   const [selectedLocation ,setSelectedLocation] = useState(null);
   const selectedMarker = useSelector(store => store.selectAttraction);
   // const [selectedMarker, setSelectedMarker] = useState(null);
-  const post = useSelector(store => store.selectedPost);
+  // const post = useSelector(store => store.selectedPost);
   const isCreate = useSelector(store => store.createPost);
   const modalOn = useSelector(store => store.modal);
 
@@ -58,15 +58,7 @@ function Map() {
 
   useEffect(
       () => {
-        if(post.postId==0) {
-          console.log("선택된 post 없음")
           dispatch(CallLocationAPI());
-        }else if(isCreate.isCreate){
-
-        }
-        else{
-          dispatch(setMarkers(post.courseList.map(course => course.attraction)))
-        }
       }, []
   );
   // const onUnmount = useCallback(function callback(map){
@@ -79,8 +71,8 @@ function Map() {
       <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={12}
-          onLoad={onLoad}
+          zoom={11}
+
           // onUnmount={onUnmount}
       >
         {callmarkers.map(marker => {console.log(marker); return(

@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
     "postTitle": '',
     "postDate": '',
-    "postWriter": '',
+    "writer": '',
     "postStart": '',
     "postEnd": '',
     "context": '',
@@ -26,7 +26,7 @@ const createPost = createSlice({
             state.postTitle = action.payload;
         },
         getWriter: (state, action) => {
-            state.postWriter = action.payload;
+            state.writer = action.payload;
         },
         getPostStart: (state, action) => {
             state.postStart = action.payload;

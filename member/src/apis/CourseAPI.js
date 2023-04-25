@@ -66,3 +66,23 @@ export  const callGetCoursesAPI = (postId) => {
         dispatch({type: getCourseList, payload: result});
     }
 }
+
+export const callDeleteCourseAPI = (postId) => {
+
+    const url = "http//localhost:8080/api/v1/posts/" + postId + "/courses";
+
+    return async (dispatch, getState) => {
+        const result = await fetch(
+            url,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                }
+            }
+        ).then(data => data.json());
+
+        console.log("코스 삭제", result);
+    }
+}
