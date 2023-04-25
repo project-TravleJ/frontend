@@ -8,7 +8,6 @@ import dsPostRepo from './modules/detailSearch/PostRepoDSModule';
 import selectAttraction from './modules/MapsSelectedMarker';
 import memberReducer from './modules/MemberModule';
 import bulIssue from './modules/BulletinIssueModule';
-
 import SelectMember from './modules/detailSearch/SelectMemberModule';
 import memberDetailReducer from './modules/detailSearch/MemberDetailModule';
 import detailReportReducer from './modules/DetailPostReportModule';
@@ -20,6 +19,7 @@ import attraction from "./modules/LocationModule";
 import updateReportReducer from './modules/PostUpdateModule';
 import locationReducer from './modules/LocationDeleteModule';
 import updateLocationReducer from './modules/LocationUpdateModule';
+
 
 const store = configureStore({
     reducer: {
@@ -43,6 +43,7 @@ const store = configureStore({
         updateReportReducer,
         locationReducer,
         updateLocationReducer
+
     },
     
 });
