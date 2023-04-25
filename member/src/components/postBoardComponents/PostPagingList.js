@@ -8,6 +8,7 @@ import { callGetPostsAPI } from "../../apis/PostAPI";
 
 function PostPagingList() {
 
+    const dispatch = useDispatch();
     const result = useSelector(store => store.post);
     // const limitNum = useSelector(store => store.limit);
     console.log('postReducer result : ', result);
@@ -31,6 +32,7 @@ function PostPagingList() {
     const [endPage, setEndPage] = useState(1);
 
     const dispatch = useDispatch();
+
 
     useEffect(
         () => {

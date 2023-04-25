@@ -70,7 +70,7 @@ function PostMap() {
       <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={11}
           // onLoad={onLoad}
           // onUnmount={onUnmount}
       >

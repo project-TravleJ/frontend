@@ -8,7 +8,7 @@ import PostBodySurv from '../components/postcomponents/PostBodySurv';
 import PostComent from '../components/postcomponents/PostComent';
 import { closeModal3 } from '../features/modal/modalSlice3';
 import {useDispatch, useSelector} from 'react-redux';
-import {resetSelectPost} from "../modules/SelectedPostModule";
+import {getSelectedPost, resetSelectPost} from "../modules/SelectedPostModule";
 import {useNavigate} from "react-router-dom";
 import React, {useEffect} from "react";
 // import {callGetCoursesAPI} from "../apis/CourseAPI";
@@ -47,7 +47,7 @@ function  PostLayout() {
                 <div className={ style.postbodystyle }>
                     {/*<PostBodySurv/>*/}
                     <div className={style.postbodysurvstyle}>
-                        <div onClick={() => {dispatch(closeModal3()); dispatch(openModal15()); }}>
+                        <div onClick={() => {dispatch(closeModal3()); dispatch(openModal15()); dispatch(getSelectedPost(post.postId))}}>
                             수정
                         </div>
                         &nbsp;&nbsp;&nbsp;
@@ -105,7 +105,7 @@ function  PostLayout() {
                                     Image
                                 </div>
                                 <div className={style.postintroduce}>
-                                    <input type="text" className={style.comentBox} value={course.courseMemo}/>
+                                    <input type="text" className={style.courseMemoBox} value={course.courseMemo}/>
 
                                 </div>
                             </div>
