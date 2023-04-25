@@ -2,9 +2,9 @@ name: userCI
 
 on: 
   push:
-    branches: [ "master" ]
+    branches: [ "develope" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "develope" ]
 
 jobs:
   userCItest:
@@ -16,6 +16,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+         
     #- name: Grant execute permission for gradlew
     #  run: chmod +x gradlew
     #- name: Build with Gradle
