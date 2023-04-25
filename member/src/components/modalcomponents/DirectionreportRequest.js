@@ -11,19 +11,19 @@ import { callRequestWriteAPI } from '../../apis/RequestAPICalls';
 
 function DirectionreportRequest() {
     const dispatch = useDispatch();
-    
+
     const request  = useSelector(state => state.requestReducer);
 
     // const token = decodeJwt(window.localStorage.getItem("accessToken"));
-    
+
     const [form, setForm] = useState({
-        REQUEST_ID: "2",    
-        TITLE: '',
-        CONTEXT: '',
+        REQUEST_ID: "",    
+        TITLE: "",
+        CONTEXT: "",
         DATE: "2023-04-16",
         WRITER: "김용민",
         REQEUST_MANAGEMENT: "처리"
-        
+
     });
 
     const onChangeHandler = (e) => {
@@ -40,13 +40,13 @@ function DirectionreportRequest() {
             alert('정보를 다 입력해주세요.');
             return ;
         }
-        dispatch(callRequestWriteAPI({	
+        dispatch(callRequestWriteAPI({   
             form: form 
         }));
         dispatch(openModal8());
     };
 
-    
+
     return(
 
         <aside className={ style.modalbackdrop}>
@@ -56,15 +56,12 @@ function DirectionreportRequest() {
                     <h1 align="center">등록지 오류 신고하기</h1>
                 </div>
                 <div>
-                    <div className={style.smallTitle}>신고 사유</div>
-                    <input 
-                        name='TITLE'
-                        placeholder='신고 사유'
-                        autoComplete='off'
-                        onChange= { onChangeHandler }
-                        className={style.reporttitle}
-                        
-                    />
+                    <div className={style.smallTitle} >신고 사유</div>
+                    <select className={style.reporttitle} name="TITLE" onChange={ onChangeHandler}>
+                        <option value="정보오류" >정보오류</option>
+                        <option value="위치오류" >위치오류</option>
+                        <option value="기타사항" >기타사항</option>
+                    </select>
                     </div>
                     <div className={style.smallTitle}>신고 내용</div>
                     <input 
@@ -88,8 +85,6 @@ function DirectionreportRequest() {
             </div>
         </div>
         </aside>
-
     );
 }
-
 export default DirectionreportRequest;

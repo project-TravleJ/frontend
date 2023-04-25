@@ -3,10 +3,13 @@ import posts from "../components/data/post-detail.json";
 import bestposts from "../components/data/post-detail2.json";
 import { SEARCH_POSTS } from "../modules/PostModule";
 import {getSelectedPost} from "../modules/SelectedPostModule";
+import {callGetCoursesAPI, callRegistCourseAPI} from "./CourseAPI";
 
 const url = "http://localhost:8080/api/v1/posts";
 
-export function callGetPostsAPI() {
+export function callGetPostsAPI({currentPage}) {
+
+    const url = `http://localhost:8080/api/v1/posts?page=${currentPage}`;
 
     return async function getPosts(dispatch, getState) {
 
@@ -17,13 +20,19 @@ export function callGetPostsAPI() {
             url, 
                 {
                     method:"GET", 
-                    headers: {"Accept": "application/json"}
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "*/*",
+                        "Auth": window.localStorage.getItem('jwtToken')
                 }
-            ).then(data => data.json()).then(data => data.result);
+                }
+            ).then(data => data.json());
 
+        console.log(window.localStorage.getItem("jwtToken"));
         console.log('result : ', result);
-
-        dispatch({ type: GET_POSTS, payload: result });
+        if (result.status === 200) {
+        dispatch({ type: GET_POSTS, payload: result.result });
+        }
     }
 }
 
@@ -55,20 +64,12 @@ export function callSearchPostsAPI(keyword) {
     }
 }
 
-
-export function getSelectPost(postId) {
-
-
-    return posts;
-}
-
-
 export const callPostPostTitleAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -79,7 +80,7 @@ export const callPostPostTitleAPI = () => {
         })
         .then(reponse => reponse.json())
         .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_TITLE,  payload: result });
     };
 }
@@ -87,9 +88,9 @@ export const callPostPostTitleAPI = () => {
 export const callPostPostStartAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -99,17 +100,17 @@ export const callPostPostStartAPI = () => {
         })
         .then(reponse => reponse.json())
         // .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_START,  payload: result });
     };
 }
 
-export const callPostPostCourseAPI = () => {
+export const callPostPostCourseAPI = (post) => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -119,7 +120,7 @@ export const callPostPostCourseAPI = () => {
         })
         .then(reponse => reponse.json())
         .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_COURSE,  payload: result });
     };
 }
@@ -127,9 +128,9 @@ export const callPostPostCourseAPI = () => {
 export const callPostPostContextAPI = () => {
     
     const requestURL = 'http://localhost:8080/api/v1/posts/regist';
-
+    
     return async (dispatch, getState) => {
-
+        
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -139,23 +140,136 @@ export const callPostPostContextAPI = () => {
         })
         .then(reponse => reponse.json())
         .then(res => res.result);
-
+        
         dispatch({ type: POST_POST_CONTEXT,  payload: result });
     };
 }
 
+export const getSelectPost = (postId) => {
+    
+    return async function selectPost(dispatch, getState){
+        
+        const result = await fetch(
+            (url + "/" + postId),
+            {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            }
+            ).then(data => data.json()).then(data=>data.result);
+            
+            dispatch({type:getSelectedPost, payload:result})
 
-//     return async function selectPost(dispatch, getState){
+            dispatch(callGetCoursesAPI(postId));
+    };
+}
 
-//         const result = await fetch(
-//             (url + "/" + postId),
-//             {
-//                 method: "GET",
-//                 headers: { "Accept": "application/json" }
-//             }
-//         ).then(data => data.json()).then(data=>data.result);
+export const callDeletePostAPI = (postId) => {
 
-//         dispatch({type:getSelectedPost, payload:result})
-//     };
-// }
+    console.log("delete ", postId);
+    console.log("url : " + url + "/" + postId)
 
+    return async ()=> {
+
+        const result = await fetch(
+            (url + "/" + postId),
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                }
+            }
+        ).then(data => data.json());
+
+        console.log(result);
+    };
+
+}
+
+export const callRegistPostAPI = (post) => {
+
+    console.log(post);
+
+    const newPost = JSON.stringify({
+        postId:0,
+        postTitle: post.postTitle,
+        writer: post.postWriter,
+        postStart: post.postStart,
+        postEnd: post.postEnd,
+        courseList: post.courseList,
+        context: post.context
+    })
+    console.log(newPost);
+    
+    //JSON.stringify() 억까 해결
+    return async function registPost(dispatch, getState) {
+
+        const result = await fetch(
+            ("http://localhost:8080/api/v1/postswithcourse"),
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                },
+                body: JSON.stringify(
+                    {
+                        postTitle: post.postTitle,
+                        postStart: post.postStart,
+                        postEnd: post.postEnd,
+                        writer: post.writer,
+                        // postDate: post.postDate,
+                        courseList: post.courseList,
+                        context: post.context
+                    }
+                )
+            }
+        ).then(data => data.json())
+            .then(data => data.result);
+            // .then(result => dispatch(dispatch(callRegistCourseAPI(result))))
+
+        await dispatch({type: getSelectedPost, payload:result})
+
+        console.log("코스 등록 API 실행2");
+        console.log("result : ", result);
+
+        // await dispatch(callRegistCourseAPI(result));
+
+    };
+}
+
+
+export const callUpdatePostAPI = (post) => {
+
+    //JSON.stringify() 억까 해결
+    return async function registPost(dispatch, getState) {
+
+        const result = await fetch(
+            (url + "/" + post.postId),
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*"
+                },
+                body: JSON.stringify(
+                    {
+                        postId: post.postId,
+                        postTitle: post.postTitle,
+                        postStart: post.postStart,
+                        postEnd: post.postEnd,
+                        writer: post.writer,
+                        postDate: post.postDate,
+                        courseList: post.courseList,
+                        context: post.context
+                    }
+                )
+            }
+        ).then(data => data.json())
+            .then(data => data.result);
+
+        dispatch({type: getSelectedPost, payload:result})
+
+        await callRegistCourseAPI(result);
+    };
+}

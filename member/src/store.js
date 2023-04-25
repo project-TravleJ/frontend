@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
 import modalReducer from './features/modal/modalSlice';
 import modalReducer1 from './features/modal/modalSlice1';
 import modalReducer2 from './features/modal/modalSlice2';
@@ -14,14 +14,24 @@ import modalReducer11 from './features/modal/modalSlice11';
 import modalReducer12 from './features/modal/modalSlice12';
 import modalReducer13 from './features/modal/modalSlice13';
 import modalReducer14 from './features/modal/modalSlice14';
+import modalReducer15 from './features/modal/modalSlice15';
 import imageReducer from './features/modal/imageSlice';
 
 import postReducer from './modules/PostModule';
 import limitReducer from './modules/LimitModule';
 import markers from './modules/MarkersModule';
 import selectAttraction from './modules/MapsSelectedMarker';
+import createPost from './modules/CreatePostModule';
+import creaetCourseModule from "./modules/CreaetCourseModule";
 import rootReducer from './modules';
 import selectedPost from './modules/SelectedPostModule'
+import reportReducer from './modules/PostReport';
+import requestReducer from "./modules/RequestModule";
+import attractions from "./modules/AttractionModule";
+import loginReducer from './modules/LoginModule';
+import memberReducer from './modules/MemberModule';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import ReduxThunk from 'redux-thunk';
 
 export const store = configureStore({
     reducer: {
@@ -40,16 +50,26 @@ export const store = configureStore({
         modal12: modalReducer12,
         modal13: modalReducer13,
         modal14: modalReducer14,
+        modal15: modalReducer15,
         image: imageReducer,
 
         post: postReducer,
         limit: limitReducer,
         markers: markers,
         selectAttraction: selectAttraction,
-        rootReducer,
+        createPost: createPost,
+        createCourse: creaetCourseModule,
+        // rootReducer,
+        reportReducer: reportReducer,
+        requestReducer: requestReducer,
 
-        selectedPost: selectedPost
+        selectedPost: selectedPost,
+        attractions: attractions,
+        login: loginReducer,
+        member: memberReducer,
     },
-});
+},
+    composeWithDevTools(applyMiddleware(ReduxThunk))
+    );
 
 export default store;

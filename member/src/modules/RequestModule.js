@@ -15,7 +15,7 @@ const actions = createActions({
 const requestReducer = handleActions(
     {
         [POST_REQUEST]: (state, { payload }) => {
-            
+
             return payload;
         }
     },

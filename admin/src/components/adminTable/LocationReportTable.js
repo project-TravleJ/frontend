@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 // import { getLocaRepos } from "../../modules/LocationReportModule";
 import Tstyle from "./table.module.css"
 import RequestModal from "../adminControlModal/RequestModal";
-import { all_reset, member_close, member_open } from "../../modules/ModalModule";
+import { request_open } from "../../modules/ModalModule";
 
 
 import {
     callRequestDeleteAPI,
+    callRequestDetailAPI,
     callRequestsAPI
 } from '../../apis/RequestAPI'
 
@@ -16,21 +17,55 @@ function LocationReportTable() {
 
     const dispatch = useDispatch();
     const [ deleteRequest, setdeleteRequest ] = useState([]);
-
-
     const requests  = useSelector(store => store.request);
     console.log(requests);
 
     
 
+    const [start, setStart] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [endPage, setEndPage] = useState(1);
+
+    const requestList = requests?.requestList?.content || requests?.searchByMultiple?.content;
+    const pageInfo = requests?.paging;
+
+
+       // 총 페이지의 모음
+    const pageNumber = [1];
+
+    if (pageInfo) {
+        for (let i = pageInfo.startPage + 1; i <= pageInfo.endPage; i++) {
+            pageNumber.push(i);
+            
+        }
+    }
+
     useEffect(
         () => {
-            dispatch(callRequestsAPI(
-                
-            ));            
-        },
-        []
+            // setStart((currentPage - 1) * 5);
+            dispatch(callRequestsAPI({currentPage: currentPage}))
+            
+        }
+        ,[currentPage]
+    
     );
+
+
+    useEffect(() => {
+        console.log("Current page:", currentPage);
+    }, [currentPage]);
+
+
+    // useEffect(
+    //     () => {
+    //         dispatch(callRequestsAPI(
+                
+    //         ));            
+    //     },
+    //     []
+    // );
+
+
 
     const deletedRequest = (requestId, isChecked) => {
     if(isChecked) {
@@ -48,24 +83,14 @@ function LocationReportTable() {
     }
 
 
-
-
-    useEffect(() => {
-        console.log(deleteRequest)
-    }, [deleteRequest])
-
-
-    const modalState = useSelector(store => store.modal.member);
+    const modalState = useSelector(store => store.modal.request);
     console.log(modalState);
-    // restriction : 제재, 제약
-    // const [rankUpOpen, setRankUpOpen] = useState(false);
-    
 
     const handleOpenRestriction = () => {
         console.log("modal True", modalState);
-        dispatch(member_open());
+        dispatch(request_open());
     }
-
+    
     return (
         <>
         <dialog id="MemberControlModal" open={modalState} className={Tstyle.modalLocation}>
@@ -95,14 +120,15 @@ function LocationReportTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {requests.map((request) => {return(
+                        { Array.isArray(requestList) && requestList.map((request) => {return(
                             <tr >
                                 <td> 
                                     <input 
                                         type="checkbox" 
-                                        name={request.requestId}
+                                        // name={request.requestId}
                                         value={request.requestId}
-                                        onClick={(e)=>deletedRequest(e.target.value, e.target.checked)}
+                                        onClick={() => dispatch(callRequestDetailAPI(request.requestId))}
+                                        onChange={(e)=>deletedRequest(e.target.value, e.target.checked)} 
                                     /> 
                                 </td>
                                 <td> {request.requestId} </td>
@@ -117,6 +143,41 @@ function LocationReportTable() {
                     </tbody>
                 </table>
             </div>
+
+            <div className={Tstyle.pageTable}>
+            <div className={Tstyle.minusBtn}>
+            { Array.isArray(requestList) &&                
+            <button 
+                onClick={() => setCurrentPage(currentPage - 1)} 
+                disabled={currentPage === 1}
+            >
+                &lt;
+            </button>
+            }
+            </div>
+
+            <div className={Tstyle.pageNumber}>
+            {pageNumber.map((num) => (
+            <li key={num} onClick={() => setCurrentPage(num)}>
+                <button 
+                    style={currentPage === num ? {backgroundColor : 'orange' } : null}
+                >
+                    {num}
+                </button>
+            </li>
+            ))}
+            </div>
+            <div className={Tstyle.plusBtn}>
+            { Array.isArray(requestList) &&  
+            <button 
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage === pageInfo?.endPage || pageInfo?.endPage == 1}>
+            
+                &gt;
+            </button>
+        }
+        </div>
+        </div>
         </div>
         </>
     );

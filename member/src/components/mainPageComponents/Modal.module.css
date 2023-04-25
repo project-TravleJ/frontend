@@ -1,6 +1,6 @@
 .modaljoin {
     width: 333px;
-    height: 550px;
+    height: 400px;
     background: white;
     border: 1px solid black;
     display: flex;
@@ -100,3 +100,12 @@
       align-items: center;
       justify-content: center;
     }
+
+.kakaobutton {
+    width: 60%;
+    height: 50px;
+    display: flex;
+    margin-left: 70px;
+    margin-top: -50px;
+    margin-bottom: 30px;
+}

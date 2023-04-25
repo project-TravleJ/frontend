@@ -22,7 +22,7 @@ function Map() {
   const dispatch = useDispatch();
   const callmarkers = useSelector(store => store.markers);
   const [map, setMap] = useState(null);
-  const [selectedLocation ,setSelectedLocation] = useState(null);
+  // const [selectedLocation ,setSelectedLocation] = useState(null);
   const selectedMarker = useSelector(store => store.selectAttraction);
   // const [selectedMarker, setSelectedMarker] = useState(null);
   
@@ -53,16 +53,15 @@ function Map() {
   
   useEffect(
     () => {
-      dispatch(setMarkers(CallLocationAPI()));
-      console.log(callmarkers)
+      dispatch(CallLocationAPI());
     }, []
   );
   // const onUnmount = useCallback(function callback(map){
   //   setMap(null);
   // }, [])
 
-  console.log(callmarkers);
-  console.log(selectedLocation);
+  // console.log(callmarkers);
+  // console.log(selectedLocation);
   return isLoaded ? (
     <GoogleMap 
       mapContainerStyle={containerStyle}
@@ -85,7 +84,7 @@ function Map() {
             // options={{pixelOffset: new window.google.maps.Size(0, -25)}}
             
             onCloseClick={() => {
-              setSelectedLocation(null);
+              // setSelectedLocation(null);
               dispatch(resetAtt());
             }}
           >

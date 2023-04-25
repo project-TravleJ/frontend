@@ -5,6 +5,7 @@ import { setMarkers } from '../../modules/MarkersModule';
 import { CallLocationAPI } from '../../apis/LocationAPI';
 import {GoogleMap, InfoWindow, InfoWindowF, Marker, MarkerF, useJsApiLoader} from '@react-google-maps/api';
 import { resetAtt, setAtt } from '../../modules/MapsSelectedMarker';
+import modalSlice from "../../features/modal/modalSlice";
 
 
 const containerStyle = {
@@ -24,24 +25,29 @@ function Map() {
   const [selectedLocation ,setSelectedLocation] = useState(null);
   const selectedMarker = useSelector(store => store.selectAttraction);
   // const [selectedMarker, setSelectedMarker] = useState(null);
-  
-  
+  // const post = useSelector(store => store.selectedPost);
+  const isCreate = useSelector(store => store.createPost);
+  const modalOn = useSelector(store => store.modal);
+
+
   const {isLoaded} = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API
   })
-  
+
 
   // 마커 선택 메소드(추후 리덕스로 수정하여 화면에서 출력해야 함)
   const handleSelectMarker = async(marker) => {
     if(marker.id === selectedMarker.id) {
+      console.log("마커", marker);
+      console.log("선택", selectedLocation);
       return;
     }
     // setSelectedMarker(marker);
     console.log("map:  marker setAtt :",marker,  selectedMarker)
     dispatch(setAtt(marker));
   };
-  
+
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
@@ -49,52 +55,51 @@ function Map() {
   }, [])
 
 
-  
+
   useEffect(
-    () => {
-      dispatch(setMarkers(CallLocationAPI()));
-      console.log(callmarkers)
-    }, []
+      () => {
+          dispatch(CallLocationAPI());
+      }, []
   );
   // const onUnmount = useCallback(function callback(map){
   //   setMap(null);
   // }, [])
 
-  console.log(callmarkers);
-  console.log(selectedLocation);
+  // console.log(callmarkers);
+  // console.log(selectedLocation);
   return isLoaded ? (
-    <GoogleMap 
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={12}
-      onLoad={onLoad}
-      // onUnmount={onUnmount}
+      <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={11}
+
+          // onUnmount={onUnmount}
       >
-      {callmarkers.map(marker => {console.log(marker); return( 
-        <>
-        <Marker position={marker.loc}
-          onClick = {() => 
-            handleSelectMarker(marker)
-          }
-          value = {marker}
-          id = {marker.id}
-        >
-          {selectedMarker.id === marker.id && <InfoWindow    // 함수나 props로 하나만 띄우도록 고쳐야 함.
-            position={marker.loc}
-            // options={{pixelOffset: new window.google.maps.Size(0, -25)}}
-            
-            onCloseClick={() => {
-              setSelectedLocation(null);
-              dispatch(resetAtt());
-            }}
-          >
-              <div>{marker.name}</div>
-          </InfoWindow>}  
-        </Marker>
-        </>
-      )})}
-      
-    </GoogleMap>
+        {callmarkers.map(marker => {console.log(marker); return(
+            <>
+              <Marker position={marker.loc}
+                      onClick = {() =>
+                          handleSelectMarker(marker)
+                      }
+                      value = {marker}
+                      id = {marker.id}
+              >
+                {selectedMarker.id === marker.id && <InfoWindow    // 함수나 props로 하나만 띄우도록 고쳐야 함.
+                    position={marker.loc}
+                    // options={{pixelOffset: new window.google.maps.Size(0, -25)}}
+
+                    onCloseClick={() => {
+                      setSelectedLocation(null);
+                      dispatch(resetAtt());
+                    }}
+                >
+                  <div>{marker.name}</div>
+                </InfoWindow>}
+              </Marker>
+            </>
+        )})}
+
+      </GoogleMap>
   ) : <></>
 
 }

@@ -15,9 +15,12 @@ const actions = createActions({
 /* 리듀서 */
 const memberReducer = handleActions(
     {
-        [POST_LOGIN]: (state, { payload }) => {
+        [POST_LOGIN]: (state, { payload: {result} }) => {
             
-            return payload;
+            return {
+                ...state,
+                postLoginState: result
+            };
         },
         [POST_REGISTER]: (state, { payload }) => {
             

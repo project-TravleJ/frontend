@@ -1,6 +1,27 @@
-import location from "../components/data/marker-data.json";
+// import location from "../data/marker-data.json";
+import {setMarkers} from "../modules/MarkersModule"
+// export function CallLocationAPI() {
 
-export function CallLocationAPI() {
+//     return location;
+// }
 
-    return location;
+
+export const CallLocationAPI = () => {
+
+    const url = `http://localhost:8080/api/v1/attraction/list`;
+
+    return async function callMarkers(dispatch, getState){
+
+        const result = await fetch(
+            url,
+            {
+                method:"GET",
+                headers: {"Accept": "application/json"}
+            }
+        ).then(response => response.json())
+            .then(res => res.result);
+
+        dispatch({type:setMarkers, payload: result});
+    }
 }
+

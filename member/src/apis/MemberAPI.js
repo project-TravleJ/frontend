@@ -1,29 +1,19 @@
-export const callLoginAPI = ({form}) => {
-    const requestURL = 'http://localhost:8080/auth/login';
+export const getMembers = async () => {
 
-    return async (dispatch, getState) => {
+    /* 백엔드로 토큰 보내기 */
+    const token = window.localStorage.getItem('jwtToken');
 
-        // 클라이언트 fetch mode : no-cors 사용시 application/json 방식으로 요청이 불가능
-        // 서버에서 cors 허용을 해주어야 함
-        const result = await fetch(requestURL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*",
-                "Access-Control-Allow-Origin": "*"      
-            },
-            body: JSON.stringify({
-                memberId: form.memberId,
-                memberPwd: form.memberPwd
-            })
-        })
-        .then(response => response.json());
+    const requestURL = 'http://localhost:8080/api/v1/members'
 
-        console.log('[MemberAPICalls] callLoginAPI RESULT : ', result);
-        if(result.status === 200){
-            window.localStorage.setItem('accessToken', result.data.accessToken);            
+    const result  = await fetch(requestURL, {
+        method: 'GET',
+        headers: {
+            "Content-Type": 'application/json',
+            "Accept": '*/*',
+            "Auth": token
         }
-        dispatch({ type: POST_LOGIN,  payload: result });
-        
-    };
+    })
+    .then(res => res.json());
+
+    console.log('[MemberAPICalls] getMembers RESULT : ', result);
 }

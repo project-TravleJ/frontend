@@ -1,8 +1,8 @@
 import style from './modalcomponents.module.css';
 import { closeModal2, openModal2 } from '../../features/modal/modalSlice2';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal6 } from '../../features/modal/modalSlice6';
-import {callPostReportAPI } from '../../apis/PostReportAPI';
+import { closeModal6, openModal6 } from '../../features/modal/modalSlice6';
+import { callPostReportAPI } from '../../apis/PostReportAPI';
 import { useEffect, useState } from 'react';
 
 
@@ -15,14 +15,14 @@ function PostreportRequest () {
     // decodeJwt(window.localStorage.getItem("accessToken"));
 
     const [form, setForm] = useState({
-        reportId: "2",
+        reportId: "",
         reportWriter:'',
         reportToMember: '',
         reportDate: '',
         reportReason:'',
         reportDetailes: '',
         reportManagement: '',
-        reportPostId: '2',
+        reportPostId: '',
     });
 
     const onChangeHandler = (e) => {
@@ -41,10 +41,8 @@ function PostreportRequest () {
             return ;
         }
         
-        dispatch(callPostReportAPI({   
-            form: form 
-        }));
-        dispatch(openModal2());
+        dispatch(callPostReportAPI(form));
+        dispatch(openModal6());
     };
 
         return(
@@ -56,16 +54,14 @@ function PostreportRequest () {
                     </div>
                     <div>
                         <div className={style.smallTitle}>신고 사유</div>
-                        <input 
-                        name='TITLE'
-                        placeholder='신고사유'
-                        autoComplete='off'
-                        onChange= { onChangeHandler}
-                        className={style.reporttitle}/>
+                        <select className={style.reporttitle}>
+                            <option key="tltle" value = "광고">광고성게시물</option>
+                            <option key="tltle" value = "불건전게시물">불건전게시물</option>
+                        </select>
                         </div>
                         <div className={style.smallTitle}>신고 내용</div>
                         <input
-                        name='CONTEXT'
+                        name='reportDetails'
                         autoComplete='off'
                         onChange= {onChangeHandler}
                         className={style.reportcontent}/>
