@@ -7,7 +7,9 @@ import {callGetCoursesAPI, callRegistCourseAPI} from "./CourseAPI";
 
 const url = "http://localhost:8080/api/v1/posts";
 
-export function callGetPostsAPI() {
+export function callGetPostsAPI({currentPage}) {
+
+    const url = `http://localhost:8080/api/v1/posts?page=${currentPage}`;
 
     return async function getPosts(dispatch, getState) {
 
