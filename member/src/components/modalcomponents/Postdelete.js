@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { openModal5 } from '../../features/modal/modalSlice5';
 import {closeModal3} from "../../features/modal/modalSlice3";
 import {callDeletePostAPI, callGetPostsAPI} from "../../apis/PostAPI";
+import {resetSelectPost} from "../../modules/SelectedPostModule";
 
 const Postdelete = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Postdelete = () => {
                         dispatch(callDeletePostAPI(post.postId));
                         dispatch(openModal5());
                         dispatch(closeModal3());
-                        dispatch(callGetPostsAPI());
+                        dispatch(resetSelectPost());
                     }}>확인</button> 
                 </p>
             </div>
