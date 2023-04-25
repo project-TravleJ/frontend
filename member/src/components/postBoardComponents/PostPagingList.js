@@ -31,8 +31,6 @@ function PostPagingList() {
     const [currentPage, setCurrentPage] = useState(1);
     const [endPage, setEndPage] = useState(1);
 
-    const dispatch = useDispatch();
-
 
     useEffect(
         () => {
