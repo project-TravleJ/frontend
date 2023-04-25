@@ -7,7 +7,9 @@ import {callGetCoursesAPI, callRegistCourseAPI} from "./CourseAPI";
 
 const url = "http://localhost:8080/api/v1/posts";
 
-export function callGetPostsAPI() {
+export function callGetPostsAPI({currentPage}) {
+
+    const url = `http://localhost:8080/api/v1/posts?page=${currentPage}`;
 
     return async function getPosts(dispatch, getState) {
 
@@ -24,12 +26,12 @@ export function callGetPostsAPI() {
                         "Auth": window.localStorage.getItem('jwtToken')
                 }
                 }
-            ).then(data => data.json())
+            ).then(data => data.json());
 
         console.log(window.localStorage.getItem("jwtToken"));
         console.log('result : ', result);
         if (result.status === 200) {
-        dispatch({ type: GET_POSTS, payload: result });
+        dispatch({ type: GET_POSTS, payload: result.result });
         }
     }
 }
