@@ -2,9 +2,9 @@ name: userCI
 
 on: 
   push:
-    branches: [ "admin" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "admin" ]
+    branches: [ "master" ]
 
 jobs:
   userCItest:
