@@ -15,7 +15,7 @@ function BulletinManage () {
     useEffect(
         () => {
             dispatch(CallBulIssueAPI());
-        }
+        }, []
     );
 
     return (
@@ -35,9 +35,9 @@ function BulletinManage () {
             <tbody>
                 {bulIssues.map(Issue => {return(
                 <tr>
-                    <td>{ Issue.nick }</td>
-                    <td>{ Issue.case }</td>
-                    <td>{ Issue.date }</td>
+                    <td>{ Issue.bulletinInfoNick }</td>
+                    <td>{ Issue.bulletinInfoCase }</td>
+                    <td>{ Issue.bulletinInfoDate }</td>
                 </tr>
                 )})}               
             </tbody>

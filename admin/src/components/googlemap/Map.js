@@ -67,7 +67,7 @@ function Map() {
       mapContainerStyle={containerStyle}
       center={center}
       zoom={12}
-      onLoad={onLoad}
+
       // onUnmount={onUnmount}
       >
       {callmarkers.map(marker => {console.log(marker); return( 
