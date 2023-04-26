@@ -241,6 +241,7 @@ export const callRegistPostAPI = (post) => {
 
 export const callUpdatePostAPI = (post) => {
 
+    console.log(post);
     //JSON.stringify() 억까 해결
     return async function registPost(dispatch, getState) {
 
@@ -269,7 +270,5 @@ export const callUpdatePostAPI = (post) => {
             .then(data => data.result);
 
         dispatch({type: getSelectedPost, payload:result})
-
-        await callRegistCourseAPI(result);
     };
 }

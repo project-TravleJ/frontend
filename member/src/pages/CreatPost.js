@@ -6,7 +6,7 @@ import CreatComent from '../components/creatcomponents/CreateComent';
 import Footer from "../components/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {getContext, getPost, getPostEnd, getPostStart, getPostTitle, getCourseMemo} from "../modules/CreatePostModule";
+import {getContext, getPostEnd, getPostStart, getPostTitle, getCourseMemo} from "../modules/CreatePostModule";
 import Map from "../components/googlemap/Map";
 import {openModal} from "../features/modal/modalSlice";
 import {openModal1} from "../features/modal/modalSlice1";
@@ -73,13 +73,13 @@ function  CreatPost() {
                                 type="date"
                                 className={style.datestyle}
                                 onChange={(e) => {dispatch(getPostStart(e.target.value))} }
-                                value = {start}
+                                value = {newPost.postStart}
                             />
                             <input                                  // postStart
                                 type="date"
                                 className={style.datestyle}
                                 onChange={(e) => {dispatch(getPostEnd(e.target.value))} }
-                                value = {end}
+                                value = {newPost.postEnd}
                             />
                         </div>
                         <div className={style.postmap}>

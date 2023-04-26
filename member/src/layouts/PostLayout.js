@@ -47,7 +47,7 @@ function  PostLayout() {
                 <div className={ style.postbodystyle }>
                     {/*<PostBodySurv/>*/}
                     <div className={style.postbodysurvstyle}>
-                        <div onClick={() => {dispatch(closeModal3()); dispatch(openModal15()); dispatch(getSelectedPost(post.postId))}}>
+                        <div onClick={() => {dispatch(closeModal3()); dispatch(openModal15()); dispatch(getSelectedPost(post))}}>
                             수정
                         </div>
                         &nbsp;&nbsp;&nbsp;
@@ -74,9 +74,11 @@ function  PostLayout() {
                     <div className={style.postmainContent}>
                         <div className={style.postmainContent1}>
                             <div className={style.postcalender}>
-                                <input type="date" className={style.datestyle}/>
+                                {/*<input type="date" className={style.datestyle} value=/>*/}
+                                <div>시작일 : {post.postStart}</div>
                                 &nbsp; &nbsp;
-                                <input type="date" className={style.datestyle}/>
+                                {/*<input type="date" className={style.datestyle} value=/>*/}
+                                <div>종료일 : {post.postEnd}</div>
                             </div>
                             <div className={style.postmap}>
                                 <PostMap/>
