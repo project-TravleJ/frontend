@@ -12,8 +12,8 @@ import {
     getPostStart,
     getPostTitle,
     getCourseMemo,
-    resetSelectPost
-} from "../../modules/SelectedPostModule";
+} from "../../modules/CreatePostModule";
+import { resetSelectPost } from "../../modules/SelectedPostModule";
 import Map from "../../components/googlemap/Map";
 import {openModal} from "../../features/modal/modalSlice";
 import {openModal1} from "../../features/modal/modalSlice1";
@@ -30,9 +30,9 @@ function  PostUpdate() {
     console.log("수정 페이지");
 
     const dispatch = useDispatch();
-    const editPost = useSelector(store => store.selectedPost);
+    const editPost = useSelector(store => store.createPost);
+    const selectPost = useSelector(store => store.selectedPost);
     const newCourse = useSelector(store => store.createCourse);
-    // const editPost = useSelector(store => store.createPost);
 
     const [title, setTitle] = useState("");
     const [start, setStart] = useState("");
@@ -47,7 +47,8 @@ function  PostUpdate() {
     /* 작성 완료시 POST API에 전달할 인자(post 객체)를 만드는 역할 */
 
     useEffect( () => {
-        dispatch(getSelectPost(editPost));
+        dispatch(getSelectPost(selectPost.postId));
+        dispatch(getPost(selectPost));
         // await dispatch(getPost(selectPost));
     }, []
     );
@@ -73,11 +74,12 @@ function  PostUpdate() {
                         onChange={(e) => {dispatch(getPostTitle(e.target.value))}}
                     />
                     <button className={style.btnset} onClick={
-                        async () => {
+                         () => {
                             // onClickPostPostTilteHandler();
                             dispatch(openModal1());
-                            await dispatch(callUpdatePostAPI(editPost));   // 작성 완료 이벤트
+                            dispatch(callUpdatePostAPI(editPost));   // 작성 완료 이벤트
                             // await dispatch(callRegistCourseAPI(editPost));
+                            dispatch(callRegistCourseAPI(selectPost));
                         }
                     }>
                         완료
@@ -91,13 +93,13 @@ function  PostUpdate() {
                                 type="date"
                                 className={style.datestyle}
                                 onChange={(e) => {dispatch(getPostStart(e.target.value))} }
-                                value = {start}
+                                value = {editPost.postStart}
                             />
                             <input                                  // postStart
                                 type="date"
                                 className={style.datestyle}
                                 onChange={(e) => {dispatch(getPostEnd(e.target.value))} }
-                                value = {end}
+                                value = {editPost.postEnd}
                             />
                         </div>
                         <div className={style.postmap}>

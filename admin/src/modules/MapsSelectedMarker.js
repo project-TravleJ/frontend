@@ -33,5 +33,3 @@ const selectAttraction  = createSlice({
 export const {setAtt, resetAtt, modifyName, modifyDef} = selectAttraction.actions;
 
 export default selectAttraction.reducer;
-
-public void String ajh
