@@ -37,6 +37,23 @@ function  PostLayout() {
     }, [post.postId]
     )
 
+    
+    const showDate1 = new Date(post.postStart);
+    const startdate = ( showDate1.getFullYear() + '-' 
+    + ((showDate1.getMonth() + 1)<10? "0"+(showDate1.getMonth() + 1):(showDate1.getMonth() + 1)) + '-' 
+    + (showDate1.getDate()<10? "0"+showDate1.getDate():showDate1.getDate()));
+
+    const showDate2 = new Date(post.postEnd);
+    const enddate = ( showDate2.getFullYear() + '-' 
+    + ((showDate2.getMonth() + 1)<10? "0"+(showDate2.getMonth() + 1):(showDate2.getMonth() + 1)) + '-' 
+    + (showDate2.getDate()<10? "0"+showDate2.getDate():showDate2.getDate()));
+
+    const showDate = new Date(post.postDate);
+    const date = ( showDate.getFullYear() + '-' 
+    + ((showDate.getMonth() + 1)<10? "0"+(showDate.getMonth() + 1):(showDate.getMonth() + 1)) + '-' 
+    + (showDate.getDate()<10? "0"+showDate.getDate():showDate.getDate()));
+    
+
     console.log("리턴 마에", post.courseList);
     return(
         <aside className={style.modalbackdrop} onDoubleClick={() => {
@@ -66,7 +83,7 @@ function  PostLayout() {
                                 &nbsp;&nbsp; 좋아요 : {post.likes}
                             </div>
                             <div className={style.postwriter}>
-                                작성자:{post.writer} 작성일 :{post.postDate} &nbsp;&nbsp;&nbsp;
+                                작성자:{post.writer} 작성일 :{date} &nbsp;&nbsp;&nbsp;
                             </div>
                         </div>
                     </div>
@@ -75,10 +92,10 @@ function  PostLayout() {
                         <div className={style.postmainContent1}>
                             <div className={style.postcalender}>
                                 {/*<input type="date" className={style.datestyle} value=/>*/}
-                                <div>시작일 : {post.postStart}</div>
+                                <div>시작일 : {startdate}</div>
                                 &nbsp; &nbsp;
                                 {/*<input type="date" className={style.datestyle} value=/>*/}
-                                <div>종료일 : {post.postEnd}</div>
+                                <div>종료일 : {enddate}</div>
                             </div>
                             <div className={style.postmap}>
                                 <PostMap/>

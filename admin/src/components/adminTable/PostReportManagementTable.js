@@ -117,6 +117,7 @@ function PostReportManagementTable() {
                         </thead>
                         <tbody>
                             {Array.isArray(reportList) && reportList.map((postReport) => {
+
                                 return (
                                     <tr >
                                         <td>
@@ -140,40 +141,35 @@ function PostReportManagementTable() {
                             })}
                         </tbody>
                     </table>
-                    </div>
-                    <div className={Tstyle.pageTable}>
-                        <div className={Tstyle.minusBtn}>
-                            {Array.isArray(reportList) &&
-                                <button
-                                    onClick={() => setCurrentPage(currentPage - 1)}
-                                    disabled={currentPage === 1}
+
+
+                    <div className={Tstyle.pagination}>
+                        {Array.isArray(reportList) &&
+                            <button className={Tstyle.button}
+                                onClick={() => setCurrentPage(currentPage - 1)}
+                                disabled={currentPage === 1}
+                            >
+                                &lt;
+                            </button>
+                        }
+
+                        {pageNumber.map((num) => (
+                            <p key={num} onClick={() => setCurrentPage(num)}>
+                                <button className={Tstyle.button}
+                                    style={currentPage === num ? { backgroundColor: 'orange' } : null}
                                 >
-                                    &lt;
+                                    {num}
                                 </button>
-                            }
-                        </div>
+                            </p>
+                        ))}
+                        {Array.isArray(reportList) &&
+                            <button className={Tstyle.button}
+                                onClick={() => setCurrentPage(currentPage + 1)}
+                                disabled={currentPage === pageInfo?.endPage || pageInfo?.endPage == 1}>
 
-                        <div className={Tstyle.pageNumber}>
-                            {pageNumber.map((num) => (
-                                <li key={num} onClick={() => setCurrentPage(num)}>
-                                    <button
-                                        style={currentPage === num ? { backgroundColor: 'orange' } : null}
-                                    >
-                                        {num}
-                                    </button>
-                                </li>
-                            ))}
-                        </div>
-                        <div className={Tstyle.plusBtn}>
-                            {Array.isArray(reportList) &&
-                                <button
-                                    onClick={() => setCurrentPage(currentPage + 1)}
-                                    disabled={currentPage === pageInfo?.endPage || pageInfo?.endPage == 1}>
-
-                                    &gt;
-                                </button>
-                            }
-                        
+                                &gt;
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

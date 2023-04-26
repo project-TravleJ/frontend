@@ -120,7 +120,12 @@ function LocationReportTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        { Array.isArray(requestList) && requestList.map((request) => {return(
+                        { Array.isArray(requestList) && requestList.map((request) => {
+                            const showDate = new Date(request.date);
+                            const date = ( showDate.getFullYear() + '-' 
+                            + ((showDate.getMonth() + 1)<10? "0"+(showDate.getMonth() + 1):(showDate.getMonth() + 1)) + '-' 
+                            + (showDate.getDate()<10? "0"+showDate.getDate():showDate.getDate()));
+                            return(
                             <tr >
                                 <td> 
                                     <input 
@@ -134,7 +139,7 @@ function LocationReportTable() {
                                 <td> {request.requestId} </td>
                                 <td> {request.requestManagement} </td>
                                 <td> {request.writer} </td>
-                                <td> {request.date} </td>
+                                <td> {date} </td>
                                 <td> {request.title} </td>
                                 <td> {request.context} </td>
                             </tr>
@@ -142,41 +147,35 @@ function LocationReportTable() {
 
                     </tbody>
                 </table>
-            </div>
 
-            <div className={Tstyle.pageTable}>
-            <div className={Tstyle.minusBtn}>
-            { Array.isArray(requestList) &&                
-            <button 
-                onClick={() => setCurrentPage(currentPage - 1)} 
-                disabled={currentPage === 1}
-            >
-                &lt;
-            </button>
-            }
-            </div>
+            <div className={Tstyle.pagination}>
+                        {Array.isArray(requestList) &&
+                            <button className={Tstyle.button}
+                                onClick={() => setCurrentPage(currentPage - 1)}
+                                disabled={currentPage === 1}
+                            >
+                                &lt;
+                            </button>
+                        }
 
-            <div className={Tstyle.pageNumber}>
-            {pageNumber.map((num) => (
-            <li key={num} onClick={() => setCurrentPage(num)}>
-                <button 
-                    style={currentPage === num ? {backgroundColor : 'orange' } : null}
-                >
-                    {num}
-                </button>
-            </li>
-            ))}
-            </div>
-            <div className={Tstyle.plusBtn}>
-            { Array.isArray(requestList) &&  
-            <button 
-                onClick={() => setCurrentPage(currentPage + 1)}
-                disabled={currentPage === pageInfo?.endPage || pageInfo?.endPage == 1}>
-            
-                &gt;
-            </button>
-        }
-        </div>
+                        {pageNumber.map((num) => (
+                            <p key={num} onClick={() => setCurrentPage(num)}>
+                                <button className={Tstyle.button}
+                                    style={currentPage === num ? { backgroundColor: 'orange' } : null}
+                                >
+                                    {num}
+                                </button>
+                            </p>
+                        ))}
+                        {Array.isArray(requestList) &&
+                            <button className={Tstyle.button}
+                                onClick={() => setCurrentPage(currentPage + 1)}
+                                disabled={currentPage === pageInfo?.endPage || pageInfo?.endPage == 1}>
+
+                                &gt;
+                            </button>
+                        }
+                    </div>
         </div>
         </div>
         </>

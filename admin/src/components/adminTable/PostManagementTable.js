@@ -2,8 +2,7 @@ import Tstyle from "./table.module.css"
 import {useState, useEffect} from "react";
 import { callPostAPI, getPostList } from "../../apis/PostAPI";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../../modules/PostModule";
-import { pagingComponent } from "../paging/Pagination";
+
 
 function PostManagementTable() {
 
@@ -12,11 +11,26 @@ function PostManagementTable() {
     const results = useSelector(store => store.post);
     console.log(results);
 
+    const postList = results?.postList?.content || results?.searchByMultiple?.content;
+    const pageInfo = results?.paging;
+
+    const pageNumber = [1];
+
+    if (pageInfo) {
+        for (let i = pageInfo.startPage + 1; i <= pageInfo.endPage; i++) {
+            pageNumber.push(i);
+            
+        }
+    }
+    const [start, setStart] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [endPage, setEndPage] = useState(1);
+
     useEffect(
         () => {
             console.log(callPostAPI());
-            dispatch(callPostAPI());
-        },[]
+            dispatch(callPostAPI(currentPage));
+        },[currentPage]
     );
 
     return (
@@ -43,20 +57,52 @@ function PostManagementTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {results.map(post => {return(
+                        {Array.isArray(postList) && postList.map(post => {
+                            const showDate = new Date(post.postDate);
+                            const date = ( showDate.getFullYear() + '-' 
+                            + ((showDate.getMonth() + 1)<10? "0"+(showDate.getMonth() + 1):(showDate.getMonth() + 1)) + '-' 
+                            + (showDate.getDate()<10? "0"+showDate.getDate():showDate.getDate()));
+                            return(
                             <tr>
                                 <td> <input type="checkbox"/> </td>
                                 <td> {post.postId} </td>
                                 <td> {post.writer} </td>
                                 <td> {post.postTitle} </td>
-                                <td> {post.postDate} </td>
+                                <td> {date} </td>
                                 <td> {post.likes} </td>
                                 <td> {post.url} </td>
                             </tr>
                         )})}
                     </tbody>
                 </table>
-                {pagingComponent(results)}
+            <div className={Tstyle.pagination}>
+            { Array.isArray(postList) &&                
+            <button className={Tstyle.button}
+                onClick={() => setCurrentPage(currentPage - 1)} 
+                disabled={currentPage === 1}
+            >
+                &lt;
+            </button>
+            }
+            
+            {pageNumber.map((num) => (
+            <p key={num} onClick={() => setCurrentPage(num)}>
+                <button className={Tstyle.button}
+                    style={currentPage === num ? {backgroundColor : 'orange' } : null}
+                >
+                    {num}
+                </button>
+            </p>
+            ))}
+            { Array.isArray(postList) &&  
+            <button className={Tstyle.button}
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage === pageInfo?.endPage || pageInfo?.endPage == 1}>
+            
+                &gt;
+            </button>
+        }
+        </div>
             </div>
         </div>
     );

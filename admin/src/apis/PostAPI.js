@@ -2,10 +2,11 @@
 import {useDispatch} from "react-redux";
 import {getPosts} from "../modules/PostModule";
 
-const url = "http://localhost:8080/api/v1/posts";
+// const url = "http://localhost:8080/api/v1/posts";
 
 
-export function callPostAPI() {
+export function callPostAPI(currentPage) {
+    const url = `http://localhost:8080/api/v1/posts?page=${currentPage}`;
 
     return async function getPost(dispatch, getState){
 
