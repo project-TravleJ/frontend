@@ -85,7 +85,7 @@ function MemberManagementTable() {
                                 <tr>
                                     <th>선택</th>
                                     <th>회원번호</th>
-                                    <th>아이디</th>
+                                    <th>이메일</th>
                                     <th>닉네임</th>
                                     <th>등급</th>
                                     <th>계정상태</th>
@@ -106,7 +106,7 @@ function MemberManagementTable() {
                                                 />
                                             </td>
                                             <td> {member.memberCode} </td>
-                                            <td> {member.memberId} </td>
+                                            <td> {member.email} </td>
                                             <td> {member.memberNickname} </td>
                                             <td> {member.grade} </td>
                                             <td> {member.status} </td>
